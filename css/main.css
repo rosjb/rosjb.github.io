@@ -1382,7 +1382,7 @@ pre code {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #533cf6;
+  background: #ff2a6e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1704,7 +1704,10 @@ pre code {
   position: fixed;
   transition-property: bottom;
   z-index: 1300;
-  width: initial;
+  width: 24px;
+}
+.back-to-top span {
+  display: none;
 }
 .back-to-top:hover {
   color: #87daff;
