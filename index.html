@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Muse","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
@@ -136,19 +136,9 @@
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
         <li class="menu-item menu-item-donate">
 
-    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞助</a>
-
-  </li>
-        <li class="menu-item menu-item-tools">
-
-    <a href="/tools/" rel="section"><i class="fa fa-cogs fa-fw"></i>工具</a>
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -205,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/06/09/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/06/20/Ver2-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -219,7 +209,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/06/20/Ver2-1/" class="post-title-link" itemprop="url">Ver2.1 发布</a>
         </h2>
 
         <div class="post-meta">
@@ -233,16 +223,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-06-09 21:20:33" itemprop="dateCreated datePublished" datetime="2020-06-09T21:20:33+08:00">2020-06-09</time>
+              <time title="创建时间：2020-06-20 16:16:14 / 修改时间：20:59:17" itemprop="dateCreated datePublished" datetime="2020-06-20T16:16:14+08:00">2020-06-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 00:58:19" itemprop="dateModified" datetime="2020-06-10T00:58:19+08:00">2020-06-10</time>
-              </span>
 
           
 
@@ -255,10 +239,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <!-- ## 💥新增 -->
+<h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol>
+<li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li>
+<li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color='red'> 无锡-IT侦探</font> 指出)</li>
+<li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li>
+<li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li>
+<li>取消了所有命令行的 disabled=no 的命令,便于阅读
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/06/09/hello-world/#more" rel="contents">
+              <a class="btn" href="/2020/06/20/Ver2-1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -318,7 +308,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-19 18:43:16" itemprop="dateModified" datetime="2020-06-19T18:43:16+08:00">2020-06-19</time>
+                <time title="修改时间：2020-06-20 20:58:44" itemprop="dateModified" datetime="2020-06-20T20:58:44+08:00">2020-06-20</time>
               </span>
 
           
@@ -338,6 +328,79 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/06/10/%E6%8F%90%E9%97%AE%E7%9A%84%E6%99%BA%E6%85%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/06/09/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-09 21:20:33" itemprop="dateCreated datePublished" datetime="2020-06-09T21:20:33+08:00">2020-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-20 16:42:04" itemprop="dateModified" datetime="2020-06-20T16:42:04+08:00">2020-06-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/09/hello-world/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -424,9 +487,15 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -485,21 +554,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rosjb</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -522,7 +580,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -553,6 +611,7 @@
   
 
   
+
 
 </body>
 </html>

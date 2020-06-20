@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ver2.1 发布</title>
+    <url>/2020/06/20/Ver2-1/</url>
+    <content><![CDATA[<!-- ## 💥新增 -->
+<h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol>
+<li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li>
+<li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color='red'> 无锡-IT侦探</font> 指出)</li>
+<li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li>
+<li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li>
+<li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a>
+
+</li>
+</ol>
+<h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.1: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a> <a href="https://pan.baidu.com/share/init?surl=D3zV9gJzX3jq9Gs0WHRJLA" target="_blank" rel="noopener">百度网盘</a> (4st7)<br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>
+]]></content>
+      <tags>
+        <tag>下载</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>提问的智慧</title>
     <url>/2020/06/10/%E6%8F%90%E9%97%AE%E7%9A%84%E6%99%BA%E6%85%A7/</url>
     <content><![CDATA[<p>艾瑞克.史蒂文.雷蒙德（Eric Steven Raymond）</p>
@@ -9,6 +28,9 @@
 <p>《提问的智慧》是一个敲门砖，它把黑客间的礼仪和准则明白地写下来，让我们了解到一个事实，为什么那些看起来很牛的人几乎从不提问。其实他们也有问题，但是通常在提问之前就自己解决了。不是因为他们本来就牛，而是解决问题的经历让他们成为牛人。最终，你只会看到网络上多了一篇文章：关于解决XXX问题的方案。</p>
 <p>要不要花十几分钟改变自己的人生，决定权在自己。</p>
 ]]></content>
+      <tags>
+        <tag>提问</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
