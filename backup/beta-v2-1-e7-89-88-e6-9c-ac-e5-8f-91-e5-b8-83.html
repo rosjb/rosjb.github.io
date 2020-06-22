@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在发布版本更新内容前,发一点牢骚: 1.当你需要提问或寻求帮助的时候,请尽量的把你的问题描述清楚一些,以方便别人帮你分析问题和原因.比如: 提问A:ROS我设置好了,我上不了网,怎么办? 提问B:ROS我设置好了,我上不了网,静态ip都设置了,没有限制任何内网IP,也没有限速,连网页都打不开,不是网速慢的原因.(附截图) 综合以上2个问题,你更愿意回答哪个人的问题呢? 2.别人帮你解决了问题,作为">
+<meta property="og:type" content="website">
+<meta property="og:title" content="beta V2.1版本发布!">
+<meta property="og:url" content="http://rosjb.github.io/backup/beta-v2-1-e7-89-88-e6-9c-ac-e5-8f-91-e5-b8-83.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="在发布版本更新内容前,发一点牢骚: 1.当你需要提问或寻求帮助的时候,请尽量的把你的问题描述清楚一些,以方便别人帮你分析问题和原因.比如: 提问A:ROS我设置好了,我上不了网,怎么办? 提问B:ROS我设置好了,我上不了网,静态ip都设置了,没有限制任何内网IP,也没有限速,连网页都打不开,不是网速慢的原因.(附截图) 综合以上2个问题,你更愿意回答哪个人的问题呢? 2.别人帮你解决了问题,作为">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.rosjb.com/wp-content/uploads/2016/01/%E7%B9%81%E4%BD%93%E7%95%8C%E9%9D%A2.png">
+<meta property="article:published_time" content="2016-01-01T16:22:19.000Z">
+<meta property="article:modified_time" content="2020-06-21T13:16:44.367Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="rosjb">
+<meta property="article:tag" content="ros脚本生成器">
+<meta property="article:tag" content="RouterOS脚本生成器">
+<meta property="article:tag" content="ROSJB">
+<meta property="article:tag" content="ROS脚本">
+<meta property="article:tag" content="ROS管理工具">
+<meta property="article:tag" content="routeros脚本">
+<meta property="article:tag" content="ros软路由">
+<meta property="article:tag" content="routeros脚本生成器">
+<meta property="article:tag" content="ros脚本生成器下载">
+<meta property="article:tag" content="软路由ros教程">
+<meta property="article:tag" content="路由表下载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.rosjb.com/wp-content/uploads/2016/01/%E7%B9%81%E4%BD%93%E7%95%8C%E9%9D%A2.png">
+
+<link rel="canonical" href="http://rosjb.github.io/backup/beta-v2-1-e7-89-88-e6-9c-ac-e5-8f-91-e5-b8-83">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>beta V2.1版本发布! | MikroTik 脚本生成器
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">beta V2.1版本发布!
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>在发布版本更新内容前,发一点牢骚: 1.当你需要提问或寻求帮助的时候,请尽量的把你的问题描述清楚一些,以方便别人帮你分析问题和原因.比如: 提问A:ROS我设置好了,我上不了网,怎么办? 提问B:ROS我设置好了,我上不了网,静态ip都设置了,没有限制任何内网IP,也没有限速,连网页都打不开,不是网速慢的原因.(附截图) 综合以上2个问题,你更愿意回答哪个人的问题呢? 2.别人帮你解决了问题,作为最基本的礼仪,一句”谢谢”是很有必要的,如果下次又遇到类似的问题,或许别人还会帮你,如果你连句”谢谢”都不说,我想以后应该不会有人帮你了. 3.当你有一定ROS基础的情况下,使用脚本编辑器会游刃有余.当你都不知道什么网关,掩码,dns的时候,最好先用搜索引擎了解下相关方面的知识,生成器的初衷只是为了帮助我们更方便的自定义一些设置,在winbox上要通过10次点击的操作,在生成器上或许只要4-5次点击就能完成.我们可以把他当做学习的参考资料,但绝对不是依赖的对象. 4.作为一个ROS爱好者,我写了这个生成器,生活中ROS脚本生成器中的几乎%90的功能我都用不到,所以相对于BUG来说会多些,因为你不会去用这些功能,自然也就不会发现其中的BUG;一些建设性意见都是来源于其他小伙伴,我也非常的感谢他们提供这些宝贵的意见. 5.最近在做一些5.x和6.x脚本之间的兼容性,一些参数设置方面都会有版本之间的区别,做了一些调整,比较头疼.为什么始终还是有人会用5.x版本,而不愿意更换6.x版本中间的原因我就不再阐述了.但是有一个不争的事实,同一台硬件,分别安装5.x和6.x版本的ROS,在处理包的能力方面,说的夸张点,5.x=地狱,6.x=天堂(具体资料官网有介绍),不过话又说回来,又有多少人的网络环境能让ROS的cpu占用率始终保持在%50以上呢. 牢骚发了那么多,也是希望ROS能越做越好,在国内的市场有更多人会使用和相信它. <strong>余松老师个人编写的PDF文档&lt; RouterOS入门到精通 PDF电子版&gt;: <a href="https://item.taobao.com/item.htm?spm=686.1000925.0.0.ekMdvE&id=43254361785" target="_blank" rel="noopener">淘宝购买</a></strong>  (有能力的朋友可以支持下,这本书的价值远超于零售价格) <strong>2016的MUM将在中国上海举行,有兴趣的小伙伴可以去看下:<a href="http://mum.mikrotik.com/2016/CN/info" target="_blank" rel="noopener">http://mum.mikrotik.com/2016/CN/info</a></strong></p>
+<hr>
+<p>beta V2.1更新内容: 1.路由表生成器里增加了IP地址奇偶数生成的功能( 在双线策略路由器情况下,早期的策略路由是通过标记一段地址走一条线路，如我们标记192.168.10.2-192.168.10.127走线路A，剩下的IP地址则走线路B，这样的策略路由在一定的情况下出现效率不高的问题，如当用户IP地址是顺序增加，但没有到127的时候.线路B就不会起到流量分配的作用.为了解决这样的问题，我们通过RouterOS的address-list建立一个地址列表，分别将奇数和偶数的IP地址分开，即奇数的IP地址走线路A，而偶数的IP地址走线路B，这样的策略路由便提高了双线的使用效率.) 2.修复若干小BUG 3.工具里增加了L7协议的生成工具,所有L7协议均收集于网络(如果你有更好的L7协议愿意和大家一起分享的可以私密我) 4.脚本里增加了定时绑定ARP脚本 5.修改部分限速上版本上的差异问题 6.安装-固定ip和PPPoE的单线或多线叠加和分流功能都分别整合在一个功能栏里,根据需要进行选择和生成即可 7.防火墙-增加了一些常用防火墙的标记(学习参考用,不是防火墙越多越好) 8.PCQ高级动态限速修改为PCQ分组简单限速(作为学习参考资料使用) 9.解决了繁体windows系统切换繁体软件乱码问题(部分小地方还没完全解决,功能界面已经可以使用了) <a href="http://www.rosjb.com/wp-content/uploads/2016/01/繁体界面.png" target="_blank" rel="noopener"><img src="http://www.rosjb.com/wp-content/uploads/2016/01/%E7%B9%81%E4%BD%93%E7%95%8C%E9%9D%A2.png" alt="繁体界面"></a> 10.工具栏里增加了IP查询器(能查国家,城市,地区,以及运营商信息)</p>
+<p>下个版本更新估计要1,2个月以后了,感谢大家的支持!有想法或者更好的建议也可以私密我或给我留言!</p>
+<hr>
+<p>欢迎加群:39328323 进行讨论!(群验证:rosjb)</p>
+<hr>
+<p>beta2.1版本:下载地址  md5:46d47c525a86da1e227566e0e2e1e75c</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '6d443bcd0ddccfecb1d8b9c636ada2ec',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

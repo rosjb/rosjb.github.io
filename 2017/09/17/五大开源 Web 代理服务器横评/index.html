@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Web 代理软件转发 HTTP 请求时并不会改变数据流量。它们可以配置成透明代理，而无需客户端配置。它们还可以作为反向代理放在网站的前端；这样缓存服务器可以为一台或多台 web 服务器提供无限量的用户服务。 网站代理功能多样，有着宽泛的用途：从缓存页面、DNS 和其他查询，到加速 web 服务器响应、降低带宽消耗。代理软件广泛用于大型高访问量的网站，比如纽约时报、卫报， 以及社交媒体网站如 Twi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy">
+<meta property="og:url" content="http://rosjb.github.io/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="Web 代理软件转发 HTTP 请求时并不会改变数据流量。它们可以配置成透明代理，而无需客户端配置。它们还可以作为反向代理放在网站的前端；这样缓存服务器可以为一台或多台 web 服务器提供无限量的用户服务。 网站代理功能多样，有着宽泛的用途：从缓存页面、DNS 和其他查询，到加速 web 服务器响应、降低带宽消耗。代理软件广泛用于大型高访问量的网站，比如纽约时报、卫报， 以及社交媒体网站如 Twi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/224844ogau2uah0n7uuvzz.jpg">
+<meta property="og:image" content="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/222514zocvp3vb3zivvyrl.png">
+<meta property="og:image" content="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/223550eoavsnrj7nw1uaza.png">
+<meta property="article:published_time" content="2017-09-17T05:50:02.000Z">
+<meta property="article:modified_time" content="2020-06-21T13:23:03.796Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="代理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/224844ogau2uah0n7uuvzz.jpg">
+
+<link rel="canonical" href="http://rosjb.github.io/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-17 13:50:02" itemprop="dateCreated datePublished" datetime="2017-09-17T13:50:02+08:00">2017-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-21 21:23:03" itemprop="dateModified" datetime="2020-06-21T21:23:03+08:00">2020-06-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Web 代理软件转发 HTTP 请求时并不会改变数据流量。它们可以配置成透明代理，而无需客户端配置。它们还可以作为反向代理放在网站的前端；这样缓存服务器可以为一台或多台 web 服务器提供无限量的用户服务。 网站代理功能多样，有着宽泛的用途：从缓存页面、DNS 和其他查询，到加速 web 服务器响应、降低带宽消耗。代理软件广泛用于大型高访问量的网站，比如纽约时报、卫报， 以及社交媒体网站如 Twitter、Facebook 和 Wikipedia。 页面缓存已经成为优化单位时间内所能吞吐的数据量的至关重要的机制。好的 Web 缓存还能降低延迟，尽可能快地响应页面，让终端用户不至于因等待内容的时间过久而失去耐心。它们还能将频繁访问的内容缓存起来以节省带宽。如果你需要降低服务器负载并改善网站内容响应速度，那缓存软件能带来的好处就绝对值得探索一番。 <img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/224844ogau2uah0n7uuvzz.jpg" alt> 为深入探查 Linux 下可用的相关软件的质量，我列出了下边5个优秀的开源 web 代理工具。它们中有些功能完备强大，也有几个只需很低的资源就能运行。</p>
+<a id="more"></a>
+
+<h3 id="Squid"><a href="#Squid" class="headerlink" title="Squid"></a>Squid</h3><p>Squid 是一个高性能、开源的代理缓存服务器和 Web 缓存进程，支持 FTP、Internet Gopher、HTTPS 和 SSL 等多种协议。它通过一个非阻塞的、I/O 事件驱动的单一进程处理所有的 IPV4 或 IPV6 协议请求。 Squid 由一个主服务程序 squid，和 DNS 查询程序 dnsserver，另外还有一些可选的请求重写、执行认证程序组件，及一些管理和客户端工具构成。 Squid 提供了丰富的访问控制、认证和日志环境， 用于开发 web 代理和内容服务网站应用。 其特性包括：</p>
+<ul>
+<li>Web 代理：<ul>
+<li>通过缓存来降低访问时间和带宽使用</li>
+<li>将元数据和访问特别频繁的对象缓存到内存中</li>
+<li>缓存 DNS 查询</li>
+<li>支持非阻塞的 DNS 查询</li>
+<li>实现了失败请求的未果缓存</li>
+</ul>
+</li>
+<li>Squid 缓存可架设为层次结构，或网状结构以节省额外的带宽</li>
+<li>通过广泛的访问控制来执行网站访问策略</li>
+<li>隐匿请求，如禁用或修改客户端 HTTP 请求头特定属性</li>
+<li>反向代理</li>
+<li>媒体范围media-range限制</li>
+<li>支持 SSL</li>
+<li>支持 IPv6</li>
+<li>错误页面的本地化 - Squid 可以根据访问者的语言选项对每个请求展示本地化的错误页面</li>
+<li>连接固定Connection Pinning（用于 NTLM Auth Passthrough） - 一种允许 Web 服务器通过 Web 代理使用Microsoft NTLM 安全认证替代 HTTP 标准认证的方案</li>
+<li>支持服务质量QoS, Quality of Service流<ul>
+<li>选择一个 TOS/Diffserv 值来标记本地命中</li>
+<li>选择一个 TOS/Diffserv 值来标记对端命中</li>
+<li>选择性地仅标记同级或上级请求</li>
+<li>允许任意发往客户端的 HTTP 响应保持由远程服务器处响应的 TOS 值</li>
+<li>对收到的远程服务器的 TOS 值，在复制之前对指定位进行掩码操作，再发送到客户端</li>
+</ul>
+</li>
+<li>SSL Bump (用于 HTTPS 过滤和适配) - Squid-in-the-middle，在 CONNECT 方式的 SSL 隧道中，用配置化的客户端和服务器端证书，对流量进行解密和加密</li>
+<li>支持适配模块</li>
+<li>ICAP 旁路和重试增强 - 通过完全的旁路和动态链式路由扩展 ICAP，来处理多多个适应性服务。</li>
+<li>支持 ICY 流式协议 - 俗称 SHOUTcast 多媒体流</li>
+<li>动态 SSL 证书生成</li>
+<li>支持 ICAP 协议 (Internet Content Adaptation Protocol)</li>
+<li>完整的请求日志记录</li>
+<li>匿名连接</li>
+</ul>
+<p><img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/222514zocvp3vb3zivvyrl.png" alt></p>
+<ul>
+<li>网站: <a href="http://www.squid-cache.org/" target="_blank" rel="noopener">www.squid-cache.org</a></li>
+<li>开发: 美国国家应用网络研究实验室(NLANR)和网络志愿者</li>
+<li>授权: GNU GPL v2</li>
+<li>版本号: 4.0.1</li>
+</ul>
+<h3 id="Privoxy"><a href="#Privoxy" class="headerlink" title="Privoxy"></a>Privoxy</h3><p>Privoxy (Privacy Enhancing Proxy) 是一个非缓存类 Web 代理软件，它自带的高级过滤功能可以用来增强隐私保护、修改页面内容和 HTTP 头部信息、访问控制，以及去除广告和其它招人反感的互联网垃圾。Privoxy 的配置非常灵活，能充分定制已满足各种各样的需求和偏好。它支持单机和多用户网络两种模式。 Privoxy 使用 action 规则来处理浏览器和远程站点间的数据流。 其特性包括：</p>
+<ul>
+<li>高度配置化——可以完全定制你的配置</li>
+<li>广告拦截</li>
+<li>Cookie 管理</li>
+<li>支持“Connection: keep-alive”。可以无视客户端配置而保持外发的持久连接</li>
+<li>支持 IPv6</li>
+<li>标签化Tagging，允许按照客户端和服务器的请求头进行处理</li>
+<li>作为拦截intercepting代理器运行</li>
+<li>巧妙的动作action和过滤机制用来处理服务器和客户端的 HTTP 头部</li>
+<li>可以与其他代理软件链式使用</li>
+<li>整合了基于浏览器的配置和控制工具，能在线跟踪规则和过滤效果，可远程开关</li>
+<li>页面过滤（文本替换、根据尺寸大小删除广告栏, 隐藏的“web-bugs”元素和 HTML 容错等）</li>
+<li>模块化的配置使得标准配置和用户配置可以存放于不同文件中，这样安装更新就不会覆盖用户的个性化设置</li>
+<li>配置文件支持 Perl 兼容的正则表达式，以及更为精妙和灵活的配置语法</li>
+<li>GIF 去动画</li>
+<li>旁路处理大量点击跟踪click-tracking脚本（避免脚本重定向）</li>
+<li>大多数代理生成的页面（例如 “访问受限” 页面）可由用户自定义HTML模板</li>
+<li>自动监测配置文件的修改并重新读取</li>
+<li>大多数功能可以基于每个站点或每个 URL 位置来进行控制</li>
+</ul>
+<ul>
+<li>网站: <a href="http://www.privoxy.org/" target="_blank" rel="noopener">www.privoxy.org</a></li>
+<li>开发: Fabian Keil（开发领导者）, David Schmidt, 和众多其他贡献者</li>
+<li>授权: GNU GPL v2</li>
+<li>版本号: 3.4.2</li>
+</ul>
+<h3 id="Varnish-Cache"><a href="#Varnish-Cache" class="headerlink" title="Varnish Cache"></a>Varnish Cache</h3><p>Varnish Cache 是一个为性能和灵活性而生的 web 加速器。它新颖的架构设计能带来显著的性能提升。根据你的架构，通常情况下它能加速响应速度300-1000倍。Varnish 将页面存储到内存，这样 web 服务器就无需重复地创建相同的页面，只需要在页面发生变化后重新生成。页面内容直接从内存中访问，当然比其他方式更快。 此外 Varnish 能大大提升响应 web 页面的速度，用在任何应用服务器上都能使网站访问速度大幅度地提升。 按经验，Varnish Cache 比较经济的配置是1-16GB内存+ SSD 固态硬盘。 其特性包括：</p>
+<ul>
+<li>新颖的设计</li>
+<li>VCL - 非常灵活的配置语言。VCL 配置会转换成 C，然后编译、加载、运行，灵活且高效</li>
+<li>能使用 round-robin 轮询和随机分发两种方式来负载均衡，两种方式下后端服务器都可以设置权重</li>
+<li>基于 DNS、随机、散列和客户端 IP 的分发器Director</li>
+<li>多台后端主机间的负载均衡</li>
+<li>支持 Edge Side Includes，包括拼装压缩后的 ESI 片段</li>
+<li>重度多线程并发</li>
+<li>URL 重写</li>
+<li>单 Varnish 能够缓存多个虚拟主机</li>
+<li>日志数据存储在共享内存中</li>
+<li>基本的后端服务器健康检查</li>
+<li>优雅地处理后端服务器“挂掉”</li>
+<li>命令行界面的管理控制台</li>
+<li>使用内联 C 语言来扩展 Varnish</li>
+<li>可以与 Apache 用在相同的系统上</li>
+<li>单个系统可运行多个 Varnish</li>
+<li>支持 HAProxy 代理协议。该协议在每个收到的 TCP 请求——例如 SSL 终止过程中——附加一小段 http 头信息，以记录客户端的真实地址</li>
+<li>冷热 VCL 状态</li>
+<li>可以用名为 VMOD 的 Varnish 模块来提供插件扩展</li>
+<li>通过 VMOD 定义后端主机</li>
+<li>Gzip 压缩及解压</li>
+<li>HTTP 流的通过和获取</li>
+<li>神圣模式和优雅模式。用 Varnish 作为负载均衡器，神圣模式下可以将不稳定的后端服务器在一段时间内打入黑名单，阻止它们继续提供流量服务。优雅模式允许 Varnish 在获取不到后端服务器状态良好的响应时，提供已过期版本的页面或其它内容。</li>
+<li>实验性支持持久化存储，无需 LRU 缓存淘汰</li>
+</ul>
+<p><img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/223550eoavsnrj7nw1uaza.png" alt></p>
+<ul>
+<li>网站: <a href="https://www.varnish-cache.org/" target="_blank" rel="noopener">www.varnish-cache.org</a></li>
+<li>开发: Varnish Software</li>
+<li>授权: FreeBSD</li>
+<li>版本号: 4.1.0</li>
+</ul>
+<h3 id="Polipo"><a href="#Polipo" class="headerlink" title="Polipo"></a>Polipo</h3><p>Polipo 是一个开源的 HTTP 缓存代理，只需要非常低的资源开销。 它监听来自浏览器的 web 页面请求，转发到 web 服务器，然后将服务器的响应转发到浏览器。在此过程中，它能优化和整形网络流量。从本质来讲 Polipo 与 WWWOFFLE 很相似，但其实现技术更接近于 Squid。 Polipo 最开始的目标是作为一个兼容 HTTP/1.1 的代理，理论它能在任何兼容 HTTP/1.1 或更早的 HTTP/1.0 的站点上运行。 其特性包括：</p>
+<ul>
+<li>HTTP 1.1、IPv4 &amp; IPv6、流量过滤和隐私保护增强</li>
+<li>如确认远程服务器支持的话，则无论收到的请求是管道处理过的还是在多个连接上同时收到的，都使用 HTTP/1.1 管道pipelining</li>
+<li>下载被中断时缓存起始部分，当需要续传时用区间Range请求来完成下载</li>
+<li>将 HTTP/1.0 的客户端请求升级为 HTTP/1.1，然后按照客户端支持的级别进行升级或降级后回复</li>
+<li>全面支持 IPv6 （作用域（链路本地）地址除外）</li>
+<li>作为 IPv4 和 IPv6 网络的网桥</li>
+<li>内容过滤</li>
+<li>能使用Poor Man 多路复用技术Poor Man’s Multiplexing降低延迟</li>
+<li>支持 SOCKS 4 和 SOCKS 5 协议</li>
+<li>HTTPS 代理</li>
+<li>扮演透明代理的角色</li>
+<li>可以与 Privoxy 或 tor 一起运行</li>
+</ul>
+<ul>
+<li>网站: <a href="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/" target="_blank" rel="noopener">www.pps.univ-paris-diderot.fr/~jch/software/polipo/</a></li>
+<li>开发: Juliusz Chroboczek, Christopher Davis</li>
+<li>授权: MIT License</li>
+<li>版本号: 1.1.1</li>
+</ul>
+<h3 id="Tinyproxy"><a href="#Tinyproxy" class="headerlink" title="Tinyproxy"></a>Tinyproxy</h3><p>Tinyproxy 是一个轻量级的开源 web 代理守护进程，其设计目标是快而小。它适用于需要完整 HTTP 代理特性，但系统资源又不足以运行大型代理的场景，比如嵌入式部署。 Tinyproxy 对小规模网络非常有用，这样的场合下大型代理会使系统资源紧张，或有安全风险。Tinyproxy 的一个关键特性是其缓冲连接的理念。从效果上看， Tinyproxy 对服务器的响应进行了高速缓冲，然后按照客户端能够处理的最高速度进行响应。该特性极大的降低了网络延滞带来的问题。 特性：</p>
+<ul>
+<li>易于修改</li>
+<li>隐匿模式 - 定义哪些 HTTP 头允许通过，哪些又会被拦截</li>
+<li>支持 HTTPS - Tinyproxy 允许通过 CONNECT 方法转发 HTTPS 连接，任何情况下都不会修改数据流量</li>
+<li>远程监控 - 远程访问代理统计数据，让你能清楚了解代理服务当前的忙碌状态</li>
+<li>平均负载监控 - 通过配置，当服务器的负载接近一定值后拒绝新连接</li>
+<li>访问控制 - 通过配置，仅允许指定子网或 IP 地址的访问</li>
+<li>安全 - 运行无需额外权限，减小了系统受到威胁的概率</li>
+<li>基于 URL 的过滤 - 允许基于域和URL的黑白名单</li>
+<li>透明代理 - 配置为透明代理，这样客户端就无需任何配置</li>
+<li>代理链 - 在流量出口处采用上游代理服务器，而不是直接转发到目标服务器，创建我们所说的代理链</li>
+<li>隐私特性 - 限制允许从浏览器收到的来自 HTTP 服务器的数据（例如 cookies），同时限制允许通过的从浏览器到 HTTP 服务器的数据（例如版本信息）</li>
+<li>低开销 - 使用 glibc 内存开销只有2MB，CPU 负载按并发连接数线性增长（取决于网络连接速度）。 Tinyproxy 可以运行在老旧的机器上而无需担心性能问题。</li>
+</ul>
+<ul>
+<li>网站: <a href="https://banu.com/tinyproxy/" target="_blank" rel="noopener">banu.com/tinyproxy</a></li>
+<li>开发: Robert James Kaes和其他贡献者</li>
+<li>授权: GNU GPL v2</li>
+<li>版本号: 1.8.3</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BB%A3%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 代理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/" rel="prev" title="Mangle 分类标记介绍">
+      <i class="fa fa-chevron-left"></i> Mangle 分类标记介绍
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/" rel="next" title="MikroTik RouterOS v6 有哪些新的特性?">
+      MikroTik RouterOS v6 有哪些新的特性? <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Squid"><span class="nav-text">Squid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Privoxy"><span class="nav-text">Privoxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Varnish-Cache"><span class="nav-text">Varnish Cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Polipo"><span class="nav-text">Polipo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tinyproxy"><span class="nav-text">Tinyproxy</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '7b06ebc685828ad4a809e0bd4420fce3',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

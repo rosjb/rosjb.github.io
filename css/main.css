@@ -1217,7 +1217,7 @@ pre code {
 }
 .site-subtitle {
   color: #ddd;
-  font-size: 0.8125em;
+  font-size: 0.8em;
   margin: 10px 0;
 }
 .use-motion .brand {
@@ -1284,7 +1284,7 @@ pre code {
 .menu-item span.exturl {
   border-bottom: 0;
   display: block;
-  font-size: 0.8125em;
+  font-size: 0.8em;
   transition-property: border-color;
   transition-delay: 0s;
   transition-duration: 0.2s;
@@ -1368,7 +1368,7 @@ pre code {
 }
 .site-description {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 0.8em;
   margin-top: 0;
 }
 .links-of-author {
@@ -1378,14 +1378,14 @@ pre code {
 .links-of-author span.exturl {
   border-bottom-color: #555;
   display: inline-block;
-  font-size: 0.8125em;
+  font-size: 0.8em;
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #32d938;
+  background: #ff7539;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1422,7 +1422,7 @@ pre code {
   color: #fff;
 }
 .links-of-blogroll {
-  font-size: 0.8125em;
+  font-size: 0.8em;
   margin-top: 10px;
 }
 .links-of-blogroll-title {
@@ -1579,7 +1579,7 @@ pre code {
 }
 .site-state-item-name {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 0.8em;
 }
 .footer {
   color: #999;
@@ -1610,7 +1610,7 @@ pre code {
 }
 .languages {
   display: inline-block;
-  font-size: 1.125em;
+  font-size: 0.9em;
   position: relative;
 }
 .languages .lang-select-label span {
@@ -1731,7 +1731,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .post-body {
-    font-size: 1.125em;
+    font-size: 0.9em;
   }
 }
 .post-body .exturl .fa {
@@ -1780,7 +1780,7 @@ pre code {
   }
 }
 .posts-collapse .collection-title {
-  font-size: 1.125em;
+  font-size: 0.9em;
   position: relative;
 }
 .posts-collapse .collection-title::before {
@@ -1797,7 +1797,7 @@ pre code {
   width: 10px;
 }
 .posts-collapse .collection-year {
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bold;
   margin: 60px 0;
   position: relative;
@@ -1841,7 +1841,7 @@ pre code {
   left: 0;
   margin-left: -4px;
   position: absolute;
-  top: 0.75em;
+  top: 0.65em;
   transition-property: background;
   width: 6px;
   transition-delay: 0s;
@@ -1856,7 +1856,7 @@ pre code {
 }
 .posts-collapse .post-meta {
   display: inline;
-  font-size: 0.75em;
+  font-size: 0.65em;
   margin-right: 10px;
 }
 .posts-collapse .post-title {
@@ -1981,10 +1981,10 @@ pre code {
   margin: 0;
 }
 .posts-expand .post-header {
-  font-size: 1.125em;
+  font-size: 0.9em;
 }
 .posts-expand .post-title {
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: normal;
   margin: initial;
   text-align: center;
@@ -2023,7 +2023,7 @@ pre code {
 .posts-expand .post-meta {
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 0.75em;
+  font-size: 0.65em;
   margin: 3px 0 60px 0;
   text-align: center;
 }
@@ -2076,7 +2076,7 @@ pre code {
   top: 2px;
 }
 .post-nav-item .fa {
-  font-size: 0.75em;
+  font-size: 0.65em;
 }
 .post-nav-item:first-child {
   margin-right: 15px;
@@ -2114,7 +2114,7 @@ pre code {
 }
 .post-tags a {
   display: inline-block;
-  font-size: 0.8125em;
+  font-size: 0.8em;
 }
 .post-tags a:not(:last-child) {
   margin-right: 10px;
@@ -2331,7 +2331,7 @@ pre code {
   }
 }
 ul.breadcrumb {
-  font-size: 0.75em;
+  font-size: 0.65em;
   list-style: none;
   margin: 1em 0;
   padding: 0 2em;
