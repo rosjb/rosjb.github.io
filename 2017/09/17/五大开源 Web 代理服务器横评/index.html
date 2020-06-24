@@ -15,12 +15,13 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Web 代理软件转发 HTTP 请求时并不会改变数据流量。它们可以配置成透明代理，而无需客户端配置。它们还可以作为反向代理放在网站的前端；这样缓存服务器可以为一台或多台 web 服务器提供无限量的用户服务。 网站代理功能多样，有着宽泛的用途：从缓存页面、DNS 和其他查询，到加速 web 服务器响应、降低带宽消耗。代理软件广泛用于大型高访问量的网站，比如纽约时报、卫报， 以及社交媒体网站如 Twi">
@@ -418,12 +419,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/" rel="prev" title="Mangle 分类标记介绍">
-      <i class="fa fa-chevron-left"></i> Mangle 分类标记介绍
+    <a href="/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="PPTP、L2TP、IPSec、OpenVPN和SSTP的区别">
+      <i class="fa fa-chevron-left"></i> PPTP、L2TP、IPSec、OpenVPN和SSTP的区别
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/" rel="next" title="MikroTik RouterOS v6 有哪些新的特性?">
-      MikroTik RouterOS v6 有哪些新的特性? <i class="fa fa-chevron-right"></i>
+    <a href="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/" rel="next" title="近期RouterOS的几个漏洞说明(中招的人不少)">
+      近期RouterOS的几个漏洞说明(中招的人不少) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -499,7 +500,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,7 +511,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -588,6 +589,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -605,6 +608,15 @@
 
 
   
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
 
 
