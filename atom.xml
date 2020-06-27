@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://rosjb.github.io/"/>
-  <updated>2020-06-22T08:02:25.101Z</updated>
+  <updated>2020-06-27T14:11:51.807Z</updated>
   <id>http://rosjb.github.io/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Ver2.1 发布</title>
+    <title>Ver2.11 发布</title>
     <link href="http://rosjb.github.io/2020/06/20/Ver2-1/"/>
     <id>http://rosjb.github.io/2020/06/20/Ver2-1/</id>
     <published>2020-06-20T08:16:14.000Z</published>
-    <updated>2020-06-22T08:02:25.101Z</updated>
+    <updated>2020-06-27T14:11:51.807Z</updated>
     
-    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li><li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 指出)</li><li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li><li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li><li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a></li></ol><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.1: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a> <a href="https://pan.baidu.com/share/init?surl=D3zV9gJzX3jq9Gs0WHRJLA" target="_blank" rel="noopener">百度网盘</a> (4st7)<br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>]]></content>
+    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li><li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 指出)</li><li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li><li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li><li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a></li></ol><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a> <a href="https://pan.baidu.com/share/init?surl=D3zV9gJzX3jq9Gs0WHRJLA" target="_blank" rel="noopener">百度网盘</a> (4st7)<br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>]]></content>
     
     <summary type="html">
     
