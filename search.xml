@@ -251,7 +251,8 @@
 <hr>
 <p>其他:开发这个东西,我相信肯定会动了那些靠ROS吃饭的人的蛋糕,因为我本身就不是做宽带业务的人,所以各位没必要说什么东西,做这个软件的目的就是为了让大家更方便的写出自己需要的ROS脚本,而不需要每次都要记住那些脚本的语法和单词,就好比学英语一样,其实英语只要会说会理解,但不一定记住每个单词的拼写,就能和别人交流;ROS其实也一样,只要能看懂,但不一定要记住每个单词的意思即可. </p>
 <p>本来想用国外的云服务器或者VPS搭建这个网站的,想想国外的服务器经过GWF一过滤,浏览速度比较慢,所以还是决定用国内的云主机服务器,这样访问不会卡,体验也比较好了,每个月60元的服务器费用,对我屌丝来说也是一笔不小的开支!</p>
-<p><strong>由于租用国内服务器费用昂贵,2020-08-01已经将博客搬迁到github上了,以后大家就在此交流了!</strong></p>
+<hr>
+<p><strong>2020-08-01更新: 由于租用国内服务器费用昂贵,2020-08-01已经将博客搬迁到github上了,以后大家可以在此交流!</strong></p>
 ]]></content>
   </entry>
   <entry>
@@ -1561,9 +1562,9 @@
     <content><![CDATA[<p>RouterOS 支持 BCP(Bridge Control Protocol)，即在 PPP、 PPTP、 L2TP 和 PPPoE 接口上的桥接（ OVPN和 SSTP 不支持）。 BCP 协议通过 PPP 协议，将两个远端的以太网数据链路打通。 BCP 建立后独立于 PPP 隧道，将不会与任何 PPP 的 IP 地址接口有关系。 BCP 能用于替代 EoIP+VPN 隧道， EoIP 要求对等的网络连接，而BCP 为网络提供另一种方式的解决，特别是一端在 nat 网络内，经过测试能正常透过 nat 网络透传二层数据。<br>BCP (Bridge Control Protocol)需要在两边同时启用才能工作(PPP 服务器和 PPP 客户端)。 MikroTikRouterOS 也可应用于其他的 PPP 设备，要求这个设备支持标准的 BCP 协议。</p>
 <hr>
 <h3 id="配置事例"><a href="#配置事例" class="headerlink" title="配置事例"></a>配置事例</h3><a id="more"></a>
-<p>我们需要相互连接 2 个远程办公室，并让他们在同一个以太网内工作。我们要求使用加密（ encryption）保护 2个办公室的数据交换。 如下图，我有 2 个办公室，办公室 1 设置为 PPTP 服务器，办公室 2 设置为 PPTP 客户端。下面通过 winbox和 CLI 介绍配置： </p>
+<p>我们需要相互连接 2 个远程办公室，并让他们在同一个以太网内工作。我们要求使用加密（ encryption）保护 2个办公室的数据交换。 如下图，我有 2 个办公室，办公室 1 设置为 PPTP 服务器，办公室 2 设置为 PPTP 客户端。下面通过 winbox和 CLI 介绍配置：</p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2412.jpg" alt></p>
-<h4 id="Office1-配置"><a href="#Office1-配置" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>首先我们需要建立一个桥接口，并确保桥接将一直有 MAC 地址存在。原因很简单，当 BCP 被使用 PPP 桥接 port中，不会有任何 MAC 地址生成。 </p>
+<h4 id="Office1-配置"><a href="#Office1-配置" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>首先我们需要建立一个桥接口，并确保桥接将一直有 MAC 地址存在。原因很简单，当 BCP 被使用 PPP 桥接 port中，不会有任何 MAC 地址生成。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/interface bridge add name=bridge_local protocol-mode=rstp</span><br><span class="line">/interface bridge port add bridge=bridge_local interface=ether1_local</span><br><span class="line">/interface bridge <span class="built_in">set</span> bridge_local admin-mac=xx:xx:xx:xx:xx:xx</span><br></pre></td></tr></table></figure>
 
 <p>其中 xx:xx:xx:xx:xx:xx 是 ether1_local 的 MAC 地址 现在我们能分配本地和公网地址到相应的接口上： </p>
@@ -1583,12 +1584,12 @@
 <p>创建一个 pptp-client 接口，不要忘记配置 MRRU 选项，确保二层帧能通过 PPP 隧道。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/interface pptp-client add profile=ppp_bridging mrru=1600 connect-to=1.1.1.1 user=ppp1 password=ppp1 disabled=no</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="BCP-winbox-配置"><a href="#BCP-winbox-配置" class="headerlink" title="BCP winbox 配置"></a>BCP winbox 配置</h3><h4 id="Office1-配置-1"><a href="#Office1-配置-1" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>在 bridge 中添加一个桥，并设置 rstp： </p>
+<h3 id="BCP-winbox-配置"><a href="#BCP-winbox-配置" class="headerlink" title="BCP winbox 配置"></a>BCP winbox 配置</h3><h4 id="Office1-配置-1"><a href="#Office1-配置-1" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>在 bridge 中添加一个桥，并设置 rstp:</p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2415.jpg" alt><br>在 port 中， 添加桥接的接口，我们添加 ether1 到 port 用于连接内网： </p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2418.jpg" alt></p>
-<p>设置静态的 MAC-address： </p>
+<p>设置静态的 MAC-address:</p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2420.jpg" alt></p>
-<p>分配 IP addresses: </p>
+<p>分配 IP addresses:</p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2423.jpg" alt></p>
 <p>创建 PPP profile，并设置 bridge 参数 </p>
 <p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2425.jpg" alt></p>
