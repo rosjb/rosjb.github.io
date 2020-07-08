@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言:这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.   于是网络的整体网络资源如下:  联通专线 20M&#x2F;20M(下载&#x2F;上传)电信专线 20M&#x2F;20M(下载&#x2F;上传)联通ADSL 20M&#x2F;2M(下载&#x2F;上传)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例">
+<meta property="og:url" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="前言:这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.   于是网络的整体网络资源如下:  联通专线 20M&#x2F;20M(下载&#x2F;上传)电信专线 20M&#x2F;20M(下载&#x2F;上传)联通ADSL 20M&#x2F;2M(下载&#x2F;上传)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png">
+<meta property="article:published_time" content="2016-09-26T07:24:13.000Z">
+<meta property="article:modified_time" content="2020-07-08T04:31:49.148Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="adsl">
+<meta property="article:tag" content="光纤">
+<meta property="article:tag" content="小区">
+<meta property="article:tag" content="电信">
+<meta property="article:tag" content="网通">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
+
+<link rel="canonical" href="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例 | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-26 15:24:13" itemprop="dateCreated datePublished" datetime="2016-09-26T15:24:13+08:00">2016-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-08 12:31:49" itemprop="dateModified" datetime="2020-07-08T12:31:49+08:00">2020-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.  </p>
+<p>于是网络的整体网络资源如下: </p>
+<p><strong>联通专线 20M/20M(下载/上传)</strong><br><strong>电信专线 20M/20M(下载/上传)</strong><br><strong>联通ADSL 20M/2M(下载/上传)</strong></p>
+<a id="more"></a>
+<p>由于原来已经有大量用户,及已经在/ppp profile配置好的用户流量套餐及用户分配的IP段和网通的DNS信息,考虑到做最少的修改及开用户的方便 ,最终决定 如下的策略配置 </p>
+<p>对用户流量按源IP进行分流,分流策略如下 </p>
+<p>1/3 的用户走电信光纤线路,对这部分做地址列表进行策略配置,由于已经分配给了用户的DNS是网通的DNS,所以在NAT里将网通的DNS地址转       换成电信的DNS . </p>
+<p>2/3 用户走网通线路,这部分用户的80,443,8080的TCP流量走网通ADSL,其它部分流量直接走网通光纤. </p>
+<p>以上分配方案的优点是 </p>
+<ol>
+<li>不用更改原来的套餐情况,不用加多PPPOE服务器,开户时不用指定用户走的线路,原来的套餐可以继续使用 </li>
+<li>用分流而不用叠加,可以解决由于DNS解析引起一些网站打开速度慢或者打不开的情况 </li>
+<li>电信的DNS解析采用NAT转换可以给用户配置统一的DNS,方便管理 </li>
+</ol>
+<p>具体配置如下: </p>
+<h3 id="一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><a href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP" class="headerlink" title="一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)"></a>一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png" alt></p>
+<h3 id="二-路由标记如下"><a href="#二-路由标记如下" class="headerlink" title="二  路由标记如下"></a>二  路由标记如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png" alt></p>
+<p>在  顺序1-顺序2-顺序3  3条规则的顺序不能更改,下面对三条规则简单说明 顺序1 ,标记的走向电信的路由,   这里passthrough选的是no,结合上下文选 YES也不会有问题 顺序2,标记走向网通的路由流量,这里PASSTHROUTH需要选YES,以便第三条规则分离走走ADSL的流量,选 NO的话就不会有走ADSL的流量了. 顺序3,根据目标TCP端口从走网通的那部分流量中(routing-mark=r_Cns限定从走网通的流量中分流 )分流出走ADSL线路的流量,这里passthrough写的是NO,因为下面有其它的标记,防止标记被更改 </p>
+<h3 id="三-NAT转发如下"><a href="#三-NAT转发如下" class="headerlink" title="三  NAT转发如下"></a>三  NAT转发如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png" alt> </p>
+<p>这里主要需要了解的是把网通的DNS做DST-NAT到电信的DNS上,电信的PPPOE用户解析IP时,表面上是到网通的DNS解析,实际上还是在电信的DNS解析的IP </p>
+<p>命令添加如下 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add  chain=dstnat action=dst-nat to-addresses=2.2.2.2(电信DNS) protocol=udp src-address=1.1.1.1(网通DNS) dst-address-list=cncDNS</span><br></pre></td></tr></table></figure>
+<h3 id="四-在-ip-route里分配路由流量到三条线路"><a href="#四-在-ip-route里分配路由流量到三条线路" class="headerlink" title="四 在/ip route里分配路由流量到三条线路"></a>四 在/ip route里分配路由流量到三条线路</h3><p>其中网通的线路做了默认路由,所以之前的路由标记r_Cnc没有在这里体现出来</p>
+<p>电信的路由标记r_Tel走了电信的线路wan-Tel</p>
+<p>ADSL的路由标记r_Cnc_adsl从网通的ADSL线路走出</p>
+<p>默认流量走网通光纤</p>
+<p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png" alt> </p>
+<h3 id="五-接口流量效果"><a href="#五-接口流量效果" class="headerlink" title="五 接口流量效果"></a>五 接口流量效果</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png" alt></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/adsl/" rel="tag"><i class="fa fa-tag"></i> adsl</a>
+              <a href="/tags/%E5%85%89%E7%BA%A4/" rel="tag"><i class="fa fa-tag"></i> 光纤</a>
+              <a href="/tags/%E5%B0%8F%E5%8C%BA/" rel="tag"><i class="fa fa-tag"></i> 小区</a>
+              <a href="/tags/%E7%94%B5%E4%BF%A1/" rel="tag"><i class="fa fa-tag"></i> 电信</a>
+              <a href="/tags/%E7%BD%91%E9%80%9A/" rel="tag"><i class="fa fa-tag"></i> 网通</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/" rel="prev" title="网吧的PCQ与HTB">
+      <i class="fa fa-chevron-left"></i> 网吧的PCQ与HTB
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/09/26/mikrotik-ccr1072-performance-test/" rel="next" title="Mikrotik CCR1072-1G-8S+ 性能测试[视频]">
+      Mikrotik CCR1072-1G-8S+ 性能测试[视频] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><span class="nav-text">一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0&#x2F;24段的IP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-路由标记如下"><span class="nav-text">二  路由标记如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-NAT转发如下"><span class="nav-text">三  NAT转发如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-在-ip-route里分配路由流量到三条线路"><span class="nav-text">四 在&#x2F;ip route里分配路由流量到三条线路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-接口流量效果"><span class="nav-text">五 接口流量效果</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '69bbf2851827498006bfd4e68dbc7eff',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

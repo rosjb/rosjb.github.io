@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
@@ -16,12 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="近期很多论坛和群报出各种漏洞问题，RouterOS被攻击，密码被修改，被上传恶意文件等，下面根据官方的信息普及下关于RouterOS的几种漏洞  20多万台MikroTik路由器被黑，用户被迫扛起锄头挖矿研究人员发现20 多万台MikroTik路由器被黑客接管，让用户不知不觉中为他们挖矿。  近日，安全研究人员发现了一场针对MikroTik路由器的大规模恶意劫持活动，利用Mikrotik企业路由器">
@@ -31,22 +28,22 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="近期很多论坛和群报出各种漏洞问题，RouterOS被攻击，密码被修改，被上传恶意文件等，下面根据官方的信息普及下关于RouterOS的几种漏洞  20多万台MikroTik路由器被黑，用户被迫扛起锄头挖矿研究人员发现20 多万台MikroTik路由器被黑客接管，让用户不知不觉中为他们挖矿。  近日，安全研究人员发现了一场针对MikroTik路由器的大规模恶意劫持活动，利用Mikrotik企业路由器">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg">
+<meta property="og:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png">
 <meta property="article:published_time" content="2018-09-25T07:32:03.000Z">
 <meta property="article:modified_time" content="2020-06-22T12:27:24.601Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="漏洞">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg">
+<meta name="twitter:image" content="http://rosjb.github.io/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg">
 
 <link rel="canonical" href="http://rosjb.github.io/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/">
 
@@ -187,10 +184,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -248,14 +241,7 @@
                 </span>
             </span>
 
-          
-            <span id="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/" class="post-meta-item leancloud_visitors" data-flag-title="近期RouterOS的几个漏洞说明(中招的人不少)" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span><br>
+          <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -289,21 +275,21 @@
 <p>随后，这场恶意攻击迅速波及到全球20多万台MikroTik路由器，截至本文编译完成时，这一数字仍在增长。 </p>
 <h4 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4><p>本次攻击利用了MikroTik于今年4月23日修补的零日漏洞，虽然MikroTik修复该漏洞前后只用了一天，但还有成千上万的MikroTik路由器未能及时打上补丁，导致黑客乘虚而入。</p>
 <p>该漏洞使得黑客能够通过Winbox从设备读取文件，获得对MikroTik路由器的未经身份验证的远程管理员访问权限。初步调查显示，黑客并不是在路由器上运行恶意可执行文件，而是通过路由器功能推送包含Coinhive挖矿脚本的自定义错误页面。 </p>
-<h4 id="以下是Simon-Kenin的分析："><a href="#以下是Simon-Kenin的分析：" class="headerlink" title="以下是Simon Kenin的分析："></a>以下是Simon Kenin的分析：</h4><p>首先，在Shodan 搜索引擎上看到的所有页面实际上都是webproxy错误页面，可见黑客创建了一个包含Coinhive脚本的自定义错误页面：<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg" alt><br>黑客在文件系统中创建了一个自定义的错误页面_<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg" alt><br>该页面包含的内容_ 经过测试和Reddit用户的报告，会发生两种情况：</p>
+<h4 id="以下是Simon-Kenin的分析："><a href="#以下是Simon-Kenin的分析：" class="headerlink" title="以下是Simon Kenin的分析："></a>以下是Simon Kenin的分析：</h4><p>首先，在Shodan 搜索引擎上看到的所有页面实际上都是webproxy错误页面，可见黑客创建了一个包含Coinhive脚本的自定义错误页面：<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg" alt><br>黑客在文件系统中创建了一个自定义的错误页面_<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg" alt><br>该页面包含的内容_ 经过测试和Reddit用户的报告，会发生两种情况：</p>
 <blockquote>
 <p>接入到该路由器的用户，只要用户在浏览网页时跳转到任何类型的错误页面，都会打开这个包含Coinhive挖矿脚本的自定义错误页面。 如果后端本地服务器也连接到路由器，只要用户连接到了这个服务器，哪怕没有直接连接到受感染路由器，也会受到影响。</p>
 </blockquote>
 <p>而根据Reddit上一些用户的报告，他们在浏览网页时，每个网页都被注入了Coinhive挖矿代码。</p>
-<p>得知该信息后，Simon Kenin进一步调查发现了另外一个脚本：<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg" alt><br> “3_”脚本_ _<br> 用户一连上路由器，脚本就开动了<br> 从上图中可以看到，用户一连接到无线网络，脚本立即执行。 由于服务器上没有mikrotik.php文件，因此该文件内容未知。它可能是用于将Coinhive挖矿代码注入每个html页面的脚本，至于如何实现，在本调查中也未能揭示，只能说这些黑客对于MikroTik路由器配置有着极深的理解。<br> 为什么这么说？请看以下截图，揭示了该攻击的持续机制：<br> <img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg" alt><br> 黑客添加的后台任务<br> 一共有两个任务：</p>
+<p>得知该信息后，Simon Kenin进一步调查发现了另外一个脚本：<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg" alt><br> “3_”脚本_ _<br> 用户一连上路由器，脚本就开动了<br> 从上图中可以看到，用户一连接到无线网络，脚本立即执行。 由于服务器上没有mikrotik.php文件，因此该文件内容未知。它可能是用于将Coinhive挖矿代码注入每个html页面的脚本，至于如何实现，在本调查中也未能揭示，只能说这些黑客对于MikroTik路由器配置有着极深的理解。<br> 为什么这么说？请看以下截图，揭示了该攻击的持续机制：<br> <img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg" alt><br> 黑客添加的后台任务<br> 一共有两个任务：</p>
 <blockquote>
 <p>连接到另一台主机“min01.com”，并获取一个新的“error.html”文件。这是为了Coinhive平台屏蔽了黑客当前使用的站点密钥后，使用另一个站点密钥来替换它。 </p>
 </blockquote>
 <blockquote>
 <p>下载并执行为名为“u113.rsc”的脚本。目前可以看到该脚本仅用于占位，但这一看就知道是向所有被接管的设备发送附加命令的一种途径。</p>
 </blockquote>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg" alt><br>在编译本文时看到的脚本内容</p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg" alt><br>在编译本文时看到的脚本内容</p>
 <p>在调查过程中，Simon Kenin还确定了黑客在寻找新的包含该漏洞的路由器时使用的脚本:</p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg" alt></p>
 <p>路由器受到感染时执行的命令</p>
 <p>我们可以看到该脚本修改了一些系统设置、启用了代理、获取了自定义错误页面，并根据需要创建了更新的计划任务，最后还创建了名为“ftu”的后门帐户。</p>
 <p>这个脚本正不断添加更多清理命令，进一步降低占用空间并减少将Coinhive挖矿代码注入每个网页时产生的线索，最终降低被检测的风险。</p>
@@ -318,9 +304,9 @@
 <li>RouterOS的用户数据库存储的密码没有使用标准的加密方式加密，只是把密码原文和 md5(用户名 + “283i4jfkai3389”) 做了一次XOR运算，运算结果完全可逆，几乎可以认为是明文存储了密码，使用mikrotik-tools <a href="https://github.com/0ki/mikrotik-tools" target="_blank" rel="noopener">https://github.com/0ki/mikrotik-tools</a> 包含的解码文件可以直接还原出明文密码，导致路由器沦陷。</li>
 <li>影响范围 6.29 (release date: 2015/28/05) to 6.42 (release date 2018/04/20)</li>
 </ol>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg" alt><br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg" alt><br>相关的PoC已经以源代码形式放出 <a href="https://github.com/BasuCert/WinboxPoC" target="_blank" rel="noopener">https://github.com/BasuCert/WinboxPoC</a> ，我测试了几台身边朋友的ROS，基本上都中招，而且有些管理员为了方便，使用虚拟专用网或者 IPIP、GRE隧道等打通自己所管理ROS的内网，导致一些本来在内网的ROS路由器、AP、可以被一个一个的沦陷掉。</p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg" alt><br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg" alt><br>相关的PoC已经以源代码形式放出 <a href="https://github.com/BasuCert/WinboxPoC" target="_blank" rel="noopener">https://github.com/BasuCert/WinboxPoC</a> ，我测试了几台身边朋友的ROS，基本上都中招，而且有些管理员为了方便，使用虚拟专用网或者 IPIP、GRE隧道等打通自己所管理ROS的内网，导致一些本来在内网的ROS路由器、AP、可以被一个一个的沦陷掉。</p>
 <p>目前搜索国内相关报道，只有寥寥数片文章讲到了 <a href="https://www.toutiao.com/i6548225294128382468" target="_blank" rel="noopener">https://www.toutiao.com/i6548225294128382468</a> 文章时间也比较早，今天已经7月份了，身边主动升级ROS的用户凤毛麟角，<strong>当然和消息没有充分散播也有关系，特此发文，敦促所有ROS管理员尽快升级到6.42.1+ 或者最新版本。</strong></p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg" alt></p>
 <h3 id="关于WEB-服务的漏洞"><a href="#关于WEB-服务的漏洞" class="headerlink" title="关于WEB 服务的漏洞"></a>关于WEB 服务的漏洞</h3><p>WikiLeaks 开始使用一个新的代号 Vault 7 作为美国中情局（CIA）的敏感信息披露计划，这次被发布的第一份档案 Year Zero 大小高达 513MB，一共包含 8,761 份相关敏感文档。根据维基解密的阐述，这份包含了大量 0day，恶意软件，病毒，木马以及相关文档的高度机密资料，在美国政府黑客和承包商之间传播，其中有人向维基解密提交了这份绝密档案的部分内容。 </p>
 <p>关于www服务器的漏洞，是从2017年维基解密公布新的代号 Vault 7的文档，据维基解密的阐述，这份包含了大量 0day，恶意软件，病毒，木马以及相关文档的高度机密资料，在美国政府黑客和承包商之间传播，其中有人向维基解密提交了这份绝密档案的部分内容。 </p>
 <p>如果没有防火墙来保护www服务，该漏洞直接影响到RouterOS的webfig网页配置接口，MikroTik修改该漏洞从6.37.5 Bugfix 版本和6.38.5 发行版本，这两个版本都是在2017年3月9日发布 </p>
@@ -329,7 +315,7 @@
 <p>如果你运行的RouterOS版本是在2017年3月之前（6.37.5 bugifx版本和6.38.5发行版本），并且允许不信任网络访问设备的www服务（TCP 80端口） </p>
 <p>P.S: VPNfilter这个名字只是被发现的恶意软件的代号（更具体地说，是一个假的可执行名称），这个工具的执行方式与VPN隧道没有关联. 从基本的角度看，恶意软件可以嗅探某些类型的流量，并将其发送到某个地方，或者让路由器系统崩溃。 </p>
 <h4 id="2、流氓僵尸工具"><a href="#2、流氓僵尸工具" class="headerlink" title="2、流氓僵尸工具"></a>2、流氓僵尸工具</h4><p>近期MikroTik官方注意到，一款流氓僵尸网络正在扫描随机的公共IP地址，以找到那些打开Winbox（TCP 8291）和WWW（TCP 80）端口的RouterOS，并利用以上描述的几个漏洞进行恶意攻击。注意Winbox与该漏洞没有关系，只是利用winbox的端口来识别MikroTik的RouterOS设备，当识别到后，会继续尝试通过TCP 80端口攻击 如果在最近一年时间未升级过RouterOS，强烈的建议升级你的RouterOS设备，仅需要在winbox中打开/system packages 点击check for updates，选择Download&amp;install，即可升级（确保RouterOS能正常连接网络，并在ip-&gt;dns下配置好dns服务器）</p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png" alt></p>
 <p>对于80端口的RouterOS如何确定是否安全？</p>
 <p>– 如果你在最近一年内升级了RouterOS，是安全的<br>– 如果你在ip service关闭掉了www服务，是安全的<br>– 如果你有防火墙配置保护TCP 80端口，确保配置正确，是安全的<br>– 如果你的Hotspot只对局域网服务，但Webfig不能访问，是安全的 – 如果你的User Manager只对局域网服务，但Webfig不能访问，是安全的.<br>– 如果你修改了Winbox默认端口，你可以幸免不会被扫描到，但并不代表不会被感染 – 如果你关闭Winbox端口，你可以幸免不会被扫描到，但并不代表不会被感染<br>– 如果”ip service”的 “allowed-from” 参数设置了信任网络，在信任网络内没有被感染设备，是安全的<br>– 如果Webfig仅局域网可访问，需要小心被局域网感染设备所利用</p>
 <h5 id="如果保护？"><a href="#如果保护？" class="headerlink" title="如果保护？"></a>如果保护？</h5><ol>
@@ -360,8 +346,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/" rel="prev" title="[转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy">
-      <i class="fa fa-chevron-left"></i> [转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy
+    <a href="/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="PPTP、L2TP、IPSec、OpenVPN和SSTP的区别">
+      <i class="fa fa-chevron-left"></i> PPTP、L2TP、IPSec、OpenVPN和SSTP的区别
     </a></div>
       <div class="post-nav-item">
     <a href="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/" rel="next" title="MikroTik RouterOS v6 有哪些新的特性?">
@@ -441,7 +427,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -452,7 +438,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -488,6 +474,10 @@
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -513,106 +503,16 @@
   <span class="author" itemprop="copyrightHolder">rosjb</span>
 </div>
 
-
-
         
 
 
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
 
 
 
 
-<script>
-  (function() {
-    function leancloudSelector(url) {
-      url = encodeURI(url);
-      return document.getElementById(url).querySelector('.leancloud-visitors-count');
-    }
-
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = decodeURI(visitors.id);
-      var title = visitors.dataset.flagTitle;
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            leancloudSelector(url).innerText = counter.time + 1;
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .catch(error => {
-                console.error('Failed to save visitor count', error);
-              });
-          } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return decodeURI(element.id);
-      });
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          for (let url of entries) {
-            let target = results.find(item => item.url === url);
-            leancloudSelector(url).innerText = target ? target.time : 0;
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"h3h5HDzo5DzjF0BhF2sO2Jta-gzGzoHsz","app_key":"pRuT01m32cYeGOeCwEt4XCyY","security":false};
-    function fetchData(api_server) {
-      var Counter = (method, url, data) => {
-        return fetch(`${api_server}/1.1${url}`, {
-          method,
-          headers: {
-            'X-LC-Id'     : app_id,
-            'X-LC-Key'    : app_key,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    }
-
-    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
-
-    if (api_server) {
-      fetchData(api_server);
-    } else {
-      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
-        .then(response => response.json())
-        .then(({ api_server }) => {
-          fetchData('https://' + api_server);
-        });
-    }
-  })();
-</script>
 
 
       </div>
@@ -623,6 +523,7 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Ver2.11 发布</title>
-    <url>/2020/06/20/Ver2.11/</url>
+    <url>/2020/06/20/Ver2-11/</url>
     <content><![CDATA[<!-- ## 💥新增 -->
 <h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol>
 <li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li>
@@ -70,12 +70,12 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/system resource rps</span><br></pre></td></tr></table></figure>
 
 <p>此菜单允许启用接收包控制(RPS)，以减少单核心的使用。 由于每个设备队列的序列化，<a href="https://wiki.linuxfoundation.org/networking/napi" target="_blank" rel="noopener">NAPI</a>在高包负载下可能成为瓶颈。RPS将接收到的数据包处理的负载分布在多个核上。</p>
-<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/1.png" alt></p>
+<p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/1.png" alt></p>
 <hr>
 <h4 id="新内核的特性"><a href="#新内核的特性" class="headerlink" title="新内核的特性"></a>新内核的特性</h4><ul>
 <li>最新接口驱动程序支持x86系统</li>
 <li>改进的界面管理—可缩放到最多几千个接口等等</li>
-<li>占用更少的空间储存-运作良好的32 mib flash<br><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/2.png" alt></li>
+<li>占用更少的空间储存-运作良好的32 mib flash<br><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/2.png" alt></li>
 </ul>
 <hr>
 <h4 id="还有什么其他新的东西吗"><a href="#还有什么其他新的东西吗" class="headerlink" title="还有什么其他新的东西吗?"></a>还有什么其他新的东西吗?</h4><ul>
@@ -97,9 +97,9 @@
 <li>未来将添加更多处理程序。</li>
 </ul>
 <hr>
-<h4 id="新的吞吐量测试结果"><a href="#新的吞吐量测试结果" class="headerlink" title="新的吞吐量测试结果"></a>新的吞吐量测试结果</h4><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/3.png" alt></p>
+<h4 id="新的吞吐量测试结果"><a href="#新的吞吐量测试结果" class="headerlink" title="新的吞吐量测试结果"></a>新的吞吐量测试结果</h4><p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/3.png" alt></p>
 <hr>
-<h4 id="吞吐量-百万pps"><a href="#吞吐量-百万pps" class="headerlink" title="吞吐量(百万pps)"></a>吞吐量(百万pps)</h4><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/4.png" alt></p>
+<h4 id="吞吐量-百万pps"><a href="#吞吐量-百万pps" class="headerlink" title="吞吐量(百万pps)"></a>吞吐量(百万pps)</h4><p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/4.png" alt></p>
 <hr>
 <h4 id="QoS系统修改了"><a href="#QoS系统修改了" class="headerlink" title="QoS系统修改了"></a>QoS系统修改了</h4><ul>
 <li>某些特定配置中的简单队列和树队列可能在从RouterOS v3.x, v4.x, v5.x升级到RouterOS v6.x后失效</li>
@@ -111,7 +111,7 @@
 <li>在RouterOS v6.x中对QoS系统进行了重新设计，使路由器中的其他进程在同一位置排队</li>
 <li>删除HTB“global-in”、“global-out”和“global-total”，为之代替的是HTB“global”，放置在路由器数据包“生命周期”的末尾。</li>
 </ul>
-<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/5.png" alt><br><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/6.png" alt></p>
+<p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/5.png" alt><br><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/6.png" alt></p>
 <hr>
 <h4 id="额外的变化"><a href="#额外的变化" class="headerlink" title="额外的变化"></a>额外的变化</h4><ul>
 <li>简单队列现在与队列树完全分离—相同的包可以在HTB“全局”和简单队列中捕获(在v5简单队列共享全局- HTBs中)</li>
@@ -124,7 +124,7 @@
 <li>对于丢失现有简单队列的包，开销非常小</li>
 <li>顶级简单队列现在在CPU内核之间进行平衡(32个队列比CCR1036上的1个队列快9倍)</li>
 </ul>
-<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/7.png" alt></p>
+<p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/7.png" alt></p>
 <hr>
 <h4 id="简单的简单队列"><a href="#简单的简单队列" class="headerlink" title="简单的简单队列"></a>简单的简单队列</h4><ul>
 <li>“target-address”和”interface”参数合并为一个“target”参数</li>
@@ -133,8 +133,8 @@
 <li>现在必须在创建简单队列时指定“target”</li>
 <li>分离的“优先级”参数用于下载、上传和总计</li>
 </ul>
-<h3 id="Simple-Queue-Interface-v5-x"><a href="#Simple-Queue-Interface-v5-x" class="headerlink" title="Simple Queue Interface v5.x"></a>Simple Queue Interface v5.x</h3><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/8.png" alt></p>
-<h3 id="Simple-Queue-Interface-v6-x"><a href="#Simple-Queue-Interface-v6-x" class="headerlink" title="Simple Queue Interface v6.x"></a>Simple Queue Interface v6.x</h3><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/9.png" alt></p>
+<h3 id="Simple-Queue-Interface-v5-x"><a href="#Simple-Queue-Interface-v5-x" class="headerlink" title="Simple Queue Interface v5.x"></a>Simple Queue Interface v5.x</h3><p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/8.png" alt></p>
+<h3 id="Simple-Queue-Interface-v6-x"><a href="#Simple-Queue-Interface-v6-x" class="headerlink" title="Simple Queue Interface v6.x"></a>Simple Queue Interface v6.x</h3><p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/9.png" alt></p>
 <hr>
 <h4 id="防火墙的更改"><a href="#防火墙的更改" class="headerlink" title="防火墙的更改"></a>防火墙的更改</h4><ul>
 <li>防火墙现在有“all-ether”、“all-wireless”、“allvlan”、“all-ppp”作为接口匹配的可能性</li>
@@ -221,7 +221,7 @@
 <li>最大数据速率- mcs - 15,405mbps</li>
 <li>无线协议- 802.11n</li>
 </ul>
-<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/10.png" alt></p>
+<p><img data-src="/MikroTik-RouterOS-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/10.png" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -279,32 +279,6 @@
       </tags>
   </entry>
   <entry>
-    <title>[转]工业路由器与交换机的区别</title>
-    <url>/2020/01/07/%5B%E8%BD%AC%5D%E5%B7%A5%E4%B8%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h3 id="工业路由器是什么"><a href="#工业路由器是什么" class="headerlink" title="工业路由器是什么"></a>工业路由器是什么</h3><p>工业路由器是一种分析在一个网络内或另一个网络中传输的数据包内容的设备。工业路由器确定源和目的地是否在同一网络上，它是在两个或多个分组交换计算机网络之间传递信息的物理或虚拟设备。检查工业路由器给定的数据包目标Internet协议地址(IP地址)，计算出到达目的地的最佳方式，然后进行相应的转发。</p>
-<h3 id="交换机是什么"><a href="#交换机是什么" class="headerlink" title="交换机是什么"></a>交换机是什么</h3><a id="more"></a>
-<p><a href="https://baike.baidu.com/item/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8E%9F%E7%90%86/2117272" target="_blank" rel="noopener">百度百科</a>的概念是：交换机是一种用于电(光)信号转发的网络设备。它可以为接入交换机的任意两个网络节点提供独享的电信号通路。最常见的交换机是以太网交换机。交换机工作于OSI参考模型的第二层，即数据链路层。交换机拥有一条高带宽的背部总线和内部交换矩阵，在同一时刻可进行多个端口对之间的数据传输。</p>
-<h3 id="工业路由器与交换机的区别"><a href="#工业路由器与交换机的区别" class="headerlink" title="工业路由器与交换机的区别"></a>工业路由器与交换机的区别</h3><h4 id="一、外观不同"><a href="#一、外观不同" class="headerlink" title="一、外观不同"></a>一、外观不同</h4><p>两者主要不同在端口处，通常工业路由器带有WAN/LAN网口有限，而交换机主要是拓展网络，接入更多的联网终端设备，因此LAN口较多，有8口、16口不等。甚至市场上也有24口或48口的交换机。 另外，由于工业路由器是通过蜂窝网络联网，并且折射出wifi信号。需要扩展覆盖信号的范围，工业路由器的天线有5dbi全频棒状天线、WIFI采用3dbi高增益天线，也可以选择全频棒状天线进行信号外接，信号也更稳定。而以太网交换机是通过有线联网，并不需要搭配天线使用。<br><strong>工业路由器接口细节图</strong></p>
-<p> <img src="/2020/01/07/[%E8%BD%AC]%E5%B7%A5%E4%B8%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB/08182433_30557.jpg" alt> </p>
-<p><strong>工业交换机接口细节图</strong></p>
-<p><img src="/2020/01/07/[%E8%BD%AC]%E5%B7%A5%E4%B8%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB/08182450_71036.jpg" alt></p>
-<h4 id="二、功能作用不同-应用场景也不同"><a href="#二、功能作用不同-应用场景也不同" class="headerlink" title="二、功能作用不同(应用场景也不同)"></a>二、功能作用不同(应用场景也不同)</h4><p>工业路由器：用来做间接网络，可连接不同的网络 以太网交换机：扩大局域网接入点，让更多的终端实现联网 上述提到，工业路由器是通过蜂窝网络进行联网，并且可通过wifi无线网络接入终端设备。因此工业路由器常见于在户外停车场、智能水利、工业油田和井下监测、污染源现场监控、安防无线视频监控等项目。 而工业交换机是通过有线网络联网，常见的是以太网交换机。因此该设备通常在室内方便布线的项目中应用。例如无人值守机房、楼宇配电箱等应用场景。</p>
-<h4 id="三、网络处理不同"><a href="#三、网络处理不同" class="headerlink" title="三、网络处理不同"></a>三、网络处理不同</h4><p><strong>1、分配数据不同</strong> </p>
-<p>工业路由器：可为局域网自动分配IP和虚拟账号 以太网交换机：只是用来分配网络数据的。 </p>
-<p><strong>2、处理协议不同</strong> </p>
-<p>工业路由器：网络层支持“TCP/IP”协议，处理IP地址寻址 以太网交换机：只是用来分配网络数据的。 </p>
-<p><strong>3、支持协议不同</strong> </p>
-<p>工业路由器：网络层支持“TCP/IP”协议，处理IP地址寻址 以太网交换机：在中继层根据“MAC”地址寻址。 </p>
-<p><strong>4、IP是否统一</strong> </p>
-<p>工业路由器：网络层支持“TCP/IP”协议，处理IP地址寻址 以太网交换机：在中继层根据“MAC”地址寻址。 </p>
-<p><strong>5、防火墙功能</strong> </p>
-<p>防火墙是内外网之间一道相对隔绝的保护平账，用来保护用户资料与信息安全的技术。 工业路由器：支持防火墙，保障数据安全通行。 以太网交换机：不支持防火墙功能。</p>
-]]></content>
-      <categories>
-        <category>技术讨论</category>
-      </categories>
-  </entry>
-  <entry>
     <title>近期RouterOS的几个漏洞说明(中招的人不少)</title>
     <url>/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/</url>
     <content><![CDATA[<p>近期很多论坛和群报出各种漏洞问题，RouterOS被攻击，密码被修改，被上传恶意文件等，下面根据官方的信息普及下关于RouterOS的几种漏洞</p>
@@ -316,21 +290,21 @@
 <p>随后，这场恶意攻击迅速波及到全球20多万台MikroTik路由器，截至本文编译完成时，这一数字仍在增长。 </p>
 <h4 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4><p>本次攻击利用了MikroTik于今年4月23日修补的零日漏洞，虽然MikroTik修复该漏洞前后只用了一天，但还有成千上万的MikroTik路由器未能及时打上补丁，导致黑客乘虚而入。</p>
 <p>该漏洞使得黑客能够通过Winbox从设备读取文件，获得对MikroTik路由器的未经身份验证的远程管理员访问权限。初步调查显示，黑客并不是在路由器上运行恶意可执行文件，而是通过路由器功能推送包含Coinhive挖矿脚本的自定义错误页面。 </p>
-<h4 id="以下是Simon-Kenin的分析："><a href="#以下是Simon-Kenin的分析：" class="headerlink" title="以下是Simon Kenin的分析："></a>以下是Simon Kenin的分析：</h4><p>首先，在Shodan 搜索引擎上看到的所有页面实际上都是webproxy错误页面，可见黑客创建了一个包含Coinhive脚本的自定义错误页面：<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg" alt><br>黑客在文件系统中创建了一个自定义的错误页面_<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg" alt><br>该页面包含的内容_ 经过测试和Reddit用户的报告，会发生两种情况：</p>
+<h4 id="以下是Simon-Kenin的分析："><a href="#以下是Simon-Kenin的分析：" class="headerlink" title="以下是Simon Kenin的分析："></a>以下是Simon Kenin的分析：</h4><p>首先，在Shodan 搜索引擎上看到的所有页面实际上都是webproxy错误页面，可见黑客创建了一个包含Coinhive脚本的自定义错误页面：<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/817993dca0d1468ca95bb84c8a9f2184.jpeg" alt><br>黑客在文件系统中创建了一个自定义的错误页面_<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/6c14c5d37cff42f0bff99cec1f069934.jpeg" alt><br>该页面包含的内容_ 经过测试和Reddit用户的报告，会发生两种情况：</p>
 <blockquote>
 <p>接入到该路由器的用户，只要用户在浏览网页时跳转到任何类型的错误页面，都会打开这个包含Coinhive挖矿脚本的自定义错误页面。 如果后端本地服务器也连接到路由器，只要用户连接到了这个服务器，哪怕没有直接连接到受感染路由器，也会受到影响。</p>
 </blockquote>
 <p>而根据Reddit上一些用户的报告，他们在浏览网页时，每个网页都被注入了Coinhive挖矿代码。</p>
-<p>得知该信息后，Simon Kenin进一步调查发现了另外一个脚本：<br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg" alt><br> “3_”脚本_ _<br> 用户一连上路由器，脚本就开动了<br> 从上图中可以看到，用户一连接到无线网络，脚本立即执行。 由于服务器上没有mikrotik.php文件，因此该文件内容未知。它可能是用于将Coinhive挖矿代码注入每个html页面的脚本，至于如何实现，在本调查中也未能揭示，只能说这些黑客对于MikroTik路由器配置有着极深的理解。<br> 为什么这么说？请看以下截图，揭示了该攻击的持续机制：<br> <img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg" alt><br> 黑客添加的后台任务<br> 一共有两个任务：</p>
+<p>得知该信息后，Simon Kenin进一步调查发现了另外一个脚本：<br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/bf2865e9bf2e4800b79f0c2e87c34139.jpeg" alt><br> “3_”脚本_ _<br> 用户一连上路由器，脚本就开动了<br> 从上图中可以看到，用户一连接到无线网络，脚本立即执行。 由于服务器上没有mikrotik.php文件，因此该文件内容未知。它可能是用于将Coinhive挖矿代码注入每个html页面的脚本，至于如何实现，在本调查中也未能揭示，只能说这些黑客对于MikroTik路由器配置有着极深的理解。<br> 为什么这么说？请看以下截图，揭示了该攻击的持续机制：<br> <img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/dc2ec8d68f824e4d8a438779abc9c29f.jpeg" alt><br> 黑客添加的后台任务<br> 一共有两个任务：</p>
 <blockquote>
 <p>连接到另一台主机“min01.com”，并获取一个新的“error.html”文件。这是为了Coinhive平台屏蔽了黑客当前使用的站点密钥后，使用另一个站点密钥来替换它。 </p>
 </blockquote>
 <blockquote>
 <p>下载并执行为名为“u113.rsc”的脚本。目前可以看到该脚本仅用于占位，但这一看就知道是向所有被接管的设备发送附加命令的一种途径。</p>
 </blockquote>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg" alt><br>在编译本文时看到的脚本内容</p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/aa0e7fd4c2b542eca672c380ab28464e.jpeg" alt><br>在编译本文时看到的脚本内容</p>
 <p>在调查过程中，Simon Kenin还确定了黑客在寻找新的包含该漏洞的路由器时使用的脚本:</p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/af4e07a995b84ace9486ffab5cf714b1.jpeg" alt></p>
 <p>路由器受到感染时执行的命令</p>
 <p>我们可以看到该脚本修改了一些系统设置、启用了代理、获取了自定义错误页面，并根据需要创建了更新的计划任务，最后还创建了名为“ftu”的后门帐户。</p>
 <p>这个脚本正不断添加更多清理命令，进一步降低占用空间并减少将Coinhive挖矿代码注入每个网页时产生的线索，最终降低被检测的风险。</p>
@@ -345,9 +319,9 @@
 <li>RouterOS的用户数据库存储的密码没有使用标准的加密方式加密，只是把密码原文和 md5(用户名 + “283i4jfkai3389”) 做了一次XOR运算，运算结果完全可逆，几乎可以认为是明文存储了密码，使用mikrotik-tools <a href="https://github.com/0ki/mikrotik-tools" target="_blank" rel="noopener">https://github.com/0ki/mikrotik-tools</a> 包含的解码文件可以直接还原出明文密码，导致路由器沦陷。</li>
 <li>影响范围 6.29 (release date: 2015/28/05) to 6.42 (release date 2018/04/20)</li>
 </ol>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg" alt><br><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg" alt><br>相关的PoC已经以源代码形式放出 <a href="https://github.com/BasuCert/WinboxPoC" target="_blank" rel="noopener">https://github.com/BasuCert/WinboxPoC</a> ，我测试了几台身边朋友的ROS，基本上都中招，而且有些管理员为了方便，使用虚拟专用网或者 IPIP、GRE隧道等打通自己所管理ROS的内网，导致一些本来在内网的ROS路由器、AP、可以被一个一个的沦陷掉。</p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7nmf1j20tg0id102.jpg" alt><br><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7i5ruj20l704xq3g.jpg" alt><br>相关的PoC已经以源代码形式放出 <a href="https://github.com/BasuCert/WinboxPoC" target="_blank" rel="noopener">https://github.com/BasuCert/WinboxPoC</a> ，我测试了几台身边朋友的ROS，基本上都中招，而且有些管理员为了方便，使用虚拟专用网或者 IPIP、GRE隧道等打通自己所管理ROS的内网，导致一些本来在内网的ROS路由器、AP、可以被一个一个的沦陷掉。</p>
 <p>目前搜索国内相关报道，只有寥寥数片文章讲到了 <a href="https://www.toutiao.com/i6548225294128382468" target="_blank" rel="noopener">https://www.toutiao.com/i6548225294128382468</a> 文章时间也比较早，今天已经7月份了，身边主动升级ROS的用户凤毛麟角，<strong>当然和消息没有充分散播也有关系，特此发文，敦促所有ROS管理员尽快升级到6.42.1+ 或者最新版本。</strong></p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/66e70428gy1fswvr7ixd3j20tf0if75s.jpg" alt></p>
 <h3 id="关于WEB-服务的漏洞"><a href="#关于WEB-服务的漏洞" class="headerlink" title="关于WEB 服务的漏洞"></a>关于WEB 服务的漏洞</h3><p>WikiLeaks 开始使用一个新的代号 Vault 7 作为美国中情局（CIA）的敏感信息披露计划，这次被发布的第一份档案 Year Zero 大小高达 513MB，一共包含 8,761 份相关敏感文档。根据维基解密的阐述，这份包含了大量 0day，恶意软件，病毒，木马以及相关文档的高度机密资料，在美国政府黑客和承包商之间传播，其中有人向维基解密提交了这份绝密档案的部分内容。 </p>
 <p>关于www服务器的漏洞，是从2017年维基解密公布新的代号 Vault 7的文档，据维基解密的阐述，这份包含了大量 0day，恶意软件，病毒，木马以及相关文档的高度机密资料，在美国政府黑客和承包商之间传播，其中有人向维基解密提交了这份绝密档案的部分内容。 </p>
 <p>如果没有防火墙来保护www服务，该漏洞直接影响到RouterOS的webfig网页配置接口，MikroTik修改该漏洞从6.37.5 Bugfix 版本和6.38.5 发行版本，这两个版本都是在2017年3月9日发布 </p>
@@ -356,7 +330,7 @@
 <p>如果你运行的RouterOS版本是在2017年3月之前（6.37.5 bugifx版本和6.38.5发行版本），并且允许不信任网络访问设备的www服务（TCP 80端口） </p>
 <p>P.S: VPNfilter这个名字只是被发现的恶意软件的代号（更具体地说，是一个假的可执行名称），这个工具的执行方式与VPN隧道没有关联. 从基本的角度看，恶意软件可以嗅探某些类型的流量，并将其发送到某个地方，或者让路由器系统崩溃。 </p>
 <h4 id="2、流氓僵尸工具"><a href="#2、流氓僵尸工具" class="headerlink" title="2、流氓僵尸工具"></a>2、流氓僵尸工具</h4><p>近期MikroTik官方注意到，一款流氓僵尸网络正在扫描随机的公共IP地址，以找到那些打开Winbox（TCP 8291）和WWW（TCP 80）端口的RouterOS，并利用以上描述的几个漏洞进行恶意攻击。注意Winbox与该漏洞没有关系，只是利用winbox的端口来识别MikroTik的RouterOS设备，当识别到后，会继续尝试通过TCP 80端口攻击 如果在最近一年时间未升级过RouterOS，强烈的建议升级你的RouterOS设备，仅需要在winbox中打开/system packages 点击check for updates，选择Download&amp;install，即可升级（确保RouterOS能正常连接网络，并在ip-&gt;dns下配置好dns服务器）</p>
-<p><img src="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png" alt></p>
+<p><img data-src="/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/rosupgrad.png" alt></p>
 <p>对于80端口的RouterOS如何确定是否安全？</p>
 <p>– 如果你在最近一年内升级了RouterOS，是安全的<br>– 如果你在ip service关闭掉了www服务，是安全的<br>– 如果你有防火墙配置保护TCP 80端口，确保配置正确，是安全的<br>– 如果你的Hotspot只对局域网服务，但Webfig不能访问，是安全的 – 如果你的User Manager只对局域网服务，但Webfig不能访问，是安全的.<br>– 如果你修改了Winbox默认端口，你可以幸免不会被扫描到，但并不代表不会被感染 – 如果你关闭Winbox端口，你可以幸免不会被扫描到，但并不代表不会被感染<br>– 如果”ip service”的 “allowed-from” 参数设置了信任网络，在信任网络内没有被感染设备，是安全的<br>– 如果Webfig仅局域网可访问，需要小心被局域网感染设备所利用</p>
 <h5 id="如果保护？"><a href="#如果保护？" class="headerlink" title="如果保护？"></a>如果保护？</h5><ol>
@@ -378,175 +352,15 @@
       </tags>
   </entry>
   <entry>
-    <title>[转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy</title>
-    <url>/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/</url>
-    <content><![CDATA[<p>Web 代理软件转发 HTTP 请求时并不会改变数据流量。它们可以配置成透明代理，而无需客户端配置。它们还可以作为反向代理放在网站的前端；这样缓存服务器可以为一台或多台 web 服务器提供无限量的用户服务。 网站代理功能多样，有着宽泛的用途：从缓存页面、DNS 和其他查询，到加速 web 服务器响应、降低带宽消耗。代理软件广泛用于大型高访问量的网站，比如纽约时报、卫报， 以及社交媒体网站如 Twitter、Facebook 和 Wikipedia。 页面缓存已经成为优化单位时间内所能吞吐的数据量的至关重要的机制。好的 Web 缓存还能降低延迟，尽可能快地响应页面，让终端用户不至于因等待内容的时间过久而失去耐心。它们还能将频繁访问的内容缓存起来以节省带宽。如果你需要降低服务器负载并改善网站内容响应速度，那缓存软件能带来的好处就绝对值得探索一番。 <img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/224844ogau2uah0n7uuvzz.jpg" alt> 为深入探查 Linux 下可用的相关软件的质量，我列出了下边5个优秀的开源 web 代理工具。它们中有些功能完备强大，也有几个只需很低的资源就能运行。</p>
-<a id="more"></a>
-
-<h3 id="Squid"><a href="#Squid" class="headerlink" title="Squid"></a>Squid</h3><p>Squid 是一个高性能、开源的代理缓存服务器和 Web 缓存进程，支持 FTP、Internet Gopher、HTTPS 和 SSL 等多种协议。它通过一个非阻塞的、I/O 事件驱动的单一进程处理所有的 IPV4 或 IPV6 协议请求。 Squid 由一个主服务程序 squid，和 DNS 查询程序 dnsserver，另外还有一些可选的请求重写、执行认证程序组件，及一些管理和客户端工具构成。 Squid 提供了丰富的访问控制、认证和日志环境， 用于开发 web 代理和内容服务网站应用。 其特性包括：</p>
-<ul>
-<li>Web 代理：<ul>
-<li>通过缓存来降低访问时间和带宽使用</li>
-<li>将元数据和访问特别频繁的对象缓存到内存中</li>
-<li>缓存 DNS 查询</li>
-<li>支持非阻塞的 DNS 查询</li>
-<li>实现了失败请求的未果缓存</li>
-</ul>
-</li>
-<li>Squid 缓存可架设为层次结构，或网状结构以节省额外的带宽</li>
-<li>通过广泛的访问控制来执行网站访问策略</li>
-<li>隐匿请求，如禁用或修改客户端 HTTP 请求头特定属性</li>
-<li>反向代理</li>
-<li>媒体范围media-range限制</li>
-<li>支持 SSL</li>
-<li>支持 IPv6</li>
-<li>错误页面的本地化 - Squid 可以根据访问者的语言选项对每个请求展示本地化的错误页面</li>
-<li>连接固定Connection Pinning（用于 NTLM Auth Passthrough） - 一种允许 Web 服务器通过 Web 代理使用Microsoft NTLM 安全认证替代 HTTP 标准认证的方案</li>
-<li>支持服务质量QoS, Quality of Service流<ul>
-<li>选择一个 TOS/Diffserv 值来标记本地命中</li>
-<li>选择一个 TOS/Diffserv 值来标记对端命中</li>
-<li>选择性地仅标记同级或上级请求</li>
-<li>允许任意发往客户端的 HTTP 响应保持由远程服务器处响应的 TOS 值</li>
-<li>对收到的远程服务器的 TOS 值，在复制之前对指定位进行掩码操作，再发送到客户端</li>
-</ul>
-</li>
-<li>SSL Bump (用于 HTTPS 过滤和适配) - Squid-in-the-middle，在 CONNECT 方式的 SSL 隧道中，用配置化的客户端和服务器端证书，对流量进行解密和加密</li>
-<li>支持适配模块</li>
-<li>ICAP 旁路和重试增强 - 通过完全的旁路和动态链式路由扩展 ICAP，来处理多多个适应性服务。</li>
-<li>支持 ICY 流式协议 - 俗称 SHOUTcast 多媒体流</li>
-<li>动态 SSL 证书生成</li>
-<li>支持 ICAP 协议 (Internet Content Adaptation Protocol)</li>
-<li>完整的请求日志记录</li>
-<li>匿名连接</li>
-</ul>
-<p><img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/222514zocvp3vb3zivvyrl.png" alt></p>
-<ul>
-<li>网站: <a href="http://www.squid-cache.org/" target="_blank" rel="noopener">www.squid-cache.org</a></li>
-<li>开发: 美国国家应用网络研究实验室(NLANR)和网络志愿者</li>
-<li>授权: GNU GPL v2</li>
-<li>版本号: 4.0.1</li>
-</ul>
-<h3 id="Privoxy"><a href="#Privoxy" class="headerlink" title="Privoxy"></a>Privoxy</h3><p>Privoxy (Privacy Enhancing Proxy) 是一个非缓存类 Web 代理软件，它自带的高级过滤功能可以用来增强隐私保护、修改页面内容和 HTTP 头部信息、访问控制，以及去除广告和其它招人反感的互联网垃圾。Privoxy 的配置非常灵活，能充分定制已满足各种各样的需求和偏好。它支持单机和多用户网络两种模式。 Privoxy 使用 action 规则来处理浏览器和远程站点间的数据流。 其特性包括：</p>
-<ul>
-<li>高度配置化——可以完全定制你的配置</li>
-<li>广告拦截</li>
-<li>Cookie 管理</li>
-<li>支持“Connection: keep-alive”。可以无视客户端配置而保持外发的持久连接</li>
-<li>支持 IPv6</li>
-<li>标签化Tagging，允许按照客户端和服务器的请求头进行处理</li>
-<li>作为拦截intercepting代理器运行</li>
-<li>巧妙的动作action和过滤机制用来处理服务器和客户端的 HTTP 头部</li>
-<li>可以与其他代理软件链式使用</li>
-<li>整合了基于浏览器的配置和控制工具，能在线跟踪规则和过滤效果，可远程开关</li>
-<li>页面过滤（文本替换、根据尺寸大小删除广告栏, 隐藏的“web-bugs”元素和 HTML 容错等）</li>
-<li>模块化的配置使得标准配置和用户配置可以存放于不同文件中，这样安装更新就不会覆盖用户的个性化设置</li>
-<li>配置文件支持 Perl 兼容的正则表达式，以及更为精妙和灵活的配置语法</li>
-<li>GIF 去动画</li>
-<li>旁路处理大量点击跟踪click-tracking脚本（避免脚本重定向）</li>
-<li>大多数代理生成的页面（例如 “访问受限” 页面）可由用户自定义HTML模板</li>
-<li>自动监测配置文件的修改并重新读取</li>
-<li>大多数功能可以基于每个站点或每个 URL 位置来进行控制</li>
-</ul>
-<ul>
-<li>网站: <a href="http://www.privoxy.org/" target="_blank" rel="noopener">www.privoxy.org</a></li>
-<li>开发: Fabian Keil（开发领导者）, David Schmidt, 和众多其他贡献者</li>
-<li>授权: GNU GPL v2</li>
-<li>版本号: 3.4.2</li>
-</ul>
-<h3 id="Varnish-Cache"><a href="#Varnish-Cache" class="headerlink" title="Varnish Cache"></a>Varnish Cache</h3><p>Varnish Cache 是一个为性能和灵活性而生的 web 加速器。它新颖的架构设计能带来显著的性能提升。根据你的架构，通常情况下它能加速响应速度300-1000倍。Varnish 将页面存储到内存，这样 web 服务器就无需重复地创建相同的页面，只需要在页面发生变化后重新生成。页面内容直接从内存中访问，当然比其他方式更快。 此外 Varnish 能大大提升响应 web 页面的速度，用在任何应用服务器上都能使网站访问速度大幅度地提升。 按经验，Varnish Cache 比较经济的配置是1-16GB内存+ SSD 固态硬盘。 其特性包括：</p>
-<ul>
-<li>新颖的设计</li>
-<li>VCL - 非常灵活的配置语言。VCL 配置会转换成 C，然后编译、加载、运行，灵活且高效</li>
-<li>能使用 round-robin 轮询和随机分发两种方式来负载均衡，两种方式下后端服务器都可以设置权重</li>
-<li>基于 DNS、随机、散列和客户端 IP 的分发器Director</li>
-<li>多台后端主机间的负载均衡</li>
-<li>支持 Edge Side Includes，包括拼装压缩后的 ESI 片段</li>
-<li>重度多线程并发</li>
-<li>URL 重写</li>
-<li>单 Varnish 能够缓存多个虚拟主机</li>
-<li>日志数据存储在共享内存中</li>
-<li>基本的后端服务器健康检查</li>
-<li>优雅地处理后端服务器“挂掉”</li>
-<li>命令行界面的管理控制台</li>
-<li>使用内联 C 语言来扩展 Varnish</li>
-<li>可以与 Apache 用在相同的系统上</li>
-<li>单个系统可运行多个 Varnish</li>
-<li>支持 HAProxy 代理协议。该协议在每个收到的 TCP 请求——例如 SSL 终止过程中——附加一小段 http 头信息，以记录客户端的真实地址</li>
-<li>冷热 VCL 状态</li>
-<li>可以用名为 VMOD 的 Varnish 模块来提供插件扩展</li>
-<li>通过 VMOD 定义后端主机</li>
-<li>Gzip 压缩及解压</li>
-<li>HTTP 流的通过和获取</li>
-<li>神圣模式和优雅模式。用 Varnish 作为负载均衡器，神圣模式下可以将不稳定的后端服务器在一段时间内打入黑名单，阻止它们继续提供流量服务。优雅模式允许 Varnish 在获取不到后端服务器状态良好的响应时，提供已过期版本的页面或其它内容。</li>
-<li>实验性支持持久化存储，无需 LRU 缓存淘汰</li>
-</ul>
-<p><img src="https://dn-linuxcn.qbox.me/data/attachment/album/201603/17/223550eoavsnrj7nw1uaza.png" alt></p>
-<ul>
-<li>网站: <a href="https://www.varnish-cache.org/" target="_blank" rel="noopener">www.varnish-cache.org</a></li>
-<li>开发: Varnish Software</li>
-<li>授权: FreeBSD</li>
-<li>版本号: 4.1.0</li>
-</ul>
-<h3 id="Polipo"><a href="#Polipo" class="headerlink" title="Polipo"></a>Polipo</h3><p>Polipo 是一个开源的 HTTP 缓存代理，只需要非常低的资源开销。 它监听来自浏览器的 web 页面请求，转发到 web 服务器，然后将服务器的响应转发到浏览器。在此过程中，它能优化和整形网络流量。从本质来讲 Polipo 与 WWWOFFLE 很相似，但其实现技术更接近于 Squid。 Polipo 最开始的目标是作为一个兼容 HTTP/1.1 的代理，理论它能在任何兼容 HTTP/1.1 或更早的 HTTP/1.0 的站点上运行。 其特性包括：</p>
-<ul>
-<li>HTTP 1.1、IPv4 &amp; IPv6、流量过滤和隐私保护增强</li>
-<li>如确认远程服务器支持的话，则无论收到的请求是管道处理过的还是在多个连接上同时收到的，都使用 HTTP/1.1 管道pipelining</li>
-<li>下载被中断时缓存起始部分，当需要续传时用区间Range请求来完成下载</li>
-<li>将 HTTP/1.0 的客户端请求升级为 HTTP/1.1，然后按照客户端支持的级别进行升级或降级后回复</li>
-<li>全面支持 IPv6 （作用域（链路本地）地址除外）</li>
-<li>作为 IPv4 和 IPv6 网络的网桥</li>
-<li>内容过滤</li>
-<li>能使用Poor Man 多路复用技术Poor Man’s Multiplexing降低延迟</li>
-<li>支持 SOCKS 4 和 SOCKS 5 协议</li>
-<li>HTTPS 代理</li>
-<li>扮演透明代理的角色</li>
-<li>可以与 Privoxy 或 tor 一起运行</li>
-</ul>
-<ul>
-<li>网站: <a href="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/" target="_blank" rel="noopener">www.pps.univ-paris-diderot.fr/~jch/software/polipo/</a></li>
-<li>开发: Juliusz Chroboczek, Christopher Davis</li>
-<li>授权: MIT License</li>
-<li>版本号: 1.1.1</li>
-</ul>
-<h3 id="Tinyproxy"><a href="#Tinyproxy" class="headerlink" title="Tinyproxy"></a>Tinyproxy</h3><p>Tinyproxy 是一个轻量级的开源 web 代理守护进程，其设计目标是快而小。它适用于需要完整 HTTP 代理特性，但系统资源又不足以运行大型代理的场景，比如嵌入式部署。 Tinyproxy 对小规模网络非常有用，这样的场合下大型代理会使系统资源紧张，或有安全风险。Tinyproxy 的一个关键特性是其缓冲连接的理念。从效果上看， Tinyproxy 对服务器的响应进行了高速缓冲，然后按照客户端能够处理的最高速度进行响应。该特性极大的降低了网络延滞带来的问题。 特性：</p>
-<ul>
-<li>易于修改</li>
-<li>隐匿模式 - 定义哪些 HTTP 头允许通过，哪些又会被拦截</li>
-<li>支持 HTTPS - Tinyproxy 允许通过 CONNECT 方法转发 HTTPS 连接，任何情况下都不会修改数据流量</li>
-<li>远程监控 - 远程访问代理统计数据，让你能清楚了解代理服务当前的忙碌状态</li>
-<li>平均负载监控 - 通过配置，当服务器的负载接近一定值后拒绝新连接</li>
-<li>访问控制 - 通过配置，仅允许指定子网或 IP 地址的访问</li>
-<li>安全 - 运行无需额外权限，减小了系统受到威胁的概率</li>
-<li>基于 URL 的过滤 - 允许基于域和URL的黑白名单</li>
-<li>透明代理 - 配置为透明代理，这样客户端就无需任何配置</li>
-<li>代理链 - 在流量出口处采用上游代理服务器，而不是直接转发到目标服务器，创建我们所说的代理链</li>
-<li>隐私特性 - 限制允许从浏览器收到的来自 HTTP 服务器的数据（例如 cookies），同时限制允许通过的从浏览器到 HTTP 服务器的数据（例如版本信息）</li>
-<li>低开销 - 使用 glibc 内存开销只有2MB，CPU 负载按并发连接数线性增长（取决于网络连接速度）。 Tinyproxy 可以运行在老旧的机器上而无需担心性能问题。</li>
-</ul>
-<ul>
-<li>网站: <a href="https://banu.com/tinyproxy/" target="_blank" rel="noopener">banu.com/tinyproxy</a></li>
-<li>开发: Robert James Kaes和其他贡献者</li>
-<li>授权: GNU GPL v2</li>
-<li>版本号: 1.8.3</li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术讨论</category>
-      </categories>
-      <tags>
-        <tag>代理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PPTP、L2TP、IPSec、OpenVPN和SSTP的区别</title>
     <url>/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p>VPN （虚拟专用网）发展至今已经不在是一个单纯的经过加密的访问隧道，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。 在网络上，有关各种VPN协议优缺点的比较是仁者见仁，智者见智，很多技术人员由于出于使用目的考虑，包括访问控制、安全和用户简单易用，灵活扩展等各方面，权衡利弊，难以取舍；尤其在VOIP语音环境中，网络安全显得尤为重要，因此现在越来越多的网络电话和语音网关支持VPN协议。 主流的VPN协议有PPTP、L2TP、IPSec、OpenVPN和SSTP，具体区别如下：</p>
 <a id="more"></a>
-<p><img src="/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png" alt></p>
-<p><strong>一、PPTP</strong><br>点对点隧道协议 (PPTP) 是由包括微软和3Com等公司组成的PPTP论坛开发的一种点对点隧道协，基于拨号使用的PPP协议使用PAP或CHAP之类的加密算法，或者使用 Microsoft的点对点加密算法MPPE。其通过跨越基于 TCP/IP 的数据网络创建 VPN 实现了从远程客户端到专用企业服务器之间数据的安全传输。PPTP 支持通过公共网络（例如 Internet）建立按需的、多协议的、虚拟专用网络。PPTP 允许加密 IP 通讯，然后在要跨越公司 IP 网络或公共 IP 网络（如 Internet）发送的 IP 头中对其进行封装。 </p>
-<p><strong>二、L2TP</strong><br>第 2 层隧道协议 (L2TP) 是IETF基于L2F （Cisco的第二层转发协议）开发的PPTP的后续版本。是一种工业标准 Internet 隧道协议，其可以为跨越面向数据包的媒体发送点到点协议 (PPP) 框架提供封装。PPTP和L2TP都使用PPP协议对数据进行封装，然后添加附加包头用于数据在互联网络上的传输。PPTP只能在两端点间建立单一隧道。 L2TP支持在两端点间使用多隧道，用户可以针对不同的服务质量创建不同的隧道。L2TP可以提供隧道验证，而PPTP则不支持隧道验证。但是当L2TP 或PPTP与IPSEC共同使用时，可以由IPSEC提供隧道验证，不需要在第2层协议上验证隧道使用L2TP。 PPTP要求互联网络为IP网络。L2TP只要求隧道媒介提供面向数据包的点对点的连接，L2TP可以在IP（使用UDP），桢中继永久虚拟电路（PVCs),X.25虚拟电路（VCs）或ATM VCs网络上使用。</p>
-<p><strong>三、IPSec</strong><br>IPSec 隧道模式隧道是封装、路由与解封装的整个过程。隧道将原始数据包隐藏（或封装）在新的数据包内部。该新的数据包可能会有新的寻址与路由信息，从而使其能够通 过网络传输。隧道与数据保密性结合使用时，在网络上窃听通讯的人将无法获取原始数据包数据（以及原始的源和目标）。封装的数据包到达目的地后，会删除封装，原始数据包头用于将数据包路由到最终目的地。 隧道本身是封装数据经过的逻辑数据路径，对原始的源和目的端，隧道是不可见的，而只能看到网络路径中的点对点连接。连接双方并不关心隧道起点和终点之间的任何路由器、交换机、代理服务器或其他安全网关。将隧道和数据保密性结合使用时，可用于提供VPN。 封装的数据包在网络中的隧道内部传输。在此示例中，该网络是 Internet。网关可以是外部 Internet 与专用网络间的周界网关。周界网关可以是路由器、防火墙、代理服务器或其他安全网关。另外，在专用网络内部可使用两个网关来保护网络中不信任的通讯。 当以隧道模式使用 IPSec 时，其只为 IP 通讯提供封装。使用 IPSec 隧道模式主要是为了与其他不支持 IPSec 上的 L2TP 或 PPTP VPN 隧道技术的路由器、网关或终端系统之间的相互操作。 </p>
-<p><strong>四、OpenVPN</strong><br>SSL/TLS协议提供了数据私密性、端点验证、信息完整性等特性。SSL/TLS协议由许多子协议组成，其中两个主要的子协议是握手协议和记录协议。握手协议允许服务器和客户端在应用协议传输第一个数据字节以前，彼此确认，协商一种加密算法和密码钥匙。在数据传输期间，记录协议利用握手协议生成的密钥加密和解密后来交换的数据。 </p>
+<p><img data-src="/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png" alt></p>
+<h3 id="PPTP"><a href="#PPTP" class="headerlink" title="PPTP"></a>PPTP</h3><p>点对点隧道协议 (PPTP) 是由包括微软和3Com等公司组成的PPTP论坛开发的一种点对点隧道协，基于拨号使用的PPP协议使用PAP或CHAP之类的加密算法，或者使用 Microsoft的点对点加密算法MPPE。其通过跨越基于 TCP/IP 的数据网络创建 VPN 实现了从远程客户端到专用企业服务器之间数据的安全传输。PPTP 支持通过公共网络（例如 Internet）建立按需的、多协议的、虚拟专用网络。PPTP 允许加密 IP 通讯，然后在要跨越公司 IP 网络或公共 IP 网络（如 Internet）发送的 IP 头中对其进行封装。 </p>
+<h3 id="L2TP"><a href="#L2TP" class="headerlink" title="L2TP"></a>L2TP</h3><p>第 2 层隧道协议 (L2TP) 是IETF基于L2F （Cisco的第二层转发协议）开发的PPTP的后续版本。是一种工业标准 Internet 隧道协议，其可以为跨越面向数据包的媒体发送点到点协议 (PPP) 框架提供封装。PPTP和L2TP都使用PPP协议对数据进行封装，然后添加附加包头用于数据在互联网络上的传输。PPTP只能在两端点间建立单一隧道。 L2TP支持在两端点间使用多隧道，用户可以针对不同的服务质量创建不同的隧道。L2TP可以提供隧道验证，而PPTP则不支持隧道验证。但是当L2TP 或PPTP与IPSEC共同使用时，可以由IPSEC提供隧道验证，不需要在第2层协议上验证隧道使用L2TP。 PPTP要求互联网络为IP网络。L2TP只要求隧道媒介提供面向数据包的点对点的连接，L2TP可以在IP（使用UDP），桢中继永久虚拟电路（PVCs),X.25虚拟电路（VCs）或ATM VCs网络上使用。</p>
+<h3 id="IPSec"><a href="#IPSec" class="headerlink" title="IPSec"></a>IPSec</h3><p>IPSec 隧道模式隧道是封装、路由与解封装的整个过程。隧道将原始数据包隐藏（或封装）在新的数据包内部。该新的数据包可能会有新的寻址与路由信息，从而使其能够通 过网络传输。隧道与数据保密性结合使用时，在网络上窃听通讯的人将无法获取原始数据包数据（以及原始的源和目标）。封装的数据包到达目的地后，会删除封装，原始数据包头用于将数据包路由到最终目的地。 隧道本身是封装数据经过的逻辑数据路径，对原始的源和目的端，隧道是不可见的，而只能看到网络路径中的点对点连接。连接双方并不关心隧道起点和终点之间的任何路由器、交换机、代理服务器或其他安全网关。将隧道和数据保密性结合使用时，可用于提供VPN。 封装的数据包在网络中的隧道内部传输。在此示例中，该网络是 Internet。网关可以是外部 Internet 与专用网络间的周界网关。周界网关可以是路由器、防火墙、代理服务器或其他安全网关。另外，在专用网络内部可使用两个网关来保护网络中不信任的通讯。 当以隧道模式使用 IPSec 时，其只为 IP 通讯提供封装。使用 IPSec 隧道模式主要是为了与其他不支持 IPSec 上的 L2TP 或 PPTP VPN 隧道技术的路由器、网关或终端系统之间的相互操作。 </p>
+<h3 id="OpenVPN"><a href="#OpenVPN" class="headerlink" title="OpenVPN"></a>OpenVPN</h3><p>SSL/TLS协议提供了数据私密性、端点验证、信息完整性等特性。SSL/TLS协议由许多子协议组成，其中两个主要的子协议是握手协议和记录协议。握手协议允许服务器和客户端在应用协议传输第一个数据字节以前，彼此确认，协商一种加密算法和密码钥匙。在数据传输期间，记录协议利用握手协议生成的密钥加密和解密后来交换的数据。 </p>
 <p>SSL/TLS独立于应用，因此任何一个应用程序都可以享受它的安全性而不必理会执行细节。SSL/TLS置身于网络结构体系的 传输层和应用层之间。此外，SSL/TLS本身就被几乎所有的Web浏览器支持。这意味着客户端不需要为了支持SSL/TLS连接安装额外的软件。这两个特征就是SSL/TLS能应用于VPN的关键点。 </p>
 <p>典型的SSL VPN应用如OpenVPN,是一个比较好的开源软件。PPTP主要为那些经常外出移动或家庭办公的用户考虑；而OpenVPN主要是针对企业异地两地总分公司之间的VPN不间断按需连接，例如ERP在企业中的应用。 OpenVPN 允许参与建立VPN的单点使用预设的私钥，第三方证书，或者用户名/密码来进行身份验证。它大量使用了OpenSSL加密库，以及SSLv3/TLSv1 协议。OpenVPN能在Linux、xBSD、Mac OS X与Windows 2000/XP上运行。它并不是一个基于Web的VPN软件，也不与IPsec及其他VPN软件包兼容。 </p>
 <p>隧道加密 </p>
@@ -558,16 +372,17 @@
 <p>OpenVPN使用通用网络协议（TCP与UDP）的特点使它成为IPsec等协议的理想替代，尤其是在ISP（Internet service provider）过滤某些特定VPN协议的情况下。在选择协议时候，需要注意2个加密隧道之间的网络状况，如有高延迟或者丢包较多的情况下，请选择 TCP协议作为底层协议，UDP协议由于存在无连接和重传机制，导致要隧道上层的协议进行重传，效率非常低下。</p>
 <p>安全 </p>
 <p>OpenVPN与生俱来便具备了许多安全特性：它在用户空间运行，无须对内核及网络协议栈作修改；初始完毕后以chroot方式运行，放弃root权限；使用mlockall以防止敏感数据交换到磁盘。 OpenVPN通过PKCS#11支持硬件加密标识，如智能卡。</p>
-<p><strong>五、SSTP</strong><br>安全套接字隧道协议(Secure Socket Tunneling Protocol，SSTP)是一种VPN隧道的形式，提供了一种通过SSL3.0通道传输PPP或L2TP流量的机制。SSL利用密钥协商提供传输级别的安全性。通过TCP端口443使用SSL，允许SSTP通过几乎所有的防火墙和代理服务器，除了需要身份验证的Web代理。 SSTP可用于Linux、BSD和Windows。MikroTik的RouterOS还包括一个SSTP客户端和服务器端。对于Windows，SSTP仅可用于自Windows Vista SP1之后的系统。 这种SSTP只适用于远程访问，通常不支持站点与站点之间的VPN隧道。RouterOS的版本有没有这样的限制。</p>
+<h3 id="SSTP"><a href="#SSTP" class="headerlink" title="SSTP"></a>SSTP</h3><p>安全套接字隧道协议(Secure Socket Tunneling Protocol，SSTP)是一种VPN隧道的形式，提供了一种通过SSL3.0通道传输PPP或L2TP流量的机制。SSL利用密钥协商提供传输级别的安全性。通过TCP端口443使用SSL，允许SSTP通过几乎所有的防火墙和代理服务器，除了需要身份验证的Web代理。 SSTP可用于Linux、BSD和Windows。MikroTik的RouterOS还包括一个SSTP客户端和服务器端。对于Windows，SSTP仅可用于自Windows Vista SP1之后的系统。 这种SSTP只适用于远程访问，通常不支持站点与站点之间的VPN隧道。RouterOS的版本有没有这样的限制。</p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
       </categories>
       <tags>
-        <tag>IPSec</tag>
         <tag>PPTP</tag>
+        <tag>IPSec</tag>
         <tag>L2TP</tag>
         <tag>SSTP</tag>
+        <tag>OpenVPN</tag>
       </tags>
   </entry>
   <entry>
@@ -585,14 +400,14 @@
 <li><strong>Prostrouting：路由后</strong></li>
 </ul>
 <p>RouterOS 中的 IP firewall 主要由 3 个规则部分组成 Mangle、 Filter、 NAT ，而 Address-list 常用于地址列表分类。 Mangle 通过标记特定的 IP 数据流后，为 Filter、 NAT 和、路由、 Queue 提供标记后的 IP 数据流</p>
-<p> <img src="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg" alt></p>
+<p> <img data-src="/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg" alt></p>
 <p>  标记 IP 数据流的三种类型，这三种类型会在各种应用中多次出现，特别是 Queue 的流量控制和 ip route 的路由：</p>
 <ul>
 <li><strong>Mark-connection：标记所有 IP 流的连接</strong></li>
 <li><strong>Mark-packet：标记 IP 流中数据包</strong></li>
 <li><strong>Mark-routing：标记 IP 流中 IP 数据包的路由信息</strong></li>
 </ul>
-<p>三种类型的关系，所有的在 IP 数据包传输前，首先需要通过建立 TCP/UDP 连接，进行传输。所以当数据通过 IP 流进入 Mangle 后，建立相应的连接标记，并从连接标记中提取数据包，做处理。图示如下：<br>  <img src="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg" alt></p>
+<p>三种类型的关系，所有的在 IP 数据包传输前，首先需要通过建立 TCP/UDP 连接，进行传输。所以当数据通过 IP 流进入 Mangle 后，建立相应的连接标记，并从连接标记中提取数据包，做处理。图示如下：<br>  <img data-src="/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg" alt></p>
 <h2 id="Mangle-应用"><a href="#Mangle-应用" class="headerlink" title="Mangle 应用"></a>Mangle 应用</h2><h3 id="Peer-to-Peer-传输标记"><a href="#Peer-to-Peer-传输标记" class="headerlink" title="Peer-to-Peer 传输标记"></a>Peer-to-Peer 传输标记</h3><p>保证优质的网络连接，如 VoIP 和 HTTP 等为最优先级，将 P2P 的优先级设置为最低 RouterOS QOS 操作首先使用 mangle 标记不同类型的传输，然后把它们放入的 queues 做不同的限制。下面的事例是强迫 P2P 的总的传输不能超过 1Mbps，其他的传输连接则扩大连接带宽和优先级：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward p2p=all-p2p action=mark-connection new-connection-mark=p2p_conn</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward connection-mark=p2p_conn action=mark-packet new-packet-mark=p2p</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward packet-mark=!p2p_conn action=mark-packet new-packet-mark=other</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle <span class="built_in">print</span></span><br><span class="line">Flags: X - disabled, I - invalid, D - dynamic</span><br><span class="line">0 chain=forward p2p=all-p2p action=mark-connection new-connection-mark=p2p_conn</span><br><span class="line">1 chain=forward connection-mark=p2p_conn action=mark-packet new-packet-mark=p2p</span><br><span class="line">2 chain=forward packet-mark=!p2p_conn action=mark-packet new-packet-mark=other</span><br><span class="line">[admin@MikroTik] &gt;</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Public packet-mark=p2p <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=8</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Local packet-mark=p2p <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=8</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Public packet-mark=other <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=1</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Local packet-mark=other <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=1</span><br></pre></td></tr></table></figure>
 
@@ -608,10 +423,123 @@
       </tags>
   </entry>
   <entry>
+    <title>ROS6.36里的Raw介绍</title>
+    <url>/2016/09/27/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>操作路径：</p>
+<p>/ip firewall raw</p>
+<p>Raw 是 RouterOS v6.36 新增的功能属性， firewall Raw 列表允许选择性在 connection tracking 之前绕过或者丢弃数据包，这样能大大降低 CPU 负载。该功能非常有助于防御 DOS 攻击， RAW 列表不能匹配链接状态的跟踪，例如 connection-state 和 L7 协议。 </p>
+<p>如下图， Raw 出现在 Prerouting 和 output 链表，并在 connection-tracking 前执行：</p>
+<p><img data-src="/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/1.jpg" alt></p>
+<a id="more"></a>
+<p>Raw 目的是对指定的 IP 访问可以不经过连接跟踪（ connection-tracking），有助于减少 CPU 的开销，但对于私有网络做 nat 转换来说， connection-tracking 是必须的，那 Raw 又如何在实际网络应用中发挥作用。例如我们遭到 DDoS 攻击，我们可以通过 Raw 规则关闭掉攻击源 IP 的连接跟踪，使其不再 RouterOS 本地建立连接会话，不予响应，减小 CPU 开销。<br>在 Raw 中有两个链表，分别是 prerouting 和 output:<br><strong>• prerouting</strong> – 用于处理任何进入路由器的数据包<br><strong>• output</strong> – 用于处理数据包源于路由器，并通过其中一个接口离开，即由路由器自身发出的数据包<br>例如:我们遭到 11.22.33.4 的 IP 通过 syn 的 DDoS 攻击，我们可以拒绝对该 IP 做链接跟踪，减少 CPU 开销 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[rosjb@MikroTik] &gt;/ip firewall raw</span><br><span class="line">[rosjb@MikroTik] /ip firewall raw&gt;add chain=prerouting src-address=11.22.33.4 action=notrack</span><br></pre></td></tr></table></figure>
+
+<p>另一种情况， 如较大的网络环境，涉及内网和外网请求，在访问外网时需要做 nat 转换，而内网则不需要，因此流量和会话增加的情况下，避免 CPU 负载过高，可以通过 Raw 关闭掉访问内网的连接跟踪。<br>例如，在一个大型网络，内网 IP 地址段是 192.168.0.0/16，关闭掉内网的连接跟踪，配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[rosjb@MikroTik] &gt;/ip firewall raw</span><br><span class="line">[rosjb@MikroTik] /ip firewall raw&gt;add chain=prerouting dst-address=192.168.0.0/16 action=notrack</span><br></pre></td></tr></table></figure>
+
+<p>这样配置后，我们在 connection-tracking 列表将不会看到内网访问 192.168.0.0/16 的连接会话条目</p>
+]]></content>
+      <categories>
+        <category>技术讨论</category>
+      </categories>
+      <tags>
+        <tag>Raw</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROS里的IPSec配置</title>
+    <url>/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><strong>适用于ROS版本号 &lt; 6.16 的用户</strong></p>
+<p>IPSec 作为新一代网络安全协议，为网络传输提供了安全保证，使端到端的数据保密成为可能， 是互联网上的新一代安全标准。提供包括访问控制、无连接的完整性、数据源认证、抗重放 (replay)保护、保密和有限传输保密性在内的服务，服务基于 IP 层并对 IP 及上层协议进行保护。服务的实施通过两种通信安全协议：认证头（ AH）和封装安全负载（ ESP）以及 Internet 密钥交换（ IKE）协议来达到这些目标。 IPSec AH 协议提供数据源认证、无连接的完整性和可选的抗重放服务。 ESP 协议提供数据保密性，有限的数据流保密性、数据源认证、无连接的完整性及抗重放服务。 IKE 协议用于协商 AH 和 ESP 协议所使用的密码算法，并将算法所需的必备密钥放在合适的位置。 IPSec 有两种模式：传输模式和隧道模式。它们都是对外出的数据包添加 IPSec 头进行加密和认证，而对于接收的 IPSec 数据包作解密认证处理和适当的转发传送。</p>
+<a id="more"></a>
+<hr>
+<h3 id="IPSec-点对点配置实例"><a href="#IPSec-点对点配置实例" class="headerlink" title="IPSec 点对点配置实例"></a>IPSec 点对点配置实例</h3><p>以下是一个使用 RouterOS 建立的 IPsec VPN 案例， 网络拓扑图： </p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/1.jpg" alt></p>
+<p>192.168.89.1/24 <strong>–R1–</strong> 192.168.11.11/24 <strong>—互联网—</strong> 192.168.11.18/24 <strong>—R2—</strong> 192.168.90.1/24</p>
+<p><strong>R1 配置</strong></p>
+<p>进入 ip address 添加各接口的 IP 地址，先配置内网接口地址:<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/2.jpg" alt></p>
+<p>添加 ether1-wan 互联接口地址：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/3.jpg" alt></p>
+<p>进入 ip routes 里面添加网关出口：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/4.jpg" alt></p>
+<p>进入 ip ipsec 里的 policies 选项，先在 general 添加内网的源地址和对端网络的内网地址。<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/5.jpg" alt></p>
+<p>选择 action 选项里面添加源外网地址和对端外网地址和开启 tunnel 隧道协议<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/6.jpg" alt></p>
+<p>进入在 ip ipsec 里的 peers 标签里添加目标外网 ip 地址和 secert 密码：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/7.jpg" alt></p>
+<p>在 ip firewall 里的 nat， 建立一条 srcnat 规则为 accept，接受源内网地址和对端内网地址通过：</p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/8.jpg" alt></p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/9.jpg" alt></p>
+<p>然后建立将本地内网隐藏上网的 masquerade 规则： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall nat add src-address=192.168.89.0/24 action=masquerade</span><br></pre></td></tr></table></figure>
+<p>以上就是 R1 的相应配置过程， R1 已经配置完成现在就 R2 了。</p>
+<hr>
+<h3 id="R2-配置"><a href="#R2-配置" class="headerlink" title="R2 配置"></a>R2 配置</h3><p>进入 ip address 添加 ether2-lan 内网接口地址:<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/10.jpg" alt></p>
+<p>添加 ether1-wan 外网接口地址：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/11.jpg" alt></p>
+<p>进入 ip routes 添加外网网关：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/12.jpg" alt></p>
+<p>进入 ip ipsec 里的 policies 选项，先在 general 添加内网的源地址和对端网络的内网地址。<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/13.jpg" alt></p>
+<p>选择 action 选项里面添加源外网地址和对端外网地址和开启 tunnel 隧道协议<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/14.jpg" alt></p>
+<p>再在 ip ipsec 里的 peers 标签里添加对端外网 ip 地址和 secert 密码：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/15.jpg" alt></p>
+<p>在 ip firewall 里的 nat， 建立一条 srcnat 规则为 accept，接受源内网地址和对端内网地址通过：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/16.jpg" alt></p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/17.jpg" alt><br>然后建立将本地内网隐藏上网的 masquerade 规则： </p>
+<p>/ip firewall nat add src-address=192.168.90.0/24 action=masquerade</p>
+<p>以上就是 R2 的配置过程。 注： NAT 规则的配置的上下顺序， accept 规则需在 masquerade 伪装规则前：<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/18.jpg" alt></p>
+<hr>
+<h3 id="Windows-L2TP-IPsec-连接"><a href="#Windows-L2TP-IPsec-连接" class="headerlink" title="Windows L2TP/IPsec 连接"></a>Windows L2TP/IPsec 连接</h3><p>Microsoft Windows XP/Vista/win7 内建了 PPTP 客户端和和 L2TP/IPSec 客户端。 PPTP 链接是不要 IPsec 加密的，而 windows 的 L2TP/IPsec 默认要求建立 IPsec 链接后，才能进行 L2TP 的拨号连接，这样的解决方法在早期采用的是修改 windows 的注册表，将 windows 默认的 IPsec 连接值修改并关闭， 相对于终端客户操作繁琐，且安全性降低。为了能正常让 windows 的 L2TP/IPsec 与 RouterOS 连接，我们可以配置 RouterOS 启用 IPsec。 Windows 建立 L2TP/IPSec 连接，首先要求连接到对端的 IPSes，在 IPSec 建立完成后在允许 L2TP 连接，也就是 IPSec 连接在先， L2TP 其后，所以我们首先配置 IPSec 连接。<br><font color="red">注： RouterOS 6.16 在 L2TP 服务配置中加入了 IPsec 选项，简化了 IPsec 的配置。</font><br>我们先确定一下网络结构： </p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/19.jpg" alt></p>
+<p>这里 RouterOS 的 IP 地址是 10.200.15.228，两台 PC 的 IP 地址分别是 10.200.15.59,和 10.200.15.60。两台 PC的 IP 地址必须是固定，以便 IPsec 连接成功。在这个拓扑图里要求所有的地址是能被访问到的，即非 nat 转换的地址（也非 L2TP 隧道分配的 IP 地址）。</p>
+<h3 id="IPSec-配置"><a href="#IPSec-配置" class="headerlink" title="IPSec 配置"></a>IPSec 配置</h3><p>首先要将 IPsec 指向对端的 windows PC 的 IP 地址（非 L2TP 分配 IP 地址） ，进入/ip ipsec 菜单下（确定安装security 功能包），选择 peer 标签，设置 address 为 PC 的 IP 地址， secret 设置共享密钥 yusong， Hash-algorithm选择 sha， generate-policy 勾上，其他默认。<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/20.jpg" alt></p>
+<p>添加 10.200.15.60 的 peer 规则 </p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/21.jpg" alt></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip ipsec peer add address=10.200.15.59:500 auth-method=pre-shared-key \</span><br><span class="line">secret=yusong <span class="built_in">hash</span>-algorithm=sha enc-algorithm=3des generate-policy=yes</span><br><span class="line">/ip ipsec peer add address=10.200.15.60:500 auth-method=pre-shared-key \</span><br><span class="line">secret=yusong <span class="built_in">hash</span>-algorithm=sha enc-algorithm=3des generate-policy=yes</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加 IPSec peer 设置</strong><br>o address=10.200.15.59 是你的 windows 电脑的网卡实际地址。<br>o :500 端口号;<br>o hash-algorithm=sha 和 enc-algorithm=3des 是 windows 上的默认配置；<br>o generate-policy=yes 自动产生 IPSec 策略 </p>
+<p><strong>RouterOS 配置</strong> </p>
+<p>首先我们配置 RouterOS 的 L2TP 服务器，这个配置和普通的 PPTP 配置一样， 在 PPP 里启用 L2TP 服务 </p>
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/22.jpg" alt></p>
+<p>命令行配置，记住这里的路径不同： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ interface l2tp-server server <span class="built_in">set</span> enabled=yes</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/23.jpg" alt></p>
+<p>进入 ip pool 设置分配给用户的地址池：  命令操作如下： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip pool add name=L2TP ranges=192.168.10.2-192.168.10.254</span><br></pre></td></tr></table></figure>
+
+<p>进入/ppp profile 配置 default-encryption 的规则:<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/24.jpg" alt></p>
+<p>DNS 和 limit 选项里的 rate-limit、 only one 参数根据需要设置，这里就不多讲解。 命令行配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ppp profile&gt; <span class="built_in">set</span> 1 <span class="built_in">local</span>-address=192.168.10.1 remote-address=L2TP</span><br></pre></td></tr></table></figure>
+
+<p>进入/ppp secret 添加用户账号 命令行配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ ppp secret add name=123 password=123 profile=default-encryption</span><br></pre></td></tr></table></figure>
+<p>到这里 L2TP 服务器配置完成。</p>
+<hr>
+<h3 id="Windows-配置"><a href="#Windows-配置" class="headerlink" title="Windows 配置"></a>Windows 配置</h3><p>Windows 配置包含 2 个部分，第一个部分添加新的网络连接，第二个部分调整 IPSec 设置 Win7 配置步骤：</p>
+<ul>
+<li>点开始菜单; </li>
+<li>控制面板\网络和 Internet\网络和共享中心 </li>
+<li>设置新的连接或网络; </li>
+<li>添加一个 VPN 连接， </li>
+<li>目的地的主机或域名填写 10.200.15.228（具体操作跟着步骤走，不详细说明）</li>
+</ul>
+<p>接下来我们需要配置 VPN 连接的属性<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/25.jpg" alt></p>
+<p>确定主机地址是 10.200.15.228<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/26.jpg" alt></p>
+<p>选择 VPN 类型为使用 ipsec 的第 2 层隧道协议（ L2TP/IPSec）<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/27.jpg" alt></p>
+<p>选择高级设置，并设置使用预共享的密钥作身份验证：输入相同的密钥： yusong<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/28.jpg" alt></p>
+<p>配置完成后，输入账号 123，密码 123，连接<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/29.jpg" alt></p>
+<p>连接完成后，在 remote peers 可以看到连接的 IP 地址<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/30.jpg" alt></p>
+<p>Policies 策略会被自动添加<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/31.jpg" alt></p>
+<p>Installed SAs 状态，注意当你的 L2TP 注销后，可能会出现 Installed SAs 状态没有清楚，第二次重播可能需要使用 Flush 清空状态<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/32.jpg" alt></p>
+<p>PPP 里的 active 状态<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/33.jpg" alt></p>
+<hr>
+<h3 id="v6-16-后简化-L2TP-IPsec-配置"><a href="#v6-16-后简化-L2TP-IPsec-配置" class="headerlink" title="v6.16 后简化 L2TP/IPsec 配置"></a>v6.16 后简化 L2TP/IPsec 配置</h3><p>在 RouterOS 6.16 版本开始， L2TP 服务增加了 use IPsce 选项，可以直接在 L2TP 服务配置菜单下设置 IPsec，共享密钥设置后，会自动添加到 IPsec 配置中，简化了管理员操作，当然 RouterOS 必须同时安装 PPP 和 Security功能包<br><img data-src="/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/34.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>技术讨论</category>
+      </categories>
+      <tags>
+        <tag>IPSec</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mikrotik CCR1072-1G-8S+ 性能测试[视频]</title>
     <url>/2016/09/26/mikrotik-ccr1072-performance-test/</url>
     <content><![CDATA[<p><strong>硬件图片:</strong></p>
-<p><img src="/2016/09/26/mikrotik-ccr1072-performance-test/1055_l.jpg" alt></p>
+<p><img data-src="/mikrotik-ccr1072-performance-test/1055_l.jpg" alt></p>
 <hr>
 <p><strong>我们首先来看下官网给出的硬件参数:</strong></p>
 <h2 id="CCR1072-1G-8S"><a href="#CCR1072-1G-8S" class="headerlink" title="CCR1072-1G-8S+"></a>CCR1072-1G-8S+</h2><a id="more"></a>
@@ -738,8 +666,8 @@
       </tags>
   </entry>
   <entry>
-    <title>[转]ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例</title>
-    <url>/2016/09/26/%5B%E8%BD%AC%5DROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/</url>
+    <title>ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例</title>
+    <url>/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.  </p>
 <p>于是网络的整体网络资源如下: </p>
 <p><strong>联通专线 20M/20M(下载/上传)</strong><br><strong>电信专线 20M/20M(下载/上传)</strong><br><strong>联通ADSL 20M/2M(下载/上传)</strong></p>
@@ -755,10 +683,10 @@
 <li>电信的DNS解析采用NAT转换可以给用户配置统一的DNS,方便管理 </li>
 </ol>
 <p>具体配置如下: </p>
-<h3 id="一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><a href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP" class="headerlink" title="一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)"></a>一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)</h3><p><img src="/2016/09/26/[%E8%BD%AC]ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png" alt></p>
-<h3 id="二-路由标记如下"><a href="#二-路由标记如下" class="headerlink" title="二  路由标记如下"></a>二  路由标记如下</h3><p><img src="/2016/09/26/[%E8%BD%AC]ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png" alt></p>
+<h3 id="一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><a href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP" class="headerlink" title="一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)"></a>一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png" alt></p>
+<h3 id="二-路由标记如下"><a href="#二-路由标记如下" class="headerlink" title="二  路由标记如下"></a>二  路由标记如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png" alt></p>
 <p>在  顺序1-顺序2-顺序3  3条规则的顺序不能更改,下面对三条规则简单说明 顺序1 ,标记的走向电信的路由,   这里passthrough选的是no,结合上下文选 YES也不会有问题 顺序2,标记走向网通的路由流量,这里PASSTHROUTH需要选YES,以便第三条规则分离走走ADSL的流量,选 NO的话就不会有走ADSL的流量了. 顺序3,根据目标TCP端口从走网通的那部分流量中(routing-mark=r_Cns限定从走网通的流量中分流 )分流出走ADSL线路的流量,这里passthrough写的是NO,因为下面有其它的标记,防止标记被更改 </p>
-<h3 id="三-NAT转发如下"><a href="#三-NAT转发如下" class="headerlink" title="三  NAT转发如下"></a>三  NAT转发如下</h3><p><img src="/2016/09/26/[%E8%BD%AC]ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png" alt> </p>
+<h3 id="三-NAT转发如下"><a href="#三-NAT转发如下" class="headerlink" title="三  NAT转发如下"></a>三  NAT转发如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png" alt> </p>
 <p>这里主要需要了解的是把网通的DNS做DST-NAT到电信的DNS上,电信的PPPOE用户解析IP时,表面上是到网通的DNS解析,实际上还是在电信的DNS解析的IP </p>
 <p>命令添加如下 </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall nat add  chain=dstnat action=dst-nat to-addresses=2.2.2.2(电信DNS) protocol=udp src-address=1.1.1.1(网通DNS) dst-address-list=cncDNS</span><br></pre></td></tr></table></figure>
@@ -766,8 +694,8 @@
 <p>电信的路由标记r_Tel走了电信的线路wan-Tel</p>
 <p>ADSL的路由标记r_Cnc_adsl从网通的ADSL线路走出</p>
 <p>默认流量走网通光纤</p>
-<p><img src="/2016/09/26/[%E8%BD%AC]ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png" alt> </p>
-<h3 id="五-接口流量效果"><a href="#五-接口流量效果" class="headerlink" title="五 接口流量效果"></a>五 接口流量效果</h3><p><img src="/2016/09/26/[%E8%BD%AC]ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png" alt></p>
+<p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png" alt> </p>
+<h3 id="五-接口流量效果"><a href="#五-接口流量效果" class="headerlink" title="五 接口流量效果"></a>五 接口流量效果</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -788,17 +716,17 @@
 <h4 id="步骤-1："><a href="#步骤-1：" class="headerlink" title="步骤 1："></a>步骤 1：</h4><p>在 Mangle 标记上下行的标记，这里我们使用的下载标记链表为 prerouting，上传标记链表用的是forward。 </p>
 <a id="more"></a>
 
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2056.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2056.jpg" alt></p>
 <h4 id="步骤-2："><a href="#步骤-2：" class="headerlink" title="步骤 2："></a>步骤 2：</h4><p>在 Queue Type 里按照 200 台主机的数量，定义 PCQ 规则： </p>
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2058.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2058.jpg" alt></p>
 <h4 id="步骤-3："><a href="#步骤-3：" class="headerlink" title="步骤 3："></a>步骤 3：</h4><p>建立 Queue Tree 规则，记住保留一定带宽为缓冲， Un 我们保留 2M， Tel 我们保留 1.2M 带宽，这里下载使用的是 global-in，上传使用的是 global-out，记住 prerouting 和 input 链表标记的数据选择 global-in，其他两个链表 forward 和 output 则选择 global-out。</p>
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2059.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2059.jpg" alt></p>
 <h3 id="HTB-游戏优先"><a href="#HTB-游戏优先" class="headerlink" title="HTB 游戏优先"></a>HTB 游戏优先</h3><p>通过 HTB 为游戏预留带宽，保证在下载和视频情况下，游戏照样流畅， HTB+PCQ 组合实现，我们根据上面的实例配置，做以下配置调整： 步骤 1：在原有的动态的 PCQ 流控规则上进行改进，首先导入游戏端口，建立新的 gamesdown 链表，将游戏与其他数据区分出来 </p>
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2061.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2061.jpg" alt></p>
 <p>通过将指定的数据转移到游戏链表进行过滤和数据包处理： </p>
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2062.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2062.jpg" alt></p>
 <p>假设 Tel 带宽是 11M，预留 2M 为缓冲带宽，最大带宽为 9M， Tel 线路下行的 HTB 设置，游戏优先级为 1 最高，其他下行数据为 8 最低；这里游戏只分配了 3M 最大带宽，最低保证 2M，对于游戏带宽较小不需要那么大；其他下行数据最低保证 6M。 </p>
-<p><img src="/2016/09/25/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2063.jpg" alt></p>
+<p><img data-src="/%E7%BD%91%E5%90%A7%E7%9A%84PCQ%E4%B8%8EHTB/img2063.jpg" alt></p>
 <p> 如果需要也可以为游戏流量配置 PCQ 规则， 定义一个游戏的 PCQ 队列类型 Queue-type 对每个用户进行带宽控控制。</p>
 ]]></content>
       <categories>
@@ -826,7 +754,7 @@
 <hr>
 <h4 id="Burst-事例"><a href="#Burst-事例" class="headerlink" title="Burst 事例"></a>Burst 事例</h4><p>我们设置的 Queue 速率参数： limit-at=1M , max-limit=2M , burst-threshold=1500k , burst-limit=4M Burst-time=16s</p>
 <p>客户将会下载一个4MByte（ 32Mbit，队列单位是bit）数据，下载将从0秒开始，第二次下载将开始于第17秒， 最后一分钟传输将停止。 </p>
-<p><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg" alt><br><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg" alt> </p>
+<p><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg" alt><br><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg" alt> </p>
 <p>如同我们看到的客户要求的带宽 burst 在 6 秒钟能达到 4Mbps。这个最长的 burst 时间具有一个值（ 最长突发时间 = burst-threshold * burst-time / burst-limit）。很快 burst 用完突发时间，剩下的数据下载将到 2Mbps。在 9秒钟后数据被下载完，一段时间没有流量， Burst 有 7 秒钟的空闲，并重新计算，第 16 秒开始将有新的下载开始。  </p>
 <p><strong>注:从这个事例我们证明可以发生在下载的中间部分， Burst 持续了 4</strong> <strong>秒钟。</strong> </p>
 <p>每个 Average rate（平均速率）是根据 burst time 的 1/16，因此这个事例是 1 秒钟 计算一次平均速率</p>
@@ -1033,7 +961,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h4 id="当-Burst-time-8s"><a href="#当-Burst-time-8s" class="headerlink" title="当 Burst-time=8s"></a>当 Burst-time=8s</h4><p><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg" alt><br><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg" alt> </p>
+<h4 id="当-Burst-time-8s"><a href="#当-Burst-time-8s" class="headerlink" title="当 Burst-time=8s"></a>当 Burst-time=8s</h4><p><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg" alt><br><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg" alt> </p>
 <p>如果我们减少 burst-time 为 8 秒，我们能看到在这个事例中 burst 仅在下载开始 每个 Average rate（平均速率）是根据 burst time 的 1/16，因此这个事例是 0.5 秒钟计算一次平均速</p>
 <table>
 <thead>
@@ -1441,19 +1369,19 @@
 <h3 id="PFIFO-及-BFIFO"><a href="#PFIFO-及-BFIFO" class="headerlink" title="PFIFO 及 BFIFO"></a>PFIFO 及 BFIFO</h3><p>这些队列规则是基于先进先出算法的(FIFO： First-In First-Out)。 PFIFO 和 BFIFO 的区别在于一个是以数据包为单位衡量的，而另一个是以字节为单位。其中只有一个叫做 pfifo-limit (bfifo-limit)的参数，它是用来定义一个 FIFO 队列可以容纳多少数据的。每一个不能排队（如果队列满了）的包都要被丢弃，队列长度过大会增加执行时间</p>
 <a id="more"></a>
 
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg" alt></p>
 <p>如果你的连接不拥塞的话，建议使用 FIFO 队列规则。</p>
 <hr>
 <h3 id="SFQ"><a href="#SFQ" class="headerlink" title="SFQ:"></a>SFQ:</h3><p>随机公平排序（ SFQ）不会一开始就对流量限制。它的主旨是当你的连接完全满的时候均衡业务流（ TCP 会话或者 UDP 流）。 SFQ 的公平性是由散列法和 round-robin 算法保证的。散列算法把会话流分成一个有限数量的子队列。在sfq-perturb 时间之后散列算法改变并划分会话流为其他子队列。 Round-robin 算法把从每个子队列的pcq-allot 字节按照顺序出队列。 </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg" alt></p>
 <p>整个 SFQ 队列可以容纳 128 个数据包并且对这些包有 1024 个子队列可用。对拥挤的连接使用 SFQ 可以保证一些连接不至于空等待（ starve）。</p>
 <hr>
 <h3 id="PCQ"><a href="#PCQ" class="headerlink" title="PCQ:"></a>PCQ:</h3><p>为了解决 SFQ 的不完美，每次连接排序 Per Connection Queuing (PCQ)便产生了。它是唯一一种能限流的无等级排序类型。它是一种去掉了随机特性的进化版 SFQ。 PCQ 也会根据 pcq-classifier 参数产生子队列。每个子队列都有一个 pcq-rate 的数据率限制和 pcq-limit 大小的数据包。 PCQ 队列的总大小不能大于pcq-total-limit 包。 以下实例说明了 PCQ 对数据包的用法，以它们的源地址分类。</p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg" alt></p>
 <p>如果你以 src-address 对包分类那么所有带有不同源 IP 地址的包将被集合在不同的子队列中。现在你可以使用 pcq-rate 参数对每一个子队列进行限制或均衡。或许最重要的部分是决定我们到底应该把这个队列附属到哪个接口上。如果我们把它依附在本地接口上，那么所有来自公网接口的数据流都将以 src-address（很可能这不是我们想要的）地址分组；相反地如果我们把它依附到公共接口，所有来自我们客户的数据都会以 src-address分组——于是我们可以很容易的限制或者均衡客户的上载。 用 pcq-classifier 分类后为了在子队列中均衡速率，设置 pcq-rate 为 0 几乎不用管理， PCQ 也可以用来对多用户动态均衡或者形成流量，</p>
 <hr>
 <h3 id="RED"><a href="#RED" class="headerlink" title="RED:"></a>RED:</h3><p>随机早先探测（ RED）是一种通过控制平均队列长度避免网络拥塞的排序机制。当平均队列长度达到red-min-threshold 时， RED 随机选择该丢弃哪个包。当平均队列长度变长时，堆砌多少包数的可能性会增加。如果平均队列长度达到 red-max-threshold， 则丢弃该包。尽管如此，也存在真实队列长度（非平均的）远大于 red-max-threshold 时，丢弃所有超过 red-limit 的数据包的情况。 </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg" alt></p>
 <p><strong>注： RED 应用在高数据率的拥挤的连接上，它在 TCP 协议上工作的很好，但在 UDP 上就没那么理想了。</strong>  </p>
 <table>
 <thead>
@@ -1546,7 +1474,7 @@
 <hr>
 <h4 id="Bursts"><a href="#Bursts" class="headerlink" title="Bursts:"></a>Bursts:</h4><p>脉冲串用来在一段很短的时间允许更高数据率。每 1/16 burst-time 时间，路由器都会计算每个类在上一个 burst-time时间的平均数据率。如果这个平均数据率小于 burst-threshold，脉冲串就会被启用且实际数据率达到 burst-limit bps，否则实际数据率将跌至 max-limit 或 limit-at。</p>
 <p>让我们考虑如果我们有个 max-limit=256000， burst-time=8， burst-threshold=192000 以及burst-limit=512000 的设置情况。当一个用户通过 HTTP 下载一个文件，我们可以观察到这样的现象： </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg" alt></p>
 <p>在最开始的 8 秒中平均数据率是 0bps 因为在应用队列规则前没有流量通过。由于这个平均数据率小与 burst-threshold(192kbps)，所以脉冲串会被使用。在第一秒之后，平均数据率为(0+0+0+0+0+0+0+512)/8=64kbps， 低于burst-threshold。 在第二秒后，平均数据率为(0+0+0+0+0+0+512+512)/8=128kbps。 在第三秒之后达到临界点。 此时平均数据率变得大于 burst-threshold。 这个时候脉冲串将被禁用且当前数据率降至 max-limit (256kbps)。</p>
 ]]></content>
       <categories>
@@ -1557,13 +1485,66 @@
       </tags>
   </entry>
   <entry>
+    <title>ROS的流控原理</title>
+    <url>/2016/09/25/ROS%E7%9A%84%E6%B5%81%E6%8E%A7%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>Queue 流控用于对网络接口数据流发送和接收数据进行控制。传输流量被控制在指定的范围值内， 即传输的流量只能小于或等于这个值， 反之超过的流量将会被丢弃或延迟发送。</p>
+<hr>
+<p><strong>流控执行两种方式：</strong> </p>
+<ul>
+<li>丢弃所有超出的流量限制的数据包– <strong>rate limiting</strong> (丢弃或整形流量) ，当 queue-size=0 100%流量被限制</li>
+<li>延迟发送超出指定流量限制加入到队列中的数据– <strong>rate equalizing</strong> (计划任务) ，当 queue-size=无限制（ unlimited） 100%比例均衡发送<br>下面的视图让你进一步理解 <strong>rate limiting</strong> 和 <strong>rate equalizing</strong> 的区别：<br><img data-src="/ROS%E7%9A%84%E6%B5%81%E6%8E%A7%E5%8E%9F%E7%90%86/1.jpg" alt><a id="more"></a>
+上图显示了所有传输流量超出了指定带宽的那部分被直接丢弃掉。<br><img data-src="/ROS%E7%9A%84%E6%B5%81%E6%8E%A7%E5%8E%9F%E7%90%86/2.jpg" alt></li>
+</ul>
+<p>上图显示了当传输流量超出了指定带宽的那部分，将进入队列容器（ queue-size） 并延迟发送。注意：数据包被延迟只会在队列容器没有满的情况下，如果队列容器没有多余的空间缓存数据包，数据包同样会被丢弃。 在 RouterOS 队列容器可以通过/queue type 指定，每种类型的 queue type 有不同的队列长度大小，可以指定数据包和字节 (pfifo-limit, bfifo-limit, pcq-limit, pcq-total-limit, red-limit), 但所有的类型原则上是一样的，即 queue-size 决定数据包是被丢弃还是延迟发送。<br><img data-src="/ROS%E7%9A%84%E6%B5%81%E6%8E%A7%E5%8E%9F%E7%90%86/3.jpg" alt></p>
+<p><strong>每个队列都有</strong> <strong>2</strong> <strong>个速率限制：</strong><br><strong>CIR</strong> (约定信息速率 Committed Information Rate) – (在 RouterOS 中的参数为 limit-at) 最坏的情况下，无论如何都会将得到给定的的 CIR 传输量(假设我们能发送那么多的数据量)。<br><strong>MIR</strong> (最大信息速率 Maximal Information Rate) – (在 RouterOS 中的参数为 max-limit) 最好的情况下，如果有剩余带宽， 才能获得这个的带宽。 </p>
+<p>队列执行在 RouterOS 基于等级令牌桶 Hierarchical Token Bucket (HTB)， HTB 允许创建等级队列结构并能指定队列直接的关系，在 RouterOS v6.0 之前等级结构能被指定在 4 个不同的位置</p>
+<ul>
+<li><strong>global-in</strong> - 代表了所有输入接口(INGRESS 队列)。请注意在数据包过滤前与 global-in 相关的队列应用到路由器接的数据流。 global-in 排序就是在 mangle 和 dst-nat 之后执行。</li>
+<li><strong>global-out</strong> - 代表了所有普通的输出接口。附属于它的队列会在附属于特定接口的队列之前应用。</li>
+<li><strong>global-total</strong> - 表了一个流经路由器的数据都能通过的虚拟接口。当把一个 qdisc 附属到 global-total时，限制需要在两个方向起作用。例如，如果我们设置一个为 total-max-limit 256000 限制，我们将得到 upload+download=256kbps(最大值)</li>
+</ul>
+<p><strong>interface name</strong> - 明确指定的网络接口，在流量从这个接口发送出去时将被放入 HTB 队列 </p>
+<p><strong>注意 v6.0 后取消了 global-in 和 global-out 接口，使用 global</strong> <strong>代替。</strong></p>
+<p><strong>RouterOS</strong> <strong>中有两种方式配置队列：</strong><br><strong>/queue simple</strong> – 用于简单的队列配置，如直接对单个用户的上下行带宽控制，队列的时间计划任务。<br><strong>/queue tree</strong> – 为执行高级的队列任务，如全局的优先策略，用户组带宽控制，需从/ip firewall mangle标记数据包中调用。</p>
+]]></content>
+      <categories>
+        <category>技术讨论</category>
+      </categories>
+      <tags>
+        <tag>queue simple</tag>
+        <tag>queue tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROS高性能nat实践实例</title>
+    <url>/2016/09/25/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>这个部分是 RouterOS 对大流量 nat 网关的实践做介绍， RouterOS v6 配合 Intel 至强处理器搭建了一个 nat网关设备， 单台处理超过 1.5G 的网络流量，前期采用 18 条多线路接入，每条 100M， PCC 负载均衡，两个千兆以太网卡连接华为 5700 交换机， 这个实践配置供大家参考：<br><strong>系统配置：</strong><br>CPU： Intel Xen 5606 × 2 （未打开超线程，一共使用 8 核）+ Intel 芯片组（别人的主机，主板只知道是 ASUS，型号没有记）<br>内存： DDR3 ECC 内存 2G ×2 （双通道需要配置 2 根 2G 内存，当然 RouterOS 只能识别 2G）<br>硬盘： 1G Flash<br>网卡： Intel 82580 4 口网卡，每个网口中断 8<br>RouterOS v6.6， 功能包：仅安装 system、 ppp 和 advanced-tools</p>
+<a id="more"></a>
+<p>使用中，手动调整了 IRQ，指定网卡每个终端负载到相应的 CPU：</p>
+<p><img data-src="/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/1.jpg" alt></p>
+<p>该配置主要用于跑 nat，其配置均省略，但出现过配置 simple queue 做整体流控后自动重启现象，后取消流控配置后，运行均无出现死机情况，这点估计是 RouterOS 在 Queue 还存在 bug。 共计 18 条，总 nat 处理流量达到 1.6G 左右，下面是两张网卡的流量截图： </p>
+<p><img data-src="/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/2.jpg" alt></p>
+<p>CPU 负载情况：<br><img data-src="/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/3.jpg" alt></p>
+<p>CPU 保持在 70%以内，运行无异常， session 数大约 24k 左右 。 个人更多希望是能多跑点会话，这样知道RouterOS v6 版本的 nat 会话性能如何， 但有人说如果上行流量上去了， CPU 会比较高，但我更关心的是会话数，因为衡量 nat 转发性能会话数很非常重要的。 经过进一步测试，这套系统在 22 条 100M 线路 PCC 负载均衡后，流量只能达到 1.7G，且 CPU 在 83%左右，无法跑到 2 条千兆链路的 95% 。但如果拆分为 2 台服务器，每台 11 条 100M 线路做 PCC，链路使用率不仅能到 95%，且 CPU 都维持在 30%以内， 2 台 CPU 加起来不到 60%，远低于一台的 83%，因此 PCC 规则增加对系统负载也成倍增长，同时 nat 对 RouterOS。 </p>
+<p>该平台已经稳定运行了 225 天： </p>
+<p><img data-src="/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/4.jpg" alt></p>
+<p>在此案例中网卡的中断数量对 CPU 均衡起到较大作用，所以在针对大流量的网络处理上，配合多 CPU 必须选择中断数高的网卡， 以上内容供大家参考 !</p>
+]]></content>
+      <categories>
+        <category>技术讨论</category>
+      </categories>
+      <tags>
+        <tag>NAT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BCP 协议</title>
     <url>/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<p>RouterOS 支持 BCP(Bridge Control Protocol)，即在 PPP、 PPTP、 L2TP 和 PPPoE 接口上的桥接（ OVPN和 SSTP 不支持）。 BCP 协议通过 PPP 协议，将两个远端的以太网数据链路打通。 BCP 建立后独立于 PPP 隧道，将不会与任何 PPP 的 IP 地址接口有关系。 BCP 能用于替代 EoIP+VPN 隧道， EoIP 要求对等的网络连接，而BCP 为网络提供另一种方式的解决，特别是一端在 nat 网络内，经过测试能正常透过 nat 网络透传二层数据。<br>BCP (Bridge Control Protocol)需要在两边同时启用才能工作(PPP 服务器和 PPP 客户端)。 MikroTikRouterOS 也可应用于其他的 PPP 设备，要求这个设备支持标准的 BCP 协议。</p>
 <hr>
 <h3 id="配置事例"><a href="#配置事例" class="headerlink" title="配置事例"></a>配置事例</h3><a id="more"></a>
 <p>我们需要相互连接 2 个远程办公室，并让他们在同一个以太网内工作。我们要求使用加密（ encryption）保护 2个办公室的数据交换。 如下图，我有 2 个办公室，办公室 1 设置为 PPTP 服务器，办公室 2 设置为 PPTP 客户端。下面通过 winbox和 CLI 介绍配置：</p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2412.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2412.jpg" alt></p>
 <h4 id="Office1-配置"><a href="#Office1-配置" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>首先我们需要建立一个桥接口，并确保桥接将一直有 MAC 地址存在。原因很简单，当 BCP 被使用 PPP 桥接 port中，不会有任何 MAC 地址生成。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/interface bridge add name=bridge_local protocol-mode=rstp</span><br><span class="line">/interface bridge port add bridge=bridge_local interface=ether1_local</span><br><span class="line">/interface bridge <span class="built_in">set</span> bridge_local admin-mac=xx:xx:xx:xx:xx:xx</span><br></pre></td></tr></table></figure>
 
@@ -1585,21 +1566,21 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/interface pptp-client add profile=ppp_bridging mrru=1600 connect-to=1.1.1.1 user=ppp1 password=ppp1 disabled=no</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="BCP-winbox-配置"><a href="#BCP-winbox-配置" class="headerlink" title="BCP winbox 配置"></a>BCP winbox 配置</h3><h4 id="Office1-配置-1"><a href="#Office1-配置-1" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>在 bridge 中添加一个桥，并设置 rstp:</p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2415.jpg" alt><br>在 port 中， 添加桥接的接口，我们添加 ether1 到 port 用于连接内网： </p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2418.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2415.jpg" alt><br>在 port 中， 添加桥接的接口，我们添加 ether1 到 port 用于连接内网： </p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2418.jpg" alt></p>
 <p>设置静态的 MAC-address:</p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2420.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2420.jpg" alt></p>
 <p>分配 IP addresses:</p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2423.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2423.jpg" alt></p>
 <p>创建 PPP profile，并设置 bridge 参数 </p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2425.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2425.jpg" alt></p>
 <p>添加 PPP 客户端 </p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2428.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2428.jpg" alt></p>
 <p>启用 PPTP-server, PPTP 服务器的 MRRU 一定要设置为 1600，否则会导致网页无法打开的情况。 </p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2430.jpg" alt></p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2430.jpg" alt></p>
 <hr>
 <h4 id="Office2-配置-1"><a href="#Office2-配置-1" class="headerlink" title="Office2 配置"></a>Office2 配置</h4><p>客户端路由器配置相同，只是你需要配置并启用 PPTP 客户端， 添加 PPTP client，同样需要设置 MRRU=1600，然后配置 pptp 拨号信息： </p>
-<p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2433.jpg" alt> </p>
+<p><img data-src="/BCP%E5%8D%8F%E8%AE%AE/img2433.jpg" alt> </p>
 <p>在实际网络应用中，也可以将 vlan 和 ppp 做到一个 bridge 中，通过 vlan 来划分远端桥接的区域，桥接隧道的互联网应用有很多种，特别是互联网企业网络和运营网络涉及较多。</p>
 ]]></content>
       <categories>
@@ -1613,22 +1594,22 @@
     <title>同时建立 PPTP 和 L2TP 服务器</title>
     <url>/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<p>首先我们先看一下 PPTP 和 L2TP 的建立，同样是在 PPP 的目录下， interface 菜单中，选择 PPTP-Server 和L2TP-Server 并启用服务： </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2396.jpg" alt> </p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2396.jpg" alt> </p>
 <a id="more"></a>
 <p>在 L2TP 服务器配置下多了 Use IPsec 选项，这是在 RouterOS 6.16 后加入的 IPsec 选项，方便 windows 客户端的连接， Default-Profile 类型选择 default-encryption， Autentication 认证方式也可以选择相同方式。 </p>
 <p>这里我们举一个实例，我们建立了一个主机的 VPN 服务，同时启用 PPTP 和 L2TP 方式，分配远程 IP 为192.168.89.2-192.168.89.254 的地址池，我用 192.168.89.1 做为 VPN 隧道的本地 IP。 </p>
 <p>首先我进入 ip pool 中配置地址池： </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2398.jpg" alt>  </p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2398.jpg" alt>  </p>
 <p>配置好地址池后，在PPP Profiles 中使用默认的default-encryption 组规则，配合本地IP 地址192.168.89.1，在远程 remote-address 种配置之前添加号的地址池 VPN，设置 DNS 为 119.6.6.6,其他配置参数如下： </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2399.jpg" alt></p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2399.jpg" alt></p>
 <p>在 limits 选项中，配置相应的 Idle-timeout（空闲超时时间） 为 10 分钟、 Rate-limit（带宽） 为 1M 上行和2M 下行，配置 Only-one（帐号是否唯一性）： </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2401.jpg" alt></p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2401.jpg" alt></p>
 <p>在 PPP secret 中配置用户， 账号 yus，密码 yus， service 参数用于选择 VPN 类型，这里设置为默认 any 这样支持 L2TP 和 PPTP 登陆方式， profile 为 default-encryption: </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2402.jpg" alt> </p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2402.jpg" alt> </p>
 <p>配置完成后，我们便可以通过 PPTP 或者 L2TP 连接 RouterOS 的 VPN 服务，在 windows 下可以通过 PPTP的方式直接连接 RouterOS 的 VPN 服务， 由于 windows 要求 L2TP 进行 IPsec 的加密方式连接， 所以需要在L2TP 配置 IPsec 密钥， 如果不考虑使用 IPsec 的 L2TP 连接，可以修改 windows 注册表。</p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2404.jpg" alt>  </p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2404.jpg" alt>  </p>
 <p>Windows 配置在 VPN 属性中，选择“安全”， VPN 类型选择“使用 IPsec 的第 2 层隧道协议（ L2TP/IPsec）”，点击“高级设置”，设置“使用预共享的密钥作为身份验证” </p>
-<p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2405.jpg" alt> </p>
+<p><img data-src="/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2405.jpg" alt> </p>
 <p>L2TP 的 Windows 注册表修改<br>这里介绍的是在 Windows 下不使用 IPsec 的 L2TP 连接，后面有提到如何配置 RouterOS 使用 L2TP/IPsec的 Windows 连接。这里介绍修改 windows 的 L2TP 注册表，缺省的 Windows XP L2TP 传输策略不允许 L2TP传输不使用 IPSec 加密。可以通过修改 Windows XP 注册表来禁用缺省的行为，手工修改：</p>
 <p>1) 进入 Windows XP 的开始 运行里面输入―Regedit，打开―注册表编辑器，定位―HKEY_Local_Machine \ System \ CurrentControl Set \ Services \ RasMan \Parameters ‖ 主键。<br>2) 为该主键添加以下键值： </p>
 <ul>
@@ -1740,14 +1721,14 @@
       </tags>
   </entry>
   <entry>
-    <title>[转]ros怎么配置DMZ?</title>
-    <url>/2016/09/22/%5B%E8%BD%AC%5Dros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/</url>
+    <title>ros怎么配置DMZ?</title>
+    <url>/2016/09/22/ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/</url>
     <content><![CDATA[<p>简单的说，当我们内网服务器的所有端口都需要开放到外网的时候，我们需要使用DMZ功能。本文将演示如何将内网IP10.10.10.2的所有端口映射，开放到公网： </p>
 <p><strong>DMZ是英文“demilitarized zone”的缩写，中文名称为“隔离区”，也称“非军事化区”。</strong></p>
+<p>它是为了解决安装防火墙后外部网络不能访问内部网络服务器的问题，而设立的一个非安全系统与安全系统之间的缓冲区，这个缓冲区位于企业内部网络和外部网络之间的小网络区域内，在这个小网络区域内可以放置一些必须公开的服务器设施，如企业Web 服务器、FTP 服务器和论坛等。<br>另一方面，通过这样一个DMZ 区域，更加有效地保护了内部网络，因为这种网络部署，比起一般的防火墙方案，对攻击者来说又多了一道关卡。 路由器一般需要3 张网卡（Public 公网，Local 本地网络，DMZ-Zone 非军事区）</p>
 <a id="more"></a>
-<p>它是为了解决安装防火墙后外部网络不能访问内部网络服务器的问题，而设立的一个非安全系统与安全系统之间的缓冲区，这个缓冲区位于企业内部网络和外部网络之间的小网络区域内，在这个小网络区域内可以放置一些必须公开的服务器设施，如企业Web 服务器、FTP 服务器和论坛等。<br>另一方面，通过这样一个DMZ 区域，更加有效地保护了内部网络，因为这种网络部署，比起一般的防火墙方案，对攻击者来说又多了一道关卡。 路由器一般需要3 张网卡（Public 公网，Local 本地网络，DMZ-Zone 非军事区） </p>
-<h3 id="操作路径：ip-firewall-NAT"><a href="#操作路径：ip-firewall-NAT" class="headerlink" title="操作路径：ip-firewall-NAT:"></a>操作路径：ip-firewall-NAT:</h3><p><img src="/2016/09/22/[%E8%BD%AC]ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/dmz-1.png" alt></p>
-<p><img src="/2016/09/22/[%E8%BD%AC]ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/dmz-2.png" alt></p>
+<h3 id="操作路径：ip-firewall-NAT"><a href="#操作路径：ip-firewall-NAT" class="headerlink" title="操作路径：ip-firewall-NAT:"></a>操作路径：ip-firewall-NAT:</h3><p><img data-src="/ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/dmz-1.png" alt></p>
+<p><img data-src="/ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/dmz-2.png" alt></p>
 <p>可以分多条处理比如TCP和UDP协议分开处理，如果8291用于管理ROS的话也要考虑。</p>
 ]]></content>
       <categories>
@@ -1766,8 +1747,8 @@
 <p>B. 操作系统的支持:<br>微软官方只有windows xp系统才支持UPNP功能，官方网站提到从WinMe开始就支持UPNP了，但我相信大家不会使用WinMe来做服务器吧, 所以我们制作了一个win2003下支持UPNP的补丁， 在 win2003 企业版 sp1 下测试通过，具体的安装细语请留意安装前提示信息, 服务器安装完UPNP，必须重启才生效. </p>
 <p>C. 软件支持UPNP功能：<br>注意：以上3个条件必须同时满足，缺一不可，否则你只能考虑进行手动端口映射了, 手工端口映射的效果只能有30%的有效率；下面详细介绍一下开启UPNP方面的细节工作. </p>
 <h4 id="二、开启路由UPNP功能"><a href="#二、开启路由UPNP功能" class="headerlink" title="二、开启路由UPNP功能."></a>二、开启路由UPNP功能.</h4><p>1、Winbox—-IP—UPnP—-UPnP Settings—-Enabled，如图： </p>
-<p><img src="/2016/09/21/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/1.png" alt><br>2、Winbox—-IP—UPnP—-添加，如图： </p>
-<p><img src="/2016/09/21/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/2.png" alt><br><img src="/2016/09/21/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/3.png" alt></p>
+<p><img data-src="/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/1.png" alt><br>2、Winbox—-IP—UPnP—-添加，如图： </p>
+<p><img data-src="/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/2.png" alt><br><img data-src="/ROS%E5%90%AF%E7%94%A8%E8%AE%BE%E7%BD%AEUPNP%E5%8A%9F%E8%83%BD/3.png" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -1967,7 +1948,7 @@
 <p>各符号代表:<br>– : 不支持<br>unlimited: 无限制<br>yes: 支持</p>
 <h3 id="如何查看-ROS-等级"><a href="#如何查看-ROS-等级" class="headerlink" title="如何查看 ROS 等级?"></a>如何查看 ROS 等级?</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/system license</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2016/04/20/mikrotik-routeros-%E5%90%84%E7%BA%A7%E6%8E%88%E6%9D%83%E7%9A%84%E5%8C%BA%E5%88%AB/ros%E7%AD%89%E7%BA%A7.jpg" alt></p>
+<p><img data-src="/mikrotik-routeros-%E5%90%84%E7%BA%A7%E6%8E%88%E6%9D%83%E7%9A%84%E5%8C%BA%E5%88%AB/ros%E7%AD%89%E7%BA%A7.jpg" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -1981,13 +1962,13 @@
   <entry>
     <title>ROS用户管理(usermanager)中文版/汉化</title>
     <url>/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/</url>
-    <content><![CDATA[<h3 id="汉化后截图："><a href="#汉化后截图：" class="headerlink" title="汉化后截图："></a>汉化后截图：</h3><p><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/2.jpg" alt></p>
+    <content><![CDATA[<h3 id="汉化后截图："><a href="#汉化后截图：" class="headerlink" title="汉化后截图："></a>汉化后截图：</h3><p><img data-src="/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/2.jpg" alt></p>
 <a id="more"></a>
 
-<p><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/1.jpg" alt></p>
+<p><img data-src="/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/1.jpg" alt></p>
 <h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><p>1.下载 <a href="https://wwa.lanzous.com/iBvandy3e4d" target="_blank" rel="noopener">zh_CN.rar</a> 解压为 zh_cn.lng文件(5.x和6.x版本都有,5.x是网络上流传的,6.x部分细节内容稍许自己翻译了下) </p>
-<p>2.通过winbox将文件拖拽上传至Files:<br><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/4.jpg" alt></p>
-<p>3.登陆userman原版，左下角选择语言版本即可：<br><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/3.jpg" alt></p>
+<p>2.通过winbox将文件拖拽上传至Files:<br><img data-src="/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/4.jpg" alt></p>
+<p>3.登陆userman原版，左下角选择语言版本即可：<br><img data-src="/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/3.jpg" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -2001,15 +1982,15 @@
     <title>User manager 配置指南</title>
     <url>/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>User manager是集成在RouterOS的一个功能包，可用于管理PPPOE,HOTSPOT等用户账号，我们使用前要确认RouterOS的system package里有user manager功能包。 </p>
-<p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-1.png" alt></p>
+<p><img data-src="/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-1.png" alt></p>
 <p>如果没有安装功能包，那么就需要下载一个RouterOS相同版本的user-manager.nkp。上传到files文件根目录下。通过reboot命令重启安装功能包。 </p>
 <p>在确认安装功能包后。我们登录user manager通过web页面和命令行配置，命令行在tool user-manager目录下配置。 </p>
 <p>User manager的web登录默认是80端口。访问路径为<a href="http://192.168.88.1/userman" target="_blank" rel="noopener">http://192.168.88.1/userman</a> </p>
 <a id="more"></a>
 
-<p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-2.png" alt></p>
+<p><img data-src="/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-2.png" alt></p>
 <p>User manager默认的登录名为admin，密码为空。登录后： </p>
-<p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-3.png" alt></p>
+<p><img data-src="/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-3.png" alt></p>
 <p><strong>您可以将userman汉化成中文后使用：<a href="http://www.rosjb.com/?p=513" target="_blank" rel="noopener">http://www.rosjb.com/?p=513</a></strong></p>
 <p>*使用命令行登录usermanager </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] /tool user-manager&gt;</span><br></pre></td></tr></table></figure>
@@ -2017,7 +1998,7 @@
 <p>示例：修改user manager默认登录帐号admin的密码（设置为123）。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] /tool user-manager&gt;customer</span><br><span class="line">[admin@MikroTik] /tool user-manager customer&gt; <span class="built_in">print</span></span><br><span class="line">Flags: X – disabled</span><br><span class="line">0 login=”admin” password=”123″ backup-allowed=yestime-zone=-00:00 permissions=ownersignup-allowed=no paypal-allowed=no paypal-secure-response=no paypal-accept-pending=no </span><br><span class="line">[admin@MikroTik] /tool user-managercustomer&gt; <span class="built_in">set</span> 0 password=123</span><br></pre></td></tr></table></figure>
 <p>Usermanager 操作界面介绍 </p>
-<p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-4.png" alt></p>
+<p><img data-src="/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-4.png" alt></p>
 <p>菜单栏：<br>Routers：连接到user manager的路由器IP地址和secret等参数<br>Users：用户帐号信息添加、编辑、删除等<br>Sessions：用户认证管理<br>Customers：添加顾客管理系统，可以建立多个用户管理系统<br>Logs：认证日志<br>Payments：用户付款记录信息<br>Profiles：用户计费策略<br>Settings：user manager网页设置参数、语言设置和网银付款接口设置<br>Reports：导出user manager统计报告<br>A users：在线用户 Advanced<br>search：高级搜索<br>Maintenance：数据维护<br>Logout：退出 </p>
 <p>功能区域：<br>Add：添加一个新的规则<br>Edit：对选中的规则进行编辑<br>Generate：生成备份文件 </p>
 <font color="red">
@@ -2043,13 +2024,12 @@
     <title>骗子名单</title>
     <url>/2016/01/10/%E9%AA%97%E5%AD%90%E5%90%8D%E5%8D%95/</url>
     <content><![CDATA[<p><strong>有的人喜欢靠坑蒙拐骗维持生计,最近发现有人收费调试ROS,收了别人的钱,最后没调试好,也不退钱.发生这种事,这种人必须曝光!</strong> </p>
-<p>为了不让更多的人受骗上当,专门开设了此板块,这些都是”先烈”用RMB换来的教训,希望其他人在找人调试ROS的时候,看清楚有没有下面的名单.(如果各位已经有过先前被骗的经历和教训,也可以直接联系我或者再此留言,让我们来完善这份名单.)</p>
+<p>为了不让更多的人受骗上当,专门开设了此板块,希望其他人在找人调试ROS的时候,看清楚有没有下面的名单.(如果各位已经有过先前被骗的经历和教训,也可以直接联系我或者再此留言,让我们共同抵制这种行为.)</p>
 <a id="more"></a>
 <hr>
 <h3 id="骗子名单"><a href="#骗子名单" class="headerlink" title="骗子名单"></a><strong>骗子名单</strong></h3><ul>
-<li>骗子001:QQ:497503128  QQ:2785378749  支付宝:<a href="mailto:386249051@qq.com">386249051@qq.com</a>  姓名:张寿坤  电话:15368395391 </li>
-<li>骗子002:QQ:594505775  电话:13556604526 </li>
-<li>骗子003.待添加   </li>
+<li>骗子001: QQ:497503128  QQ:2785378749  支付宝:<a href="mailto:386249051@qq.com">386249051@qq.com</a>  姓名:张寿坤  电话:15368395391</li>
+<li>骗子002: QQ:594505775  电话:13556604526</li>
 </ul>
 <p>PS:以上名单均为网友提供和证据!</p>
 ]]></content>
@@ -2058,8 +2038,8 @@
       </tags>
   </entry>
   <entry>
-    <title>[转载]RouterOS新功能CAPs(ROS的AC控制功能)可以无缝网络漫游[有视频]</title>
-    <url>/2015/12/26/%5B%E8%BD%AC%E8%BD%BD%5DRouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E6%9C%89%E8%A7%86%E9%A2%91%5D/</url>
+    <title>RouterOS新功能CAPs(ROS的AC控制功能)可以无缝网络漫游[视频]</title>
+    <url>/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E6%9C%89%E8%A7%86%E9%A2%91%5D/</url>
     <content><![CDATA[<p>MikroTik在14年的意大利MUM上，除了发布新的CCR、CRS和RB产品，还公布了一个新的功能——CAPs即 Controlled Access Point system Manager(CAPsMAN)，通俗点说，它就是一个AP控制器功能插件，可以将任何一台RouterOS变为AP控制器，只要安装CAP的功能包（集成在wireless-fp功能包中） </p>
 <p>它的功能就是用于集中控制你所有的RouterOS AP设备，以便快速部署大型无线网络【可以做到类似信号漫游，无缝切换，集中设置】 </p>
 <a id="more"></a>
@@ -2073,30 +2053,30 @@
 <li>CAPs功能包可以在<a href="http://www.mikrotik.com/download" target="_blank" rel="noopener">这里下载</a></li>
 <li>CAPsMAN的功能包可以独立安装到任何平台的RouterOS v6.11以上版本，CAPsMAN功能还在测试中，所以功能包为独立的wireless-fp-6.11-mipsbe.npk，安装后将替代原理的wireless功能包，功能包升级后wireless功能包被自动禁用，wireless-fp启用（该功能以后可能会合并），如下图：</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/1-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/1-1.jpg" alt></p>
 <ul>
 <li>开启Enable后reboot设备</li>
 <li>AC控制器端设置方法下，开启这个功能后进行配置</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/2-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/2-1.jpg" alt></p>
 <ul>
 <li>下面开始配置，配置名称，模式默认只能选AP，还有SSID名称，信号，安全方式等，做成一个个配置供后面选择和切换。</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/3-1.jpg" alt></p>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/4-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/3-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/4-1.jpg" alt></p>
 <ul>
 <li>上面的AC端配置完成后，配置AP端如图：点击无线–CAP，开启，interface是选择管理的无线网卡，Discovery Interface是连接到AC端的网口设备【如果是EoIP就选之】，下面那个10.0.0.254是我AC端设备的IP地址，默认可以不填他就优先用MAC进行对接。</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/5-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/5-1.jpg" alt></p>
 <ul>
 <li>完成对接之后，在AC端可以看到这个设备，你可以修改设备标识。</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/6-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/6-1.jpg" alt></p>
 <ul>
 <li>我建立一个Bridge，然后把控制接口和这个设备放在一起，如果你加入了多个AP设备，那就全部添加到这个桥里面，然后把DHCP或者其它服务分配给这个桥，他们每个AP就像接了个网线到你这里一样了。</li>
 </ul>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/8-1.jpg" alt></p>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/7-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/8-1.jpg" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/7-1.jpg" alt></p>
 <p>留意哦：这里如果你有2个或以上的AP端设备加入后，他们的信号名称是一样的哦，得到的效果就像无缝漫游一样，只要在多个设备覆盖范围内，就可以随意自动无缝切换不掉线。 甚至如果你是整条街都铺满这个设备，还可以通过外网建立EoIP来建立虚拟隧道来统一远程接入和管理。</p>
 <p>即CAPsMAN为CAP管理器菜单，CAP为被管理网卡菜单<br>CAP连接到CAPsMAN<br>CAPsMAN系统要为无线网络提供管理控制，需要至少一个CAP必须与CAPsMAN建立连接。一个管理连接建立可以使用MAC或IP层协议和安全的DTLS，通常一个CAP能传递客户端数据连接到管理器，但数据连接并不安全，因此需要考虑数据安全的加密，例如IPSec或加密隧道。 </p>
 <p>CAP 连接到CAPsMAN 能建立连接使用以下两种传输协议： </p>
@@ -2107,7 +2087,7 @@
 <p>当可以获取的CAPsMAN列表建立，CAP选择一个CAPsMAN基于以下规则：<br>§ 如果 caps-man-names 参数指定管理名称（CAPsMAN的/system identity）CAP将优先选择。如果该参数为空，将连接其他CAPsMAN。<br>§ MAC层连接优先级高于IP层连接<br>当管理器被选择后，CAP尝试建立<a href="https://baike.baidu.com/view/2071633.htm?fr=aladdin" target="_blank" rel="noopener">DTLS</a>连接。 </p>
 <p>CAPsMAN与CAP实例 </p>
 <p>下面是一个简单的CAP实例，假设我们网络中只有一个CAPsMAN和一个CAP，他们之间通过二层网络连接。</p>
-<p><img src="/2015/12/26/[%E8%BD%AC%E8%BD%BD]RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/41-1.png" alt></p>
+<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/41-1.png" alt></p>
 <p>参考资料： 官方wiki：<a href="http://wiki.mikrotik.com/wiki/Manual:CAPsMAN" target="_blank" rel="noopener">http://wiki.mikrotik.com/wiki/Manual:CAPsMAN</a></p>
 <hr>
 <p><strong>参考视频教程(搬砖视频):</strong></p>
@@ -2122,8 +2102,8 @@
       </tags>
   </entry>
   <entry>
-    <title>[转载]ROS防火墙过滤简介</title>
-    <url>/2015/12/24/%5B%E8%BD%AC%E8%BD%BD%5DROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/</url>
+    <title>ROS防火墙过滤简介</title>
+    <url>/2015/12/24/ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<p>在RouterOS 通过ip firewall 能对IP数据包过滤、P2P协议过滤、源和目标IP、端口、IP协议、协议（ICMP、TCP、MSS等）、网络接口、对内部的数据包和连接作标记、ToS字节、内容过滤、顺序优先与数据频繁和时间控制、包长度控制…</p>
 <p>从数据传输上分类：分为input、foreward和output三种链表（chain）过滤，不管是二层或者三层过滤上都包含这三个链表。RouterOS的防火墙包括了对address-list和L7-protocol等调用</p>
 <p><strong>快速设置向导</strong></p>
@@ -2190,11 +2170,11 @@
 <h4 id="output"><a href="#output" class="headerlink" title="output"></a>output</h4><p>– 用于处理源于路由器并从其中一个接口出去的数据包。</p>
 <p>他们具体的区别如下：</p>
 <p>IP 数据包进入input 链表的数据工作流程：</p>
-<p><img src="/2015/12/24/[%E8%BD%AC%E8%BD%BD]ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/input.jpg" alt></p>
+<p><img data-src="/ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/input.jpg" alt></p>
 <p>IP 数据包进入output 链表的流程：</p>
-<p><img src="/2015/12/24/[%E8%BD%AC%E8%BD%BD]ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/output.jpg" alt></p>
+<p><img data-src="/ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/output.jpg" alt></p>
 <p>IP 数据进入forward 链表的流程:</p>
-<p><img src="/2015/12/24/[%E8%BD%AC%E8%BD%BD]ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/forward.jpg" alt></p>
+<p><img data-src="/ROS%E9%98%B2%E7%81%AB%E5%A2%99%E8%BF%87%E6%BB%A4%E7%AE%80%E4%BB%8B/forward.jpg" alt></p>
 ]]></content>
       <categories>
         <category>技术讨论</category>
@@ -2205,8 +2185,8 @@
       </tags>
   </entry>
   <entry>
-    <title>[转载]Ros设置6to4通道访问ipv6网络</title>
-    <url>/2015/07/23/%5B%E8%BD%AC%E8%BD%BD%5DRos%E8%AE%BE%E7%BD%AE6to4%E9%80%9A%E9%81%93%E8%AE%BF%E9%97%AEipv6%E7%BD%91%E7%BB%9C/</url>
+    <title>Ros设置6to4通道访问ipv6网络</title>
+    <url>/2015/07/23/Ros%E8%AE%BE%E7%BD%AE6to4%E9%80%9A%E9%81%93%E8%AE%BF%E9%97%AEipv6%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<p>Ipv4地址已经使用殆尽，ipv6网络国内各大运营商还没有正式部署，现在要想使用ipv6网络只能通过安装软件或者设置6to4通道方式进行，下面的方法可以使你在routeros上设置一个6to4通道，从而使局域网中的所有用户不需要特别设置就可以使用ipv6网络。下面看一下做法:  </p>
 <hr>
 <a id="more"></a>

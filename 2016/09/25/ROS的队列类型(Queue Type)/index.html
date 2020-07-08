@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
@@ -16,12 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="操作路径: 1&#x2F;queue type  在这个子目录你可以创建自己的客户队列类型。之后，将可以在 &#x2F;queue tree，&#x2F;queue simple 或 &#x2F;queue interface 使用了  PFIFO 及 BFIFO这些队列规则是基于先进先出算法的(FIFO： First-In First-Out)。 PFIFO 和 BFIFO 的区别在于一个是以数据包为单位衡量的，而另一个是以字节为单位">
@@ -31,17 +28,17 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="操作路径: 1&#x2F;queue type  在这个子目录你可以创建自己的客户队列类型。之后，将可以在 &#x2F;queue tree，&#x2F;queue simple 或 &#x2F;queue interface 使用了  PFIFO 及 BFIFO这些队列规则是基于先进先出算法的(FIFO： First-In First-Out)。 PFIFO 和 BFIFO 的区别在于一个是以数据包为单位衡量的，而另一个是以字节为单位">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg">
+<meta property="og:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg">
 <meta property="article:published_time" content="2016-09-25T12:51:36.000Z">
 <meta property="article:modified_time" content="2020-06-22T14:04:49.089Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="Queue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg">
+<meta name="twitter:image" content="http://rosjb.github.io/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg">
 
 <link rel="canonical" href="http://rosjb.github.io/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/">
 
@@ -182,10 +179,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -243,14 +236,7 @@
                 </span>
             </span>
 
-          
-            <span id="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/" class="post-meta-item leancloud_visitors" data-flag-title="ROS的队列类型(Queue Type)" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span><br>
+          <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -282,19 +268,19 @@
 <h3 id="PFIFO-及-BFIFO"><a href="#PFIFO-及-BFIFO" class="headerlink" title="PFIFO 及 BFIFO"></a>PFIFO 及 BFIFO</h3><p>这些队列规则是基于先进先出算法的(FIFO： First-In First-Out)。 PFIFO 和 BFIFO 的区别在于一个是以数据包为单位衡量的，而另一个是以字节为单位。其中只有一个叫做 pfifo-limit (bfifo-limit)的参数，它是用来定义一个 FIFO 队列可以容纳多少数据的。每一个不能排队（如果队列满了）的包都要被丢弃，队列长度过大会增加执行时间</p>
 <a id="more"></a>
 
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1943.jpg" alt></p>
 <p>如果你的连接不拥塞的话，建议使用 FIFO 队列规则。</p>
 <hr>
 <h3 id="SFQ"><a href="#SFQ" class="headerlink" title="SFQ:"></a>SFQ:</h3><p>随机公平排序（ SFQ）不会一开始就对流量限制。它的主旨是当你的连接完全满的时候均衡业务流（ TCP 会话或者 UDP 流）。 SFQ 的公平性是由散列法和 round-robin 算法保证的。散列算法把会话流分成一个有限数量的子队列。在sfq-perturb 时间之后散列算法改变并划分会话流为其他子队列。 Round-robin 算法把从每个子队列的pcq-allot 字节按照顺序出队列。 </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1945.jpg" alt></p>
 <p>整个 SFQ 队列可以容纳 128 个数据包并且对这些包有 1024 个子队列可用。对拥挤的连接使用 SFQ 可以保证一些连接不至于空等待（ starve）。</p>
 <hr>
 <h3 id="PCQ"><a href="#PCQ" class="headerlink" title="PCQ:"></a>PCQ:</h3><p>为了解决 SFQ 的不完美，每次连接排序 Per Connection Queuing (PCQ)便产生了。它是唯一一种能限流的无等级排序类型。它是一种去掉了随机特性的进化版 SFQ。 PCQ 也会根据 pcq-classifier 参数产生子队列。每个子队列都有一个 pcq-rate 的数据率限制和 pcq-limit 大小的数据包。 PCQ 队列的总大小不能大于pcq-total-limit 包。 以下实例说明了 PCQ 对数据包的用法，以它们的源地址分类。</p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1946.jpg" alt></p>
 <p>如果你以 src-address 对包分类那么所有带有不同源 IP 地址的包将被集合在不同的子队列中。现在你可以使用 pcq-rate 参数对每一个子队列进行限制或均衡。或许最重要的部分是决定我们到底应该把这个队列附属到哪个接口上。如果我们把它依附在本地接口上，那么所有来自公网接口的数据流都将以 src-address（很可能这不是我们想要的）地址分组；相反地如果我们把它依附到公共接口，所有来自我们客户的数据都会以 src-address分组——于是我们可以很容易的限制或者均衡客户的上载。 用 pcq-classifier 分类后为了在子队列中均衡速率，设置 pcq-rate 为 0 几乎不用管理， PCQ 也可以用来对多用户动态均衡或者形成流量，</p>
 <hr>
 <h3 id="RED"><a href="#RED" class="headerlink" title="RED:"></a>RED:</h3><p>随机早先探测（ RED）是一种通过控制平均队列长度避免网络拥塞的排序机制。当平均队列长度达到red-min-threshold 时， RED 随机选择该丢弃哪个包。当平均队列长度变长时，堆砌多少包数的可能性会增加。如果平均队列长度达到 red-max-threshold， 则丢弃该包。尽管如此，也存在真实队列长度（非平均的）远大于 red-max-threshold 时，丢弃所有超过 red-limit 的数据包的情况。 </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1955.jpg" alt></p>
 <p><strong>注： RED 应用在高数据率的拥挤的连接上，它在 TCP 协议上工作的很好，但在 UDP 上就没那么理想了。</strong>  </p>
 <table>
 <thead>
@@ -387,7 +373,7 @@
 <hr>
 <h4 id="Bursts"><a href="#Bursts" class="headerlink" title="Bursts:"></a>Bursts:</h4><p>脉冲串用来在一段很短的时间允许更高数据率。每 1/16 burst-time 时间，路由器都会计算每个类在上一个 burst-time时间的平均数据率。如果这个平均数据率小于 burst-threshold，脉冲串就会被启用且实际数据率达到 burst-limit bps，否则实际数据率将跌至 max-limit 或 limit-at。</p>
 <p>让我们考虑如果我们有个 max-limit=256000， burst-time=8， burst-threshold=192000 以及burst-limit=512000 的设置情况。当一个用户通过 HTTP 下载一个文件，我们可以观察到这样的现象： </p>
-<p><img src="/2016/09/25/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg" alt></p>
+<p><img data-src="/ROS%E7%9A%84%E9%98%9F%E5%88%97%E7%B1%BB%E5%9E%8B(Queue%20Type)/img1957.jpg" alt></p>
 <p>在最开始的 8 秒中平均数据率是 0bps 因为在应用队列规则前没有流量通过。由于这个平均数据率小与 burst-threshold(192kbps)，所以脉冲串会被使用。在第一秒之后，平均数据率为(0+0+0+0+0+0+0+512)/8=64kbps， 低于burst-threshold。 在第二秒后，平均数据率为(0+0+0+0+0+0+512+512)/8=128kbps。 在第三秒之后达到临界点。 此时平均数据率变得大于 burst-threshold。 这个时候脉冲串将被禁用且当前数据率降至 max-limit (256kbps)。</p>
 
     </div>
@@ -407,8 +393,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/" rel="prev" title="BCP 协议">
-      <i class="fa fa-chevron-left"></i> BCP 协议
+    <a href="/2016/09/25/ROS%E7%9A%84%E6%B5%81%E6%8E%A7%E5%8E%9F%E7%90%86/" rel="prev" title="ROS的流控原理">
+      <i class="fa fa-chevron-left"></i> ROS的流控原理
     </a></div>
       <div class="post-nav-item">
     <a href="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/" rel="next" title="RouterOS限速设置里的Burst(突发值)原理">
@@ -488,7 +474,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -499,7 +485,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -535,6 +521,10 @@
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -560,106 +550,16 @@
   <span class="author" itemprop="copyrightHolder">rosjb</span>
 </div>
 
-
-
         
 
 
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
 
 
 
 
-<script>
-  (function() {
-    function leancloudSelector(url) {
-      url = encodeURI(url);
-      return document.getElementById(url).querySelector('.leancloud-visitors-count');
-    }
-
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = decodeURI(visitors.id);
-      var title = visitors.dataset.flagTitle;
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            leancloudSelector(url).innerText = counter.time + 1;
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .catch(error => {
-                console.error('Failed to save visitor count', error);
-              });
-          } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return decodeURI(element.id);
-      });
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          for (let url of entries) {
-            let target = results.find(item => item.url === url);
-            leancloudSelector(url).innerText = target ? target.time : 0;
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"h3h5HDzo5DzjF0BhF2sO2Jta-gzGzoHsz","app_key":"pRuT01m32cYeGOeCwEt4XCyY","security":false};
-    function fetchData(api_server) {
-      var Counter = (method, url, data) => {
-        return fetch(`${api_server}/1.1${url}`, {
-          method,
-          headers: {
-            'X-LC-Id'     : app_id,
-            'X-LC-Key'    : app_key,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    }
-
-    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
-
-    if (api_server) {
-      fetchData(api_server);
-    } else {
-      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
-        .then(response => response.json())
-        .then(({ api_server }) => {
-          fetchData('https://' + api_server);
-        });
-    }
-  })();
-</script>
 
 
       </div>
@@ -670,6 +570,7 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

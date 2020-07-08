@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
@@ -16,12 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="VPN （虚拟专用网）发展至今已经不在是一个单纯的经过加密的访问隧道，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。 在网络上，有关各种VPN协议优缺点的比较是仁者见仁，智者见智，很多技术人员由于出于使用目的考虑，包括访问控制、安全和用户简单易用，灵活扩展等各方面，权衡利弊，难以取舍；尤其在VOIP语音环境中，网络安全显得尤为重要，">
@@ -31,16 +28,17 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="VPN （虚拟专用网）发展至今已经不在是一个单纯的经过加密的访问隧道，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。 在网络上，有关各种VPN协议优缺点的比较是仁者见仁，智者见智，很多技术人员由于出于使用目的考虑，包括访问控制、安全和用户简单易用，灵活扩展等各方面，权衡利弊，难以取舍；尤其在VOIP语音环境中，网络安全显得尤为重要，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png">
+<meta property="og:image" content="http://rosjb.github.io/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png">
 <meta property="article:published_time" content="2016-11-08T11:32:22.000Z">
-<meta property="article:modified_time" content="2020-06-22T07:58:18.411Z">
+<meta property="article:modified_time" content="2020-07-08T09:41:24.659Z">
 <meta property="article:author" content="rosjb">
-<meta property="article:tag" content="IPSec">
 <meta property="article:tag" content="PPTP">
+<meta property="article:tag" content="IPSec">
 <meta property="article:tag" content="L2TP">
 <meta property="article:tag" content="SSTP">
+<meta property="article:tag" content="OpenVPN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png">
+<meta name="twitter:image" content="http://rosjb.github.io/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png">
 
 <link rel="canonical" href="http://rosjb.github.io/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
@@ -181,10 +179,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -230,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-22 15:58:18" itemprop="dateModified" datetime="2020-06-22T15:58:18+08:00">2020-06-22</time>
+                <time title="修改时间：2020-07-08 17:41:24" itemprop="dateModified" datetime="2020-07-08T17:41:24+08:00">2020-07-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,14 +236,7 @@
                 </span>
             </span>
 
-          
-            <span id="/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-meta-item leancloud_visitors" data-flag-title="PPTP、L2TP、IPSec、OpenVPN和SSTP的区别" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span><br>
+          <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -276,11 +263,11 @@
       
         <p>VPN （虚拟专用网）发展至今已经不在是一个单纯的经过加密的访问隧道，它已经融合了访问控制、传输管理、加密、路由选择、可用性管理等多种功能，并在全球的信息安全体系中发挥着重要的作用。 在网络上，有关各种VPN协议优缺点的比较是仁者见仁，智者见智，很多技术人员由于出于使用目的考虑，包括访问控制、安全和用户简单易用，灵活扩展等各方面，权衡利弊，难以取舍；尤其在VOIP语音环境中，网络安全显得尤为重要，因此现在越来越多的网络电话和语音网关支持VPN协议。 主流的VPN协议有PPTP、L2TP、IPSec、OpenVPN和SSTP，具体区别如下：</p>
 <a id="more"></a>
-<p><img src="/2016/11/08/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png" alt></p>
-<p><strong>一、PPTP</strong><br>点对点隧道协议 (PPTP) 是由包括微软和3Com等公司组成的PPTP论坛开发的一种点对点隧道协，基于拨号使用的PPP协议使用PAP或CHAP之类的加密算法，或者使用 Microsoft的点对点加密算法MPPE。其通过跨越基于 TCP/IP 的数据网络创建 VPN 实现了从远程客户端到专用企业服务器之间数据的安全传输。PPTP 支持通过公共网络（例如 Internet）建立按需的、多协议的、虚拟专用网络。PPTP 允许加密 IP 通讯，然后在要跨越公司 IP 网络或公共 IP 网络（如 Internet）发送的 IP 头中对其进行封装。 </p>
-<p><strong>二、L2TP</strong><br>第 2 层隧道协议 (L2TP) 是IETF基于L2F （Cisco的第二层转发协议）开发的PPTP的后续版本。是一种工业标准 Internet 隧道协议，其可以为跨越面向数据包的媒体发送点到点协议 (PPP) 框架提供封装。PPTP和L2TP都使用PPP协议对数据进行封装，然后添加附加包头用于数据在互联网络上的传输。PPTP只能在两端点间建立单一隧道。 L2TP支持在两端点间使用多隧道，用户可以针对不同的服务质量创建不同的隧道。L2TP可以提供隧道验证，而PPTP则不支持隧道验证。但是当L2TP 或PPTP与IPSEC共同使用时，可以由IPSEC提供隧道验证，不需要在第2层协议上验证隧道使用L2TP。 PPTP要求互联网络为IP网络。L2TP只要求隧道媒介提供面向数据包的点对点的连接，L2TP可以在IP（使用UDP），桢中继永久虚拟电路（PVCs),X.25虚拟电路（VCs）或ATM VCs网络上使用。</p>
-<p><strong>三、IPSec</strong><br>IPSec 隧道模式隧道是封装、路由与解封装的整个过程。隧道将原始数据包隐藏（或封装）在新的数据包内部。该新的数据包可能会有新的寻址与路由信息，从而使其能够通 过网络传输。隧道与数据保密性结合使用时，在网络上窃听通讯的人将无法获取原始数据包数据（以及原始的源和目标）。封装的数据包到达目的地后，会删除封装，原始数据包头用于将数据包路由到最终目的地。 隧道本身是封装数据经过的逻辑数据路径，对原始的源和目的端，隧道是不可见的，而只能看到网络路径中的点对点连接。连接双方并不关心隧道起点和终点之间的任何路由器、交换机、代理服务器或其他安全网关。将隧道和数据保密性结合使用时，可用于提供VPN。 封装的数据包在网络中的隧道内部传输。在此示例中，该网络是 Internet。网关可以是外部 Internet 与专用网络间的周界网关。周界网关可以是路由器、防火墙、代理服务器或其他安全网关。另外，在专用网络内部可使用两个网关来保护网络中不信任的通讯。 当以隧道模式使用 IPSec 时，其只为 IP 通讯提供封装。使用 IPSec 隧道模式主要是为了与其他不支持 IPSec 上的 L2TP 或 PPTP VPN 隧道技术的路由器、网关或终端系统之间的相互操作。 </p>
-<p><strong>四、OpenVPN</strong><br>SSL/TLS协议提供了数据私密性、端点验证、信息完整性等特性。SSL/TLS协议由许多子协议组成，其中两个主要的子协议是握手协议和记录协议。握手协议允许服务器和客户端在应用协议传输第一个数据字节以前，彼此确认，协商一种加密算法和密码钥匙。在数据传输期间，记录协议利用握手协议生成的密钥加密和解密后来交换的数据。 </p>
+<p><img data-src="/PPTPL2TPIPSecOpenVPN%E5%92%8CSSTP%E7%9A%84%E5%8C%BA%E5%88%AB/vpnPprotocolsComparison.png" alt></p>
+<h3 id="PPTP"><a href="#PPTP" class="headerlink" title="PPTP"></a>PPTP</h3><p>点对点隧道协议 (PPTP) 是由包括微软和3Com等公司组成的PPTP论坛开发的一种点对点隧道协，基于拨号使用的PPP协议使用PAP或CHAP之类的加密算法，或者使用 Microsoft的点对点加密算法MPPE。其通过跨越基于 TCP/IP 的数据网络创建 VPN 实现了从远程客户端到专用企业服务器之间数据的安全传输。PPTP 支持通过公共网络（例如 Internet）建立按需的、多协议的、虚拟专用网络。PPTP 允许加密 IP 通讯，然后在要跨越公司 IP 网络或公共 IP 网络（如 Internet）发送的 IP 头中对其进行封装。 </p>
+<h3 id="L2TP"><a href="#L2TP" class="headerlink" title="L2TP"></a>L2TP</h3><p>第 2 层隧道协议 (L2TP) 是IETF基于L2F （Cisco的第二层转发协议）开发的PPTP的后续版本。是一种工业标准 Internet 隧道协议，其可以为跨越面向数据包的媒体发送点到点协议 (PPP) 框架提供封装。PPTP和L2TP都使用PPP协议对数据进行封装，然后添加附加包头用于数据在互联网络上的传输。PPTP只能在两端点间建立单一隧道。 L2TP支持在两端点间使用多隧道，用户可以针对不同的服务质量创建不同的隧道。L2TP可以提供隧道验证，而PPTP则不支持隧道验证。但是当L2TP 或PPTP与IPSEC共同使用时，可以由IPSEC提供隧道验证，不需要在第2层协议上验证隧道使用L2TP。 PPTP要求互联网络为IP网络。L2TP只要求隧道媒介提供面向数据包的点对点的连接，L2TP可以在IP（使用UDP），桢中继永久虚拟电路（PVCs),X.25虚拟电路（VCs）或ATM VCs网络上使用。</p>
+<h3 id="IPSec"><a href="#IPSec" class="headerlink" title="IPSec"></a>IPSec</h3><p>IPSec 隧道模式隧道是封装、路由与解封装的整个过程。隧道将原始数据包隐藏（或封装）在新的数据包内部。该新的数据包可能会有新的寻址与路由信息，从而使其能够通 过网络传输。隧道与数据保密性结合使用时，在网络上窃听通讯的人将无法获取原始数据包数据（以及原始的源和目标）。封装的数据包到达目的地后，会删除封装，原始数据包头用于将数据包路由到最终目的地。 隧道本身是封装数据经过的逻辑数据路径，对原始的源和目的端，隧道是不可见的，而只能看到网络路径中的点对点连接。连接双方并不关心隧道起点和终点之间的任何路由器、交换机、代理服务器或其他安全网关。将隧道和数据保密性结合使用时，可用于提供VPN。 封装的数据包在网络中的隧道内部传输。在此示例中，该网络是 Internet。网关可以是外部 Internet 与专用网络间的周界网关。周界网关可以是路由器、防火墙、代理服务器或其他安全网关。另外，在专用网络内部可使用两个网关来保护网络中不信任的通讯。 当以隧道模式使用 IPSec 时，其只为 IP 通讯提供封装。使用 IPSec 隧道模式主要是为了与其他不支持 IPSec 上的 L2TP 或 PPTP VPN 隧道技术的路由器、网关或终端系统之间的相互操作。 </p>
+<h3 id="OpenVPN"><a href="#OpenVPN" class="headerlink" title="OpenVPN"></a>OpenVPN</h3><p>SSL/TLS协议提供了数据私密性、端点验证、信息完整性等特性。SSL/TLS协议由许多子协议组成，其中两个主要的子协议是握手协议和记录协议。握手协议允许服务器和客户端在应用协议传输第一个数据字节以前，彼此确认，协商一种加密算法和密码钥匙。在数据传输期间，记录协议利用握手协议生成的密钥加密和解密后来交换的数据。 </p>
 <p>SSL/TLS独立于应用，因此任何一个应用程序都可以享受它的安全性而不必理会执行细节。SSL/TLS置身于网络结构体系的 传输层和应用层之间。此外，SSL/TLS本身就被几乎所有的Web浏览器支持。这意味着客户端不需要为了支持SSL/TLS连接安装额外的软件。这两个特征就是SSL/TLS能应用于VPN的关键点。 </p>
 <p>典型的SSL VPN应用如OpenVPN,是一个比较好的开源软件。PPTP主要为那些经常外出移动或家庭办公的用户考虑；而OpenVPN主要是针对企业异地两地总分公司之间的VPN不间断按需连接，例如ERP在企业中的应用。 OpenVPN 允许参与建立VPN的单点使用预设的私钥，第三方证书，或者用户名/密码来进行身份验证。它大量使用了OpenSSL加密库，以及SSLv3/TLSv1 协议。OpenVPN能在Linux、xBSD、Mac OS X与Windows 2000/XP上运行。它并不是一个基于Web的VPN软件，也不与IPsec及其他VPN软件包兼容。 </p>
 <p>隧道加密 </p>
@@ -292,7 +279,7 @@
 <p>OpenVPN使用通用网络协议（TCP与UDP）的特点使它成为IPsec等协议的理想替代，尤其是在ISP（Internet service provider）过滤某些特定VPN协议的情况下。在选择协议时候，需要注意2个加密隧道之间的网络状况，如有高延迟或者丢包较多的情况下，请选择 TCP协议作为底层协议，UDP协议由于存在无连接和重传机制，导致要隧道上层的协议进行重传，效率非常低下。</p>
 <p>安全 </p>
 <p>OpenVPN与生俱来便具备了许多安全特性：它在用户空间运行，无须对内核及网络协议栈作修改；初始完毕后以chroot方式运行，放弃root权限；使用mlockall以防止敏感数据交换到磁盘。 OpenVPN通过PKCS#11支持硬件加密标识，如智能卡。</p>
-<p><strong>五、SSTP</strong><br>安全套接字隧道协议(Secure Socket Tunneling Protocol，SSTP)是一种VPN隧道的形式，提供了一种通过SSL3.0通道传输PPP或L2TP流量的机制。SSL利用密钥协商提供传输级别的安全性。通过TCP端口443使用SSL，允许SSTP通过几乎所有的防火墙和代理服务器，除了需要身份验证的Web代理。 SSTP可用于Linux、BSD和Windows。MikroTik的RouterOS还包括一个SSTP客户端和服务器端。对于Windows，SSTP仅可用于自Windows Vista SP1之后的系统。 这种SSTP只适用于远程访问，通常不支持站点与站点之间的VPN隧道。RouterOS的版本有没有这样的限制。</p>
+<h3 id="SSTP"><a href="#SSTP" class="headerlink" title="SSTP"></a>SSTP</h3><p>安全套接字隧道协议(Secure Socket Tunneling Protocol，SSTP)是一种VPN隧道的形式，提供了一种通过SSL3.0通道传输PPP或L2TP流量的机制。SSL利用密钥协商提供传输级别的安全性。通过TCP端口443使用SSL，允许SSTP通过几乎所有的防火墙和代理服务器，除了需要身份验证的Web代理。 SSTP可用于Linux、BSD和Windows。MikroTik的RouterOS还包括一个SSTP客户端和服务器端。对于Windows，SSTP仅可用于自Windows Vista SP1之后的系统。 这种SSTP只适用于远程访问，通常不支持站点与站点之间的VPN隧道。RouterOS的版本有没有这样的限制。</p>
 
     </div>
 
@@ -302,10 +289,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/IPSec/" rel="tag"><i class="fa fa-tag"></i> IPSec</a>
               <a href="/tags/PPTP/" rel="tag"><i class="fa fa-tag"></i> PPTP</a>
+              <a href="/tags/IPSec/" rel="tag"><i class="fa fa-tag"></i> IPSec</a>
               <a href="/tags/L2TP/" rel="tag"><i class="fa fa-tag"></i> L2TP</a>
               <a href="/tags/SSTP/" rel="tag"><i class="fa fa-tag"></i> SSTP</a>
+              <a href="/tags/OpenVPN/" rel="tag"><i class="fa fa-tag"></i> OpenVPN</a>
           </div>
 
         
@@ -318,8 +306,8 @@
       <i class="fa fa-chevron-left"></i> Mangle 分类标记介绍
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/09/17/%E4%BA%94%E5%A4%A7%E5%BC%80%E6%BA%90%20Web%20%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%AA%E8%AF%84/" rel="next" title="[转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy">
-      [转]五大开源 Web 代理服务器横评：Squid、Privoxy、Varnish、Polipo、Tinyproxy <i class="fa fa-chevron-right"></i>
+    <a href="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/" rel="next" title="近期RouterOS的几个漏洞说明(中招的人不少)">
+      近期RouterOS的几个漏洞说明(中招的人不少) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -380,6 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PPTP"><span class="nav-text">PPTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L2TP"><span class="nav-text">L2TP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPSec"><span class="nav-text">IPSec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenVPN"><span class="nav-text">OpenVPN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSTP"><span class="nav-text">SSTP</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -394,7 +383,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -405,7 +394,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -441,6 +430,10 @@
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -466,106 +459,16 @@
   <span class="author" itemprop="copyrightHolder">rosjb</span>
 </div>
 
-
-
         
 
 
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
 
 
 
 
-<script>
-  (function() {
-    function leancloudSelector(url) {
-      url = encodeURI(url);
-      return document.getElementById(url).querySelector('.leancloud-visitors-count');
-    }
-
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = decodeURI(visitors.id);
-      var title = visitors.dataset.flagTitle;
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            leancloudSelector(url).innerText = counter.time + 1;
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .catch(error => {
-                console.error('Failed to save visitor count', error);
-              });
-          } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return decodeURI(element.id);
-      });
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          for (let url of entries) {
-            let target = results.find(item => item.url === url);
-            leancloudSelector(url).innerText = target ? target.time : 0;
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"h3h5HDzo5DzjF0BhF2sO2Jta-gzGzoHsz","app_key":"pRuT01m32cYeGOeCwEt4XCyY","security":false};
-    function fetchData(api_server) {
-      var Counter = (method, url, data) => {
-        return fetch(`${api_server}/1.1${url}`, {
-          method,
-          headers: {
-            'X-LC-Id'     : app_id,
-            'X-LC-Key'    : app_key,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    }
-
-    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
-
-    if (api_server) {
-      fetchData(api_server);
-    } else {
-      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
-        .then(response => response.json())
-        .then(({ api_server }) => {
-          fetchData('https://' + api_server);
-        });
-    }
-  })();
-</script>
 
 
       </div>
@@ -576,6 +479,7 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

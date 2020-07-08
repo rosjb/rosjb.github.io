@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
@@ -16,12 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Burst 允许满足队列需要增加的带宽，甚至要求速率在有限的时间内大于 MIR（ max-limit）， Burst 发生仅当队列的 average-rate 在 burst-time 时间内小于 burst-threshold。 Burst 停止当队列的 average-rate 在 burst-time时间内大于或者等于 burst-threshlod  Burst 原理很简单，如果 burs">
@@ -31,16 +28,16 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="Burst 允许满足队列需要增加的带宽，甚至要求速率在有限的时间内大于 MIR（ max-limit）， Burst 发生仅当队列的 average-rate 在 burst-time 时间内小于 burst-threshold。 Burst 停止当队列的 average-rate 在 burst-time时间内大于或者等于 burst-threshlod  Burst 原理很简单，如果 burs">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg">
-<meta property="og:image" content="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg">
+<meta property="og:image" content="http://rosjb.github.io/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg">
+<meta property="og:image" content="http://rosjb.github.io/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg">
+<meta property="og:image" content="http://rosjb.github.io/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg">
+<meta property="og:image" content="http://rosjb.github.io/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg">
 <meta property="article:published_time" content="2016-09-25T13:02:55.000Z">
 <meta property="article:modified_time" content="2020-06-22T12:27:53.164Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="Burst">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg">
+<meta name="twitter:image" content="http://rosjb.github.io/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg">
 
 <link rel="canonical" href="http://rosjb.github.io/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/">
 
@@ -181,10 +178,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -242,14 +235,7 @@
                 </span>
             </span>
 
-          
-            <span id="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="RouterOS限速设置里的Burst(突发值)原理" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span><br>
+          <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -288,7 +274,7 @@
 <hr>
 <h4 id="Burst-事例"><a href="#Burst-事例" class="headerlink" title="Burst 事例"></a>Burst 事例</h4><p>我们设置的 Queue 速率参数： limit-at=1M , max-limit=2M , burst-threshold=1500k , burst-limit=4M Burst-time=16s</p>
 <p>客户将会下载一个4MByte（ 32Mbit，队列单位是bit）数据，下载将从0秒开始，第二次下载将开始于第17秒， 最后一分钟传输将停止。 </p>
-<p><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg" alt><br><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg" alt> </p>
+<p><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1959.jpg" alt><br><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1960.jpg" alt> </p>
 <p>如同我们看到的客户要求的带宽 burst 在 6 秒钟能达到 4Mbps。这个最长的 burst 时间具有一个值（ 最长突发时间 = burst-threshold * burst-time / burst-limit）。很快 burst 用完突发时间，剩下的数据下载将到 2Mbps。在 9秒钟后数据被下载完，一段时间没有流量， Burst 有 7 秒钟的空闲，并重新计算，第 16 秒开始将有新的下载开始。  </p>
 <p><strong>注:从这个事例我们证明可以发生在下载的中间部分， Burst 持续了 4</strong> <strong>秒钟。</strong> </p>
 <p>每个 Average rate（平均速率）是根据 burst time 的 1/16，因此这个事例是 1 秒钟 计算一次平均速率</p>
@@ -495,7 +481,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h4 id="当-Burst-time-8s"><a href="#当-Burst-time-8s" class="headerlink" title="当 Burst-time=8s"></a>当 Burst-time=8s</h4><p><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg" alt><br><img src="/2016/09/25/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg" alt> </p>
+<h4 id="当-Burst-time-8s"><a href="#当-Burst-time-8s" class="headerlink" title="当 Burst-time=8s"></a>当 Burst-time=8s</h4><p><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1963.jpg" alt><br><img data-src="/RouterOS%E9%99%90%E9%80%9F%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9A%84Burst(%E7%AA%81%E5%8F%91%E5%80%BC)%E5%8E%9F%E7%90%86/img1965.jpg" alt> </p>
 <p>如果我们减少 burst-time 为 8 秒，我们能看到在这个事例中 burst 仅在下载开始 每个 Average rate（平均速率）是根据 burst time 的 1/16，因此这个事例是 0.5 秒钟计算一次平均速</p>
 <table>
 <thead>
@@ -984,7 +970,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -995,7 +981,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1031,6 +1017,10 @@
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1056,106 +1046,16 @@
   <span class="author" itemprop="copyrightHolder">rosjb</span>
 </div>
 
-
-
         
 
 
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
 
 
 
 
-<script>
-  (function() {
-    function leancloudSelector(url) {
-      url = encodeURI(url);
-      return document.getElementById(url).querySelector('.leancloud-visitors-count');
-    }
-
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = decodeURI(visitors.id);
-      var title = visitors.dataset.flagTitle;
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            leancloudSelector(url).innerText = counter.time + 1;
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .catch(error => {
-                console.error('Failed to save visitor count', error);
-              });
-          } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return decodeURI(element.id);
-      });
-
-      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
-        .then(response => response.json())
-        .then(({ results }) => {
-          for (let url of entries) {
-            let target = results.find(item => item.url === url);
-            leancloudSelector(url).innerText = target ? target.time : 0;
-          }
-        })
-        .catch(error => {
-          console.error('LeanCloud Counter Error', error);
-        });
-    }
-
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"h3h5HDzo5DzjF0BhF2sO2Jta-gzGzoHsz","app_key":"pRuT01m32cYeGOeCwEt4XCyY","security":false};
-    function fetchData(api_server) {
-      var Counter = (method, url, data) => {
-        return fetch(`${api_server}/1.1${url}`, {
-          method,
-          headers: {
-            'X-LC-Id'     : app_id,
-            'X-LC-Key'    : app_key,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    }
-
-    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
-
-    if (api_server) {
-      fetchData(api_server);
-    } else {
-      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
-        .then(response => response.json())
-        .then(({ api_server }) => {
-          fetchData('https://' + api_server);
-        });
-    }
-  })();
-</script>
 
 
       </div>
@@ -1166,6 +1066,7 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
