@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言:这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.   于是网络的整体网络资源如下:  联通专线 20M&#x2F;20M(下载&#x2F;上传)电信专线 20M&#x2F;20M(下载&#x2F;上传)联通ADSL 20M&#x2F;2M(下载&#x2F;上传)">
@@ -28,11 +28,11 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="前言:这个小区本来只有一条网通的20M光纤资源,但用户量猛增,带宽不够用了,老板商量着要加带宽.本来让加网通的资源,这样好做资源的整合,但当地网通光纤价格高,而电信的相对便宜些,最后决定还是用电信的光纤,外加了一条网通的ADSL.   于是网络的整体网络资源如下:  联通专线 20M&#x2F;20M(下载&#x2F;上传)电信专线 20M&#x2F;20M(下载&#x2F;上传)联通ADSL 20M&#x2F;2M(下载&#x2F;上传)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
-<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png">
-<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png">
-<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png">
-<meta property="og:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png">
 <meta property="article:published_time" content="2016-09-26T07:24:13.000Z">
 <meta property="article:modified_time" content="2020-07-08T04:31:49.148Z">
 <meta property="article:author" content="rosjb">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="电信">
 <meta property="article:tag" content="网通">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
+<meta name="twitter:image" content="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png">
 
 <link rel="canonical" href="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/">
 
@@ -280,10 +280,10 @@
 <li>电信的DNS解析采用NAT转换可以给用户配置统一的DNS,方便管理 </li>
 </ol>
 <p>具体配置如下: </p>
-<h3 id="一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><a href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP" class="headerlink" title="一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)"></a>一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png" alt></p>
-<h3 id="二-路由标记如下"><a href="#二-路由标记如下" class="headerlink" title="二  路由标记如下"></a>二  路由标记如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png" alt></p>
+<h3 id="一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP"><a href="#一-添加电信分流IP的地址列表及所有用户的地址列表-我用的是118-118-118-0-24段的IP" class="headerlink" title="一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)"></a>一  添加电信分流IP的地址列表及所有用户的地址列表(我用的是118.118.118.0/24段的IP)</h3><p><img src="/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202473663363.png" alt></p>
+<h3 id="二-路由标记如下"><a href="#二-路由标记如下" class="headerlink" title="二  路由标记如下"></a>二  路由标记如下</h3><p><img src="/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416202748334275.png" alt></p>
 <p>在  顺序1-顺序2-顺序3  3条规则的顺序不能更改,下面对三条规则简单说明 顺序1 ,标记的走向电信的路由,   这里passthrough选的是no,结合上下文选 YES也不会有问题 顺序2,标记走向网通的路由流量,这里PASSTHROUTH需要选YES,以便第三条规则分离走走ADSL的流量,选 NO的话就不会有走ADSL的流量了. 顺序3,根据目标TCP端口从走网通的那部分流量中(routing-mark=r_Cns限定从走网通的流量中分流 )分流出走ADSL线路的流量,这里passthrough写的是NO,因为下面有其它的标记,防止标记被更改 </p>
-<h3 id="三-NAT转发如下"><a href="#三-NAT转发如下" class="headerlink" title="三  NAT转发如下"></a>三  NAT转发如下</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png" alt> </p>
+<h3 id="三-NAT转发如下"><a href="#三-NAT转发如下" class="headerlink" title="三  NAT转发如下"></a>三  NAT转发如下</h3><p><img src="/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203212308078.png" alt> </p>
 <p>这里主要需要了解的是把网通的DNS做DST-NAT到电信的DNS上,电信的PPPOE用户解析IP时,表面上是到网通的DNS解析,实际上还是在电信的DNS解析的IP </p>
 <p>命令添加如下 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add  chain=dstnat action=dst-nat to-addresses=2.2.2.2(电信DNS) protocol=udp src-address=1.1.1.1(网通DNS) dst-address-list=cncDNS</span><br></pre></td></tr></table></figure>
@@ -291,8 +291,8 @@
 <p>电信的路由标记r_Tel走了电信的线路wan-Tel</p>
 <p>ADSL的路由标记r_Cnc_adsl从网通的ADSL线路走出</p>
 <p>默认流量走网通光纤</p>
-<p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png" alt> </p>
-<h3 id="五-接口流量效果"><a href="#五-接口流量效果" class="headerlink" title="五 接口流量效果"></a>五 接口流量效果</h3><p><img data-src="/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png" alt></p>
+<p><img src="/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203716103797.png" alt> </p>
+<h3 id="五-接口流量效果"><a href="#五-接口流量效果" class="headerlink" title="五 接口流量效果"></a>五 接口流量效果</h3><p><img src="/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/201411171416203932317580.png" alt></p>
 
     </div>
 
@@ -492,7 +492,6 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

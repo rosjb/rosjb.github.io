@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
@@ -1049,7 +1049,7 @@
 <p>/ip firewall raw</p>
 <p>Raw 是 RouterOS v6.36 新增的功能属性， firewall Raw 列表允许选择性在 connection tracking 之前绕过或者丢弃数据包，这样能大大降低 CPU 负载。该功能非常有助于防御 DOS 攻击， RAW 列表不能匹配链接状态的跟踪，例如 connection-state 和 L7 协议。 </p>
 <p>如下图， Raw 出现在 Prerouting 和 output 链表，并在 connection-tracking 前执行：</p>
-<p><img data-src="/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/1.jpg" alt></p>
+<p><img src="/2016/09/27/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/1.jpg" alt></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/09/27/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/#more" rel="contents">
@@ -1108,7 +1108,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-08 17:21:00" itemprop="dateModified" datetime="2020-07-08T17:21:00+08:00">2020-07-08</time>
+                <time title="修改时间：2020-07-09 12:01:16" itemprop="dateModified" datetime="2020-07-09T12:01:16+08:00">2020-07-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1335,7 +1335,6 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="MikroTik在14年的意大利MUM上，除了发布新的CCR、CRS和RB产品，还公布了一个新的功能——CAPs即 Controlled Access Point system Manager(CAPsMAN)，通俗点说，它就是一个AP控制器功能插件，可以将任何一台RouterOS变为AP控制器，只要安装CAP的功能包（集成在wireless-fp功能包中）  它的功能就是用于集中控制你所有的Ro">
@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="MikroTik在14年的意大利MUM上，除了发布新的CCR、CRS和RB产品，还公布了一个新的功能——CAPs即 Controlled Access Point system Manager(CAPsMAN)，通俗点说，它就是一个AP控制器功能插件，可以将任何一台RouterOS变为AP控制器，只要安装CAP的功能包（集成在wireless-fp功能包中）  它的功能就是用于集中控制你所有的Ro">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/1-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/2-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/3-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/4-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/5-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/6-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/8-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/7-1.jpg">
-<meta property="og:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/41-1.png">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/1-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/2-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/3-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/4-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/5-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/6-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/8-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/7-1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/41-1.png">
 <meta property="article:published_time" content="2015-12-26T08:48:40.000Z">
 <meta property="article:modified_time" content="2020-07-08T04:28:04.435Z">
 <meta property="article:author" content="rosjb">
@@ -44,7 +44,7 @@
 <meta property="article:tag" content="CAP">
 <meta property="article:tag" content="CAPs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/1-1.jpg">
+<meta name="twitter:image" content="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/1-1.jpg">
 
 <link rel="canonical" href="http://rosjb.github.io/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/">
 
@@ -280,30 +280,30 @@
 <li>CAPs功能包可以在<a href="http://www.mikrotik.com/download" target="_blank" rel="noopener">这里下载</a></li>
 <li>CAPsMAN的功能包可以独立安装到任何平台的RouterOS v6.11以上版本，CAPsMAN功能还在测试中，所以功能包为独立的wireless-fp-6.11-mipsbe.npk，安装后将替代原理的wireless功能包，功能包升级后wireless功能包被自动禁用，wireless-fp启用（该功能以后可能会合并），如下图：</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/1-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/1-1.jpg" alt></p>
 <ul>
 <li>开启Enable后reboot设备</li>
 <li>AC控制器端设置方法下，开启这个功能后进行配置</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/2-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/2-1.jpg" alt></p>
 <ul>
 <li>下面开始配置，配置名称，模式默认只能选AP，还有SSID名称，信号，安全方式等，做成一个个配置供后面选择和切换。</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/3-1.jpg" alt></p>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/4-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/3-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/4-1.jpg" alt></p>
 <ul>
 <li>上面的AC端配置完成后，配置AP端如图：点击无线–CAP，开启，interface是选择管理的无线网卡，Discovery Interface是连接到AC端的网口设备【如果是EoIP就选之】，下面那个10.0.0.254是我AC端设备的IP地址，默认可以不填他就优先用MAC进行对接。</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/5-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/5-1.jpg" alt></p>
 <ul>
 <li>完成对接之后，在AC端可以看到这个设备，你可以修改设备标识。</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/6-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/6-1.jpg" alt></p>
 <ul>
 <li>我建立一个Bridge，然后把控制接口和这个设备放在一起，如果你加入了多个AP设备，那就全部添加到这个桥里面，然后把DHCP或者其它服务分配给这个桥，他们每个AP就像接了个网线到你这里一样了。</li>
 </ul>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/8-1.jpg" alt></p>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/7-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/8-1.jpg" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/7-1.jpg" alt></p>
 <p>留意哦：这里如果你有2个或以上的AP端设备加入后，他们的信号名称是一样的哦，得到的效果就像无缝漫游一样，只要在多个设备覆盖范围内，就可以随意自动无缝切换不掉线。 甚至如果你是整条街都铺满这个设备，还可以通过外网建立EoIP来建立虚拟隧道来统一远程接入和管理。</p>
 <p>即CAPsMAN为CAP管理器菜单，CAP为被管理网卡菜单<br>CAP连接到CAPsMAN<br>CAPsMAN系统要为无线网络提供管理控制，需要至少一个CAP必须与CAPsMAN建立连接。一个管理连接建立可以使用MAC或IP层协议和安全的DTLS，通常一个CAP能传递客户端数据连接到管理器，但数据连接并不安全，因此需要考虑数据安全的加密，例如IPSec或加密隧道。 </p>
 <p>CAP 连接到CAPsMAN 能建立连接使用以下两种传输协议： </p>
@@ -314,7 +314,7 @@
 <p>当可以获取的CAPsMAN列表建立，CAP选择一个CAPsMAN基于以下规则：<br>§ 如果 caps-man-names 参数指定管理名称（CAPsMAN的/system identity）CAP将优先选择。如果该参数为空，将连接其他CAPsMAN。<br>§ MAC层连接优先级高于IP层连接<br>当管理器被选择后，CAP尝试建立<a href="https://baike.baidu.com/view/2071633.htm?fr=aladdin" target="_blank" rel="noopener">DTLS</a>连接。 </p>
 <p>CAPsMAN与CAP实例 </p>
 <p>下面是一个简单的CAP实例，假设我们网络中只有一个CAPsMAN和一个CAP，他们之间通过二层网络连接。</p>
-<p><img data-src="/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8%5B%E8%A7%86%E9%A2%91%5D/41-1.png" alt></p>
+<p><img src="/2015/12/26/RouterOS%E6%96%B0%E5%8A%9F%E8%83%BDCAPs(ROS%E7%9A%84AC%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD)%E5%8F%AF%E4%BB%A5%E6%97%A0%E7%BC%9D%E7%BD%91%E7%BB%9C%E6%BC%AB%E6%B8%B8[%E6%9C%89%E8%A7%86%E9%A2%91]/41-1.png" alt></p>
 <p>参考资料： 官方wiki：<a href="http://wiki.mikrotik.com/wiki/Manual:CAPsMAN" target="_blank" rel="noopener">http://wiki.mikrotik.com/wiki/Manual:CAPsMAN</a></p>
 <hr>
 <p><strong>参考视频教程(搬砖视频):</strong></p>
@@ -514,7 +514,6 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

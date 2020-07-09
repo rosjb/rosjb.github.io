@@ -18,7 +18,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="mangle 允许对 IP 数据包做特殊的标记， mangle 是通过修改指定的 IP 数据包头字段，去标记 IP 数据包的特征 能标记端口、 IP、协议、 TCP 协议和相应的 IP 数据流。 Mangle 属于综合性功能，所以在路由、流量控制和其他相应功能中都会涉及到。  需要功能包: system需要等级: Level1操作路径: &#x2F;ip firewall mangle协议标准: IP Ma">
@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="MikroTik 脚本生成器">
 <meta property="og:description" content="mangle 允许对 IP 数据包做特殊的标记， mangle 是通过修改指定的 IP 数据包头字段，去标记 IP 数据包的特征 能标记端口、 IP、协议、 TCP 协议和相应的 IP 数据流。 Mangle 属于综合性功能，所以在路由、流量控制和其他相应功能中都会涉及到。  需要功能包: system需要等级: Level1操作路径: &#x2F;ip firewall mangle协议标准: IP Ma">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rosjb.github.io/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg">
-<meta property="og:image" content="http://rosjb.github.io/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg">
 <meta property="article:published_time" content="2016-09-27T13:07:48.000Z">
 <meta property="article:modified_time" content="2020-06-22T12:26:42.728Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="Mangle">
 <meta property="article:tag" content="标记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rosjb.github.io/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg">
+<meta name="twitter:image" content="http://rosjb.github.io/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg">
 
 <link rel="canonical" href="http://rosjb.github.io/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/">
 
@@ -271,14 +271,14 @@
 <li><strong>Prostrouting：路由后</strong></li>
 </ul>
 <p>RouterOS 中的 IP firewall 主要由 3 个规则部分组成 Mangle、 Filter、 NAT ，而 Address-list 常用于地址列表分类。 Mangle 通过标记特定的 IP 数据流后，为 Filter、 NAT 和、路由、 Queue 提供标记后的 IP 数据流</p>
-<p> <img data-src="/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg" alt></p>
+<p> <img src="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2719.jpg" alt></p>
 <p>  标记 IP 数据流的三种类型，这三种类型会在各种应用中多次出现，特别是 Queue 的流量控制和 ip route 的路由：</p>
 <ul>
 <li><strong>Mark-connection：标记所有 IP 流的连接</strong></li>
 <li><strong>Mark-packet：标记 IP 流中数据包</strong></li>
 <li><strong>Mark-routing：标记 IP 流中 IP 数据包的路由信息</strong></li>
 </ul>
-<p>三种类型的关系，所有的在 IP 数据包传输前，首先需要通过建立 TCP/UDP 连接，进行传输。所以当数据通过 IP 流进入 Mangle 后，建立相应的连接标记，并从连接标记中提取数据包，做处理。图示如下：<br>  <img data-src="/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg" alt></p>
+<p>三种类型的关系，所有的在 IP 数据包传输前，首先需要通过建立 TCP/UDP 连接，进行传输。所以当数据通过 IP 流进入 Mangle 后，建立相应的连接标记，并从连接标记中提取数据包，做处理。图示如下：<br>  <img src="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/img2724.jpg" alt></p>
 <h2 id="Mangle-应用"><a href="#Mangle-应用" class="headerlink" title="Mangle 应用"></a>Mangle 应用</h2><h3 id="Peer-to-Peer-传输标记"><a href="#Peer-to-Peer-传输标记" class="headerlink" title="Peer-to-Peer 传输标记"></a>Peer-to-Peer 传输标记</h3><p>保证优质的网络连接，如 VoIP 和 HTTP 等为最优先级，将 P2P 的优先级设置为最低 RouterOS QOS 操作首先使用 mangle 标记不同类型的传输，然后把它们放入的 queues 做不同的限制。下面的事例是强迫 P2P 的总的传输不能超过 1Mbps，其他的传输连接则扩大连接带宽和优先级：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward p2p=all-p2p action=mark-connection new-connection-mark=p2p_conn</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward connection-mark=p2p_conn action=mark-packet new-packet-mark=p2p</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle add chain=forward packet-mark=!p2p_conn action=mark-packet new-packet-mark=other</span><br><span class="line">[admin@MikroTik] &gt; /ip firewall mangle <span class="built_in">print</span></span><br><span class="line">Flags: X - disabled, I - invalid, D - dynamic</span><br><span class="line">0 chain=forward p2p=all-p2p action=mark-connection new-connection-mark=p2p_conn</span><br><span class="line">1 chain=forward connection-mark=p2p_conn action=mark-packet new-packet-mark=p2p</span><br><span class="line">2 chain=forward packet-mark=!p2p_conn action=mark-packet new-packet-mark=other</span><br><span class="line">[admin@MikroTik] &gt;</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Public packet-mark=p2p <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=8</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Local packet-mark=p2p <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=8</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Public packet-mark=other <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=1</span><br><span class="line">[admin@MikroTik] &gt; /queue tree add parent=Local packet-mark=other <span class="built_in">limit</span>-at=1000000 max-limit=100000000 priority=1</span><br></pre></td></tr></table></figure>
 
@@ -480,7 +480,6 @@
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
