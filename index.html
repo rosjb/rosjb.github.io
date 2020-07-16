@@ -584,6 +584,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/07/14/RouterOS%E8%A3%B8%E6%9C%BA%E5%AE%89%E8%A3%85%E5%90%8E%E7%94%B132%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7%E4%B8%BA64%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/RouterOS%E8%A3%B8%E6%9C%BA%E5%AE%89%E8%A3%85%E5%90%8E%E7%94%B132%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7%E4%B8%BA64%E4%BD%8D/" class="post-title-link" itemprop="url">RouterOS裸机安装后由32位系统升级为64位</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-14 11:31:27 / 修改时间：12:05:33" itemprop="dateCreated datePublished" datetime="2020-07-14T11:31:27+08:00">2020-07-14</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>489</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>RouterOS裸机安装是32位系统,只能使用2gb内存,并且要在routeros的kvm模块下安装虚拟机只能是32位虚拟机系统,并且虚拟机内存不能大于2gb.想要在KVM系统下安装64位的系统,就必须升级64位的ROS了.</p>
+<h4 id="升级64位系统方法"><a href="#升级64位系统方法" class="headerlink" title="升级64位系统方法"></a>升级64位系统方法</h4><p>下载官方未正式发布的<a href="http://mirror.poliwangi.ac.id/mikrotik/6.31/all_packages-x86-6.31.zip" target="_blank" rel="noopener">6.31版系统</a>, 解压后把所有.npk文件上传到routeros根目录(Flies里)</p>
+<ul>
+<li>然后在 System-Packages-Downgrage (降级按钮),把系统降级到6.31</li>
+<li>重启后,在 System-Resources-Hardware 下会看到有 x86_64,钩上后重启routeros<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/system reboot</span><br></pre></td></tr></table></figure></li>
+<li>最后在 System-Packages 下选择自动升级到最新版本</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/14/RouterOS%E8%A3%B8%E6%9C%BA%E5%AE%89%E8%A3%85%E5%90%8E%E7%94%B132%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7%E4%B8%BA64%E4%BD%8D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/04/12/CN2%E5%92%8CBGP%E5%93%AA%E4%B8%AA%E5%A5%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,107 +1159,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="rosjb">
-      <meta itemprop="description" content="如果你刚接触RouterOS系统的路由器,这里的ROS脚本生成器软件管理工具和教程,希望能给广大的ROSer和用户带来便利!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MikroTik 脚本生成器">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">ROS里的IPSec配置</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-09-27 15:54:22" itemprop="dateCreated datePublished" datetime="2016-09-27T15:54:22+08:00">2016-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-09 12:01:16" itemprop="dateModified" datetime="2020-07-09T12:01:16+08:00">2020-07-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>适用于ROS版本号 &lt; 6.16 的用户</strong></p>
-<p>IPSec 作为新一代网络安全协议，为网络传输提供了安全保证，使端到端的数据保密成为可能， 是互联网上的新一代安全标准。提供包括访问控制、无连接的完整性、数据源认证、抗重放 (replay)保护、保密和有限传输保密性在内的服务，服务基于 IP 层并对 IP 及上层协议进行保护。服务的实施通过两种通信安全协议：认证头（ AH）和封装安全负载（ ESP）以及 Internet 密钥交换（ IKE）协议来达到这些目标。 IPSec AH 协议提供数据源认证、无连接的完整性和可选的抗重放服务。 ESP 协议提供数据保密性，有限的数据流保密性、数据源认证、无连接的完整性及抗重放服务。 IKE 协议用于协商 AH 和 ESP 协议所使用的密码算法，并将算法所需的必备密钥放在合适的位置。 IPSec 有两种模式：传输模式和隧道模式。它们都是对外出的数据包添加 IPSec 头进行加密和认证，而对于接收的 IPSec 数据包作解密认证处理和适当的转发传送。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1239,7 +1229,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1250,7 +1240,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
