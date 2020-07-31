@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://rosjb.github.io/"/>
-  <updated>2020-07-31T08:48:41.938Z</updated>
+  <updated>2020-07-31T12:24:10.254Z</updated>
   <id>http://rosjb.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ver2.12</title>
+    <link href="http://rosjb.github.io/2020/07/31/Ver2-12/"/>
+    <id>http://rosjb.github.io/2020/07/31/Ver2-12/</id>
+    <published>2020-07-31T04:15:07.000Z</published>
+    <updated>2020-07-31T12:24:10.254Z</updated>
+    
+    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 部分”firewall”拼写错误的问题</li><li>去除 依赖之前网站的部分功能</li></ol><a id="more"></a><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.12: <a href="https://545c.com/file/14549722-455771279" target="_blank" rel="noopener">下载地址</a> <a href="https://rosjb.lanzous.com/inDljf67zha" target="_blank" rel="noopener">备用地址</a><br>解压密码:1234<br>md5:f38b596703c4eb4aed19f0997fb7457a (压缩包的MD5)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;!-- ## 💥新增 --&gt;
+&lt;h2 id=&quot;💥-更新内容&quot;&gt;&lt;a href=&quot;#💥-更新内容&quot; class=&quot;headerlink&quot; title=&quot;💥 更新内容&quot;&gt;&lt;/a&gt;💥 更新内容&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;修复 部分”firewall”拼写错误的问题&lt;/li&gt;
+&lt;li&gt;去除 依赖之前网站的部分功能&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="下载" scheme="http://rosjb.github.io/tags/%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Mikrotik DNS缓存设置建议</title>
@@ -79,7 +104,7 @@
     <link href="http://rosjb.github.io/2020/06/20/Ver2-11/"/>
     <id>http://rosjb.github.io/2020/06/20/Ver2-11/</id>
     <published>2020-06-20T08:16:14.000Z</published>
-    <updated>2020-07-24T11:18:09.591Z</updated>
+    <updated>2020-07-31T12:24:10.254Z</updated>
     
     <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li><li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 指出)</li><li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li><li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li><li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a></li></ol><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a><br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>]]></content>
     
@@ -533,31 +558,6 @@
     
     
       <category term="NAT" scheme="http://rosjb.github.io/tags/NAT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BCP 协议</title>
-    <link href="http://rosjb.github.io/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://rosjb.github.io/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/</id>
-    <published>2016-09-24T13:59:24.000Z</published>
-    <updated>2020-06-27T14:58:19.046Z</updated>
-    
-    <content type="html"><![CDATA[<p>RouterOS 支持 BCP(Bridge Control Protocol)，即在 PPP、 PPTP、 L2TP 和 PPPoE 接口上的桥接（ OVPN和 SSTP 不支持）。 BCP 协议通过 PPP 协议，将两个远端的以太网数据链路打通。 BCP 建立后独立于 PPP 隧道，将不会与任何 PPP 的 IP 地址接口有关系。 BCP 能用于替代 EoIP+VPN 隧道， EoIP 要求对等的网络连接，而BCP 为网络提供另一种方式的解决，特别是一端在 nat 网络内，经过测试能正常透过 nat 网络透传二层数据。<br>BCP (Bridge Control Protocol)需要在两边同时启用才能工作(PPP 服务器和 PPP 客户端)。 MikroTikRouterOS 也可应用于其他的 PPP 设备，要求这个设备支持标准的 BCP 协议。</p><hr><h3 id="配置事例"><a href="#配置事例" class="headerlink" title="配置事例"></a>配置事例</h3><a id="more"></a><p>我们需要相互连接 2 个远程办公室，并让他们在同一个以太网内工作。我们要求使用加密（ encryption）保护 2个办公室的数据交换。 如下图，我有 2 个办公室，办公室 1 设置为 PPTP 服务器，办公室 2 设置为 PPTP 客户端。下面通过 winbox和 CLI 介绍配置：</p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2412.jpg" alt></p><h4 id="Office1-配置"><a href="#Office1-配置" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>首先我们需要建立一个桥接口，并确保桥接将一直有 MAC 地址存在。原因很简单，当 BCP 被使用 PPP 桥接 port中，不会有任何 MAC 地址生成。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/interface bridge add name=bridge_local protocol-mode=rstp</span><br><span class="line">/interface bridge port add bridge=bridge_local interface=ether1_local</span><br><span class="line">/interface bridge <span class="built_in">set</span> bridge_local admin-mac=xx:xx:xx:xx:xx:xx</span><br></pre></td></tr></table></figure><p>其中 xx:xx:xx:xx:xx:xx 是 ether1_local 的 MAC 地址 现在我们能分配本地和公网地址到相应的接口上： </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip address add address=192.168.88.1/24 interface=bridge_local </span><br><span class="line">/ip address add address=1.1.1.1/24 interface=ether2_public</span><br></pre></td></tr></table></figure><p>在这个事例中，仅使用 PPP 做桥接，PPP profile 和 secret 的配置非常简单-仅分配用户名和密码，并指定 profile的 bridge 选项。 PPP 桥接不需要任何 IP 地址，但正常的 PPP 是必需的，所以要指定 local 和 remote 地址在服务器上。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ppp profile add name=ppp_bridging bridge=bridge_local use-encryption=yes</span><br><span class="line">/ppp secret add profile=ppp_bridging name=ppp1 password=ppp1</span><br></pre></td></tr></table></figure><p>当桥接的 PPP 隧道需要通过二层（ MAC）数据包头部信息，由于默认的接口 MTU（ PPTP 是 1460）不能满足这个的通讯，所以为确保适用运用环境，建议不用考虑 MTU 值，通过在服务器的 MRRU 选项设置更高的值。<br>MRRU 允许启用支持单连接协商的多重链路，奋力数据包到多个通道，因此增加 MTU 和 MRU（支持 65535 字节）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/interface pptp-server server <span class="built_in">set</span> enabled=yes mrru=1600</span><br></pre></td></tr></table></figure><hr><h4 id="Office2-配置"><a href="#Office2-配置" class="headerlink" title="Office2 配置"></a>Office2 配置</h4><p>首先我们需要建立桥，并确定桥将有 MAC 地址存在，原因如上提到。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/interface bridge add name=bridge_local protocol-mode=rstp</span><br><span class="line">/interface bridge port add bridge=bridge_local interface=ether1_local</span><br><span class="line">/interface bridge <span class="built_in">set</span> bridge_local admin-mac=xx:xx:xx:xx:xx:xx</span><br></pre></td></tr></table></figure><p>其中 xx:xx:xx:xx:xx:xx 是 ether1_local 的 MAC 地址。 现在我们能分配本地和公网地址到相应的接口上：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip address add address=192.168.88.254/24 interface=bridge_local</span><br><span class="line">/ip address add address=2.2.2.2/24 interface=ether2_public</span><br></pre></td></tr></table></figure><p>配置 PPP Profile，回应在服务器端的配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ppp profile add name=ppp\_bridging bridge=bridge\_local use-encryption=yes</span><br></pre></td></tr></table></figure><p>创建一个 pptp-client 接口，不要忘记配置 MRRU 选项，确保二层帧能通过 PPP 隧道。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/interface pptp-client add profile=ppp_bridging mrru=1600 connect-to=1.1.1.1 user=ppp1 password=ppp1 disabled=no</span><br></pre></td></tr></table></figure><hr><h3 id="BCP-winbox-配置"><a href="#BCP-winbox-配置" class="headerlink" title="BCP winbox 配置"></a>BCP winbox 配置</h3><h4 id="Office1-配置-1"><a href="#Office1-配置-1" class="headerlink" title="Office1 配置"></a>Office1 配置</h4><p>在 bridge 中添加一个桥，并设置 rstp:</p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2415.jpg" alt><br>在 port 中， 添加桥接的接口，我们添加 ether1 到 port 用于连接内网： </p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2418.jpg" alt></p><p>设置静态的 MAC-address:</p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2420.jpg" alt></p><p>分配 IP addresses:</p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2423.jpg" alt></p><p>创建 PPP profile，并设置 bridge 参数 </p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2425.jpg" alt></p><p>添加 PPP 客户端 </p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2428.jpg" alt></p><p>启用 PPTP-server, PPTP 服务器的 MRRU 一定要设置为 1600，否则会导致网页无法打开的情况。 </p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2430.jpg" alt></p><hr><h4 id="Office2-配置-1"><a href="#Office2-配置-1" class="headerlink" title="Office2 配置"></a>Office2 配置</h4><p>客户端路由器配置相同，只是你需要配置并启用 PPTP 客户端， 添加 PPTP client，同样需要设置 MRRU=1600，然后配置 pptp 拨号信息： </p><p><img src="/2016/09/24/BCP%E5%8D%8F%E8%AE%AE/img2433.jpg" alt> </p><p>在实际网络应用中，也可以将 vlan 和 ppp 做到一个 bridge 中，通过 vlan 来划分远端桥接的区域，桥接隧道的互联网应用有很多种，特别是互联网企业网络和运营网络涉及较多。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;RouterOS 支持 BCP(Bridge Control Protocol)，即在 PPP、 PPTP、 L2TP 和 PPPoE 接口上的桥接（ OVPN和 SSTP 不支持）。 BCP 协议通过 PPP 协议，将两个远端的以太网数据链路打通。 BCP 建立后独立于 PPP 隧道，将不会与任何 PPP 的 IP 地址接口有关系。 BCP 能用于替代 EoIP+VPN 隧道， EoIP 要求对等的网络连接，而BCP 为网络提供另一种方式的解决，特别是一端在 nat 网络内，经过测试能正常透过 nat 网络透传二层数据。&lt;br&gt;BCP (Bridge Control Protocol)需要在两边同时启用才能工作(PPP 服务器和 PPP 客户端)。 MikroTikRouterOS 也可应用于其他的 PPP 设备，要求这个设备支持标准的 BCP 协议。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;配置事例&quot;&gt;&lt;a href=&quot;#配置事例&quot; class=&quot;headerlink&quot; title=&quot;配置事例&quot;&gt;&lt;/a&gt;配置事例&lt;/h3&gt;
-    
-    </summary>
-    
-    
-      <category term="技术讨论" scheme="http://rosjb.github.io/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/"/>
-    
-    
-      <category term="BCP" scheme="http://rosjb.github.io/tags/BCP/"/>
     
   </entry>
   

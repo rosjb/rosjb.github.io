@@ -130,9 +130,14 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-winbox">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
 
   </li>
         <li class="menu-item menu-item-donate">
@@ -140,9 +145,9 @@
     <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
 
   </li>
-        <li class="menu-item menu-item-thanksforlist">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -191,6 +196,104 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">Mangle 分类标记介绍</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-27 21:07:48" itemprop="dateCreated datePublished" datetime="2016-09-27T21:07:48+08:00">2016-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-22 20:26:42" itemprop="dateModified" datetime="2020-06-22T20:26:42+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>mangle 允许对 IP 数据包做特殊的标记， mangle 是通过修改指定的 IP 数据包头字段，去标记 IP 数据包的特征 能标记端口、 IP、协议、 TCP 协议和相应的 IP 数据流。 Mangle 属于综合性功能，所以在路由、流量控制和其他相应功能中都会涉及到。 </p>
+<p>需要功能包: system<br>需要等级: Level1<br>操作路径: /ip firewall mangle<br>协议标准: IP</p>
+<h2 id="Mangle-介绍"><a href="#Mangle-介绍" class="headerlink" title="Mangle 介绍"></a>Mangle 介绍</h2><p>Mangle 是一种标记器，标记特殊的数据包等待将来处理。在 RouterOS 中许多其他的功能组件会使用到他，如queue-trees 和 nat，他们识别到一个数据包了标记的便会做相应的处理。 Mangle 标记仅存在于该路由器中，他们无法传输到网络中去。 根据数据传输方式不同可以选择：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/09/27/Mangle%E5%88%86%E7%B1%BB%E6%A0%87%E8%AE%B0%E4%BB%8B%E7%BB%8D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1080,102 +1183,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/25/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="rosjb">
-      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MikroTik 脚本生成器">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/09/25/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="url">ROS高性能nat实践实例</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-09-25 20:10:36" itemprop="dateCreated datePublished" datetime="2016-09-25T20:10:36+08:00">2016-09-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-08 17:12:30" itemprop="dateModified" datetime="2020-07-08T17:12:30+08:00">2020-07-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>903</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这个部分是 RouterOS 对大流量 nat 网关的实践做介绍， RouterOS v6 配合 Intel 至强处理器搭建了一个 nat网关设备， 单台处理超过 1.5G 的网络流量，前期采用 18 条多线路接入，每条 100M， PCC 负载均衡，两个千兆以太网卡连接华为 5700 交换机， 这个实践配置供大家参考：<br><strong>系统配置：</strong><br>CPU： Intel Xen 5606 × 2 （未打开超线程，一共使用 8 核）+ Intel 芯片组（别人的主机，主板只知道是 ASUS，型号没有记）<br>内存： DDR3 ECC 内存 2G ×2 （双通道需要配置 2 根 2G 内存，当然 RouterOS 只能识别 2G）<br>硬盘： 1G Flash<br>网卡： Intel 82580 4 口网卡，每个网口中断 8<br>RouterOS v6.6， 功能包：仅安装 system、 ppp 和 advanced-tools</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/09/25/ROS%E9%AB%98%E6%80%A7%E8%83%BDnat%E5%AE%9E%E8%B7%B5%E5%AE%9E%E4%BE%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1246,7 +1253,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
