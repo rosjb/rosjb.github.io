@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://rosjb.github.io/"/>
-  <updated>2020-07-14T04:05:33.276Z</updated>
+  <updated>2020-07-18T17:24:30.507Z</updated>
   <id>http://rosjb.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DNS缓存</title>
+    <link href="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/"/>
+    <id>http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/</id>
+    <published>2020-07-17T07:21:01.000Z</published>
+    <updated>2020-07-18T17:24:30.507Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Miktotik-Router-设置"><a href="#Miktotik-Router-设置" class="headerlink" title="Miktotik Router 设置"></a>Miktotik Router 设置</h4><ol><li>首先设置打开mikrotik DNS的缓存功能:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dns <span class="built_in">set</span> allow-remote-requests=yes</span><br></pre></td></tr></table></figure></li></ol><ol start="2"><li>将所有的TCP和UDP的53端口的请求重定向:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure></li></ol><a id="more"></a><ol start="3"><li>设置Fasttrack 使来自路由器的所有DNS流量绕过队列:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall filter add chain=forward protocol=tcp dst-port=53 action=fasttrack-connection comment=<span class="string">"Fasttrack DNS TCP"</span></span><br><span class="line">/ip firewall filter add chain=forward protocol=udp dst-port=53 action=fasttrack-connection comment=<span class="string">"Fasttrack DNS UDP"</span></span><br></pre></td></tr></table></figure><img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/1.png" alt></li></ol><hr><ol start="4"><li>如果你是通过PPPOE拨号上网的,打开PPPOE网口,取消 Use-Peer-DNS</li></ol><p><img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png" alt></p><ol start="5"><li>设置 Mikrotik DNS 的服务器地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li></ol><p><strong>ps:当同时设置了静态和动态服务器时,静态服务器条目更可取,但是这并不表示将始终使用静态服务器(例如，以前从动态服务器接收查询，但后来添加了静态，那么将首选动态条目)</strong></p><ol start="6"><li>设置DHCP服务器的DNS地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure></li></ol><h4 id="删除本地缓存"><a href="#删除本地缓存" class="headerlink" title="删除本地缓存"></a>删除本地缓存</h4><ol><li><p>删除电脑上的DNS缓存:</p><ul><li><p>打开CMD控制台,输入:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure></li><li><p>查看缓存内容:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /displaydns</span><br></pre></td></tr></table></figure></li></ul></li><li><p>删除浏览器DNS缓存:</p><ul><li>某厂商浏览器:<br>  打开浏览器的选项-高级设置,里面有一个选项是 “清除上网痕迹” - “清空缓存”, 点击 “清除”</li><li>chrome浏览器:<br>  设置-隐私设置-清除浏览数据-缓存的图片和文件-清除数据</li></ul></li></ol><ol start="3"><li>刷新 Mikrotik RouterOS 的DNS缓存:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dns cache flush</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Miktotik-Router-设置&quot;&gt;&lt;a href=&quot;#Miktotik-Router-设置&quot; class=&quot;headerlink&quot; title=&quot;Miktotik Router 设置&quot;&gt;&lt;/a&gt;Miktotik Router 设置&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;首先设置打开mikrotik DNS的缓存功能:&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/ip dns &lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; allow-remote-requests=yes&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;将所有的TCP和UDP的53端口的请求重定向:&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=&lt;span class=&quot;string&quot;&gt;&quot;DNS TCP&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=&lt;span class=&quot;string&quot;&gt;&quot;DNS UDP&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="DNS" scheme="http://rosjb.github.io/tags/DNS/"/>
+    
+  </entry>
   
   <entry>
     <title>RouterOS裸机安装后由32位系统升级为64位</title>
@@ -48,9 +79,9 @@
     <link href="http://rosjb.github.io/2020/06/20/Ver2-11/"/>
     <id>http://rosjb.github.io/2020/06/20/Ver2-11/</id>
     <published>2020-06-20T08:16:14.000Z</published>
-    <updated>2020-07-08T04:15:20.201Z</updated>
+    <updated>2020-07-24T11:18:09.591Z</updated>
     
-    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li><li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 指出)</li><li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li><li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li><li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a></li></ol><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a> <a href="https://pan.baidu.com/share/init?surl=D3zV9gJzX3jq9Gs0WHRJLA" target="_blank" rel="noopener">百度网盘</a> (4st7)<br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>]]></content>
+    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 常用工具-网络监测(Netwatch),log内容无法正常显示的问题</li><li>修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 指出)</li><li>修复 完善 安装-里的PCC的功能,顺序错乱以及参数遗漏的问题</li><li>修复 PPP Service PPTP或L2TP,网通为主电信为辅的路由表显示错误问题</li><li>取消了所有命令行的 disabled=no 的命令,便于阅读<a id="more"></a></li></ol><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a><br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>]]></content>
     
     <summary type="html">
     
@@ -317,6 +348,30 @@
   </entry>
   
   <entry>
+    <title>用ROS创建PPPoE拨号上网-新手必看</title>
+    <link href="http://rosjb.github.io/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/"/>
+    <id>http://rosjb.github.io/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/</id>
+    <published>2016-09-26T10:57:08.000Z</published>
+    <updated>2020-07-17T10:31:49.614Z</updated>
+    
+    <content type="html"><![CDATA[<p>目前的网络大多采用ADSL接入的方式进行连接的。那么就需要进行PPPoE的拨号才能上网，现在普及的自动拨号方式是Modem接路由器，由路由器完成自动拨号。那么用ROS可不可以进行PPPoE的拨号呢？答案下面揭晓。</p><hr><a id="more"></a><p>一、在LAN口设一个IP地址，做为网关地址。<br>Network 和 Broadcast 会根据IP自动获取。<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/1.jpg" alt></p><p>二、创建一个PPPoE客户端，输入拨号的账户和密码: </p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/2.jpg" alt></p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/3.jpg" alt></p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/4.jpg" alt></p><p>三、创建一条NAT动态地址映射，使内网地址能与外网通信：<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/5.jpg" alt></p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/6.jpg" alt></p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/7.jpg" alt></p><p> 一个用ROS进行PPPoE拨号的网络就创建完成了，下面是测试结果：<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/8.jpg" alt></p><p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/9.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;目前的网络大多采用ADSL接入的方式进行连接的。那么就需要进行PPPoE的拨号才能上网，现在普及的自动拨号方式是Modem接路由器，由路由器完成自动拨号。那么用ROS可不可以进行PPPoE的拨号呢？答案下面揭晓。&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="技术讨论" scheme="http://rosjb.github.io/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/"/>
+    
+    
+      <category term="PPPOE" scheme="http://rosjb.github.io/tags/PPPOE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ROS电信,网通双ISP,光纤,ADSL双类型线路,某小区运营配置实例</title>
     <link href="http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/"/>
     <id>http://rosjb.github.io/2016/09/26/ROS%E7%94%B5%E4%BF%A1,%E7%BD%91%E9%80%9A%E5%8F%8CISP,%E5%85%89%E7%BA%A4,ADSL%E5%8F%8C%E7%B1%BB%E5%9E%8B%E7%BA%BF%E8%B7%AF,%E6%9F%90%E5%B0%8F%E5%8C%BA%E8%BF%90%E8%90%A5%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B/</id>
@@ -503,55 +558,6 @@
     
     
       <category term="BCP" scheme="http://rosjb.github.io/tags/BCP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPN的几种应用方式</title>
-    <link href="http://rosjb.github.io/2016/09/24/VPN%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F/"/>
-    <id>http://rosjb.github.io/2016/09/24/VPN%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F/</id>
-    <published>2016-09-24T13:47:42.000Z</published>
-    <updated>2020-07-13T09:21:03.459Z</updated>
-    
-    <content type="html"><![CDATA[<p>RouterOS 的 VPN 系统支持多种方式的应用，能实现企业对等访问、企业与多分支点、多点与移动办公和 VPN数据转移等多种 VPN 连接方式。在 VPN 数据转移方面用处最多的方式是在 VoIP 方面，因为受某些 ISP 网络的限制，使得正常的 VoIP 通讯收到影响，所以可以通过 VPN 的方式实现数据的转移。</p><a id="more"></a><h3 id="企业间对等互访"><a href="#企业间对等互访" class="headerlink" title="企业间对等互访"></a>企业间对等互访</h3><p><img src="/2016/09/24/VPN%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F/1.jpg" alt></p><p>通过 VPN 隧道协议如 PPTP、 L2TP 或者 IPIP 可以建立一个对等的隧道，使得两个办公室能互相访问公司数据和文件。这种方式我们首先建立 PPP 服务器，并给客户端分配帐号和固定 IP 地址、建立 PPP 的拨号和分配 IP地址，最后设置两个远程局域网的 IP 地址路由</p><h3 id="企业与分支点总分连接"><a href="#企业与分支点总分连接" class="headerlink" title="企业与分支点总分连接"></a>企业与分支点总分连接</h3><p><img src="/2016/09/24/VPN%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F/2.jpg" alt></p><p>我们可以使用 PPTP 或者 L2TP 等隧道协议，建立多个客户端账号，使多个分公司能链接到总公司的中心服务器，并能通过公司管理各个点的数据和信息互联。这样总公司做到对分公司的有效管理，可以即时发布信息到各个分公司。并能实现数据的安全传输。</p><h3 id="企业移动办公与综合应用"><a href="#企业移动办公与综合应用" class="headerlink" title="企业移动办公与综合应用"></a>企业移动办公与综合应用</h3><p><img src="/2016/09/24/VPN%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BA%94%E7%94%A8%E6%96%B9%E5%BC%8F/3.jpg" alt></p><p>RouterOS 支持普通用户的 PPTP 和 L2TP 的 windows 的拨号连接，所以对于在外出差和家庭办公的用户就可以方便的链接到总部的中心服务器和分支点的文件服务器，特别对需要即时处理问题的公司员工最为适合</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;RouterOS 的 VPN 系统支持多种方式的应用，能实现企业对等访问、企业与多分支点、多点与移动办公和 VPN数据转移等多种 VPN 连接方式。在 VPN 数据转移方面用处最多的方式是在 VoIP 方面，因为受某些 ISP 网络的限制，使得正常的 VoIP 通讯收到影响，所以可以通过 VPN 的方式实现数据的转移。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="技术讨论" scheme="http://rosjb.github.io/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/"/>
-    
-    
-      <category term="VPN应用场景" scheme="http://rosjb.github.io/tags/VPN%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>同时建立 PPTP 和 L2TP 服务器</title>
-    <link href="http://rosjb.github.io/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>http://rosjb.github.io/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
-    <published>2016-09-23T16:49:10.000Z</published>
-    <updated>2020-06-22T14:38:06.477Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先我们先看一下 PPTP 和 L2TP 的建立，同样是在 PPP 的目录下， interface 菜单中，选择 PPTP-Server 和L2TP-Server 并启用服务： </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2396.jpg" alt> </p><a id="more"></a><p>在 L2TP 服务器配置下多了 Use IPsec 选项，这是在 RouterOS 6.16 后加入的 IPsec 选项，方便 windows 客户端的连接， Default-Profile 类型选择 default-encryption， Autentication 认证方式也可以选择相同方式。 </p><p>这里我们举一个实例，我们建立了一个主机的 VPN 服务，同时启用 PPTP 和 L2TP 方式，分配远程 IP 为192.168.89.2-192.168.89.254 的地址池，我用 192.168.89.1 做为 VPN 隧道的本地 IP。 </p><p>首先我进入 ip pool 中配置地址池： </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2398.jpg" alt>  </p><p>配置好地址池后，在PPP Profiles 中使用默认的default-encryption 组规则，配合本地IP 地址192.168.89.1，在远程 remote-address 种配置之前添加号的地址池 VPN，设置 DNS 为 119.6.6.6,其他配置参数如下： </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2399.jpg" alt></p><p>在 limits 选项中，配置相应的 Idle-timeout（空闲超时时间） 为 10 分钟、 Rate-limit（带宽） 为 1M 上行和2M 下行，配置 Only-one（帐号是否唯一性）： </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2401.jpg" alt></p><p>在 PPP secret 中配置用户， 账号 yus，密码 yus， service 参数用于选择 VPN 类型，这里设置为默认 any 这样支持 L2TP 和 PPTP 登陆方式， profile 为 default-encryption: </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2402.jpg" alt> </p><p>配置完成后，我们便可以通过 PPTP 或者 L2TP 连接 RouterOS 的 VPN 服务，在 windows 下可以通过 PPTP的方式直接连接 RouterOS 的 VPN 服务， 由于 windows 要求 L2TP 进行 IPsec 的加密方式连接， 所以需要在L2TP 配置 IPsec 密钥， 如果不考虑使用 IPsec 的 L2TP 连接，可以修改 windows 注册表。</p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2404.jpg" alt>  </p><p>Windows 配置在 VPN 属性中，选择“安全”， VPN 类型选择“使用 IPsec 的第 2 层隧道协议（ L2TP/IPsec）”，点击“高级设置”，设置“使用预共享的密钥作为身份验证” </p><p><img src="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2405.jpg" alt> </p><p>L2TP 的 Windows 注册表修改<br>这里介绍的是在 Windows 下不使用 IPsec 的 L2TP 连接，后面有提到如何配置 RouterOS 使用 L2TP/IPsec的 Windows 连接。这里介绍修改 windows 的 L2TP 注册表，缺省的 Windows XP L2TP 传输策略不允许 L2TP传输不使用 IPSec 加密。可以通过修改 Windows XP 注册表来禁用缺省的行为，手工修改：</p><p>1) 进入 Windows XP 的开始 运行里面输入―Regedit，打开―注册表编辑器，定位―HKEY_Local_Machine \ System \ CurrentControl Set \ Services \ RasMan \Parameters ‖ 主键。<br>2) 为该主键添加以下键值： </p><ul><li>键值： ProhibitIpSec</li><li>数据类型： reg_dword</li><li>值： 1 </li></ul><p>修改后即可通过 windows 正常连接到 L2TP 服务。 在 RouterOS 6.16 后加入了 L2TP 服务中配置 IPsec 的选项，简化了 IPsec 配置操作，所以现在修改注册表会用到的人很少。<br>注： PPTP 和 L2TP 的连接端口都是固定的无法自定义，但 OVPN 和 SSTP 隧道 VPN 的连接端口可以自己定义，这有助于受到网络环境限制，采取灵活处理方法。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先我们先看一下 PPTP 和 L2TP 的建立，同样是在 PPP 的目录下， interface 菜单中，选择 PPTP-Server 和L2TP-Server 并启用服务： &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/img2396.jpg&quot; alt&gt; &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="技术讨论" scheme="http://rosjb.github.io/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/"/>
-    
-    
-      <category term="PPTP" scheme="http://rosjb.github.io/tags/PPTP/"/>
-    
-      <category term="L2TP" scheme="http://rosjb.github.io/tags/L2TP/"/>
     
   </entry>
   

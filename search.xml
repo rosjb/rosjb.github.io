@@ -13,7 +13,7 @@
 
 </li>
 </ol>
-<h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a> <a href="https://pan.baidu.com/share/init?surl=D3zV9gJzX3jq9Gs0WHRJLA" target="_blank" rel="noopener">百度网盘</a> (4st7)<br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>
+<h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.11: <a href="https://sn9.us/file/14549722-416638652" target="_blank" rel="noopener">下载地址</a> <a href="https://www.lanzous.com/i8injbe" target="_blank" rel="noopener">备用地址</a><br>解压密码:4321<br>md5:c27c63be7e66f41d61fa217cafe082a2 (压缩包的MD5)</p>
 ]]></content>
       <tags>
         <tag>下载</tag>
@@ -254,6 +254,66 @@
 <hr>
 <p><strong>2020-08-01更新: 由于租用国内服务器费用昂贵,2020-08-01已经将博客搬迁到github上了,以后大家可以在此交流!</strong></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>DNS缓存</title>
+    <url>/2020/07/17/DNS%E7%BC%93%E5%AD%98/</url>
+    <content><![CDATA[<h4 id="Miktotik-Router-设置"><a href="#Miktotik-Router-设置" class="headerlink" title="Miktotik Router 设置"></a>Miktotik Router 设置</h4><ol>
+<li>首先设置打开mikrotik DNS的缓存功能:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns <span class="built_in">set</span> allow-remote-requests=yes</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="2">
+<li>将所有的TCP和UDP的53端口的请求重定向:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<a id="more"></a>
+
+<ol start="3">
+<li>设置Fasttrack 使来自路由器的所有DNS流量绕过队列:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall filter add chain=forward protocol=tcp dst-port=53 action=fasttrack-connection comment=<span class="string">"Fasttrack DNS TCP"</span></span><br><span class="line">/ip firewall filter add chain=forward protocol=udp dst-port=53 action=fasttrack-connection comment=<span class="string">"Fasttrack DNS UDP"</span></span><br></pre></td></tr></table></figure>
+<img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/1.png" alt></li>
+</ol>
+<hr>
+<ol start="4">
+<li>如果你是通过PPPOE拨号上网的,打开PPPOE网口,取消 Use-Peer-DNS</li>
+</ol>
+<p><img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png" alt></p>
+<ol start="5">
+<li>设置 Mikrotik DNS 的服务器地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>ps:当同时设置了静态和动态服务器时,静态服务器条目更可取,但是这并不表示将始终使用静态服务器(例如，以前从动态服务器接收查询，但后来添加了静态，那么将首选动态条目)</strong></p>
+<ol start="6">
+<li>设置DHCP服务器的DNS地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="删除本地缓存"><a href="#删除本地缓存" class="headerlink" title="删除本地缓存"></a>删除本地缓存</h4><ol>
+<li><p>删除电脑上的DNS缓存:</p>
+<ul>
+<li><p>打开CMD控制台,输入:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看缓存内容:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig /displaydns</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除浏览器DNS缓存:</p>
+<ul>
+<li>某厂商浏览器:<br>  打开浏览器的选项-高级设置,里面有一个选项是 “清除上网痕迹” - “清空缓存”, 点击 “清除”</li>
+<li>chrome浏览器:<br>  设置-隐私设置-清除浏览数据-缓存的图片和文件-清除数据</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li>刷新 Mikrotik RouterOS 的DNS缓存:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns cache flush</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>DNS</tag>
+      </tags>
   </entry>
   <entry>
     <title>RouterOS裸机安装后由32位系统升级为64位</title>
@@ -686,6 +746,31 @@
       </categories>
       <tags>
         <tag>CCR1072</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用ROS创建PPPoE拨号上网-新手必看</title>
+    <url>/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/</url>
+    <content><![CDATA[<p>目前的网络大多采用ADSL接入的方式进行连接的。那么就需要进行PPPoE的拨号才能上网，现在普及的自动拨号方式是Modem接路由器，由路由器完成自动拨号。那么用ROS可不可以进行PPPoE的拨号呢？答案下面揭晓。</p>
+<hr>
+<a id="more"></a>
+
+<p>一、在LAN口设一个IP地址，做为网关地址。<br>Network 和 Broadcast 会根据IP自动获取。<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/1.jpg" alt></p>
+<p>二、创建一个PPPoE客户端，输入拨号的账户和密码: </p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/2.jpg" alt></p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/3.jpg" alt></p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/4.jpg" alt></p>
+<p>三、创建一条NAT动态地址映射，使内网地址能与外网通信：<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/5.jpg" alt></p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/6.jpg" alt></p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/7.jpg" alt></p>
+<p> 一个用ROS进行PPPoE拨号的网络就创建完成了，下面是测试结果：<br><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/8.jpg" alt></p>
+<p><img src="/2016/09/26/%E7%94%A8ROS%E5%88%9B%E5%BB%BAPPPoE%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91-%E6%96%B0%E6%89%8B%E5%BF%85%E7%9C%8B/9.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>技术讨论</category>
+      </categories>
+      <tags>
+        <tag>PPPOE</tag>
       </tags>
   </entry>
   <entry>
@@ -2069,11 +2154,43 @@
 <p>为了不让更多的人受骗上当,专门开设了此板块,希望其他人在找人调试ROS的时候,看清楚有没有下面的名单.(如果各位已经有过先前被骗的经历和教训,也可以直接联系我或者再此留言,让我们共同抵制这种行为.)</p>
 <a id="more"></a>
 <hr>
-<h3 id="骗子名单"><a href="#骗子名单" class="headerlink" title="骗子名单"></a><strong>骗子名单</strong></h3><ul>
-<li>骗子001: QQ:497503128  QQ:2785378749  支付宝:<a href="mailto:386249051@qq.com">386249051@qq.com</a>  姓名:张寿坤  电话:15368395391</li>
-<li>骗子002: QQ:594505775  电话:13556604526</li>
-</ul>
-<p>PS:以上名单均为网友提供和证据!</p>
+<h3 id="骗子名单"><a href="#骗子名单" class="headerlink" title="骗子名单"></a><strong>骗子名单</strong></h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">QQ</th>
+<th align="center">支付宝</th>
+<th align="center">微信</th>
+<th align="center">姓名</th>
+<th align="center">电话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">497503128</td>
+<td align="center"><a href="mailto:386249051@qq.com">386249051@qq.com</a></td>
+<td align="center"></td>
+<td align="center">张寿坤</td>
+<td align="center">15368395391</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2785378749</td>
+<td align="center"><a href="mailto:386249051@qq.com">386249051@qq.com</a></td>
+<td align="center"></td>
+<td align="center">张寿坤</td>
+<td align="center">15368395391</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">594505775</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">13556604526</td>
+</tr>
+</tbody></table>
+<p><strong>PS:以上名单均为网友提供和证据!</strong></p>
 ]]></content>
       <tags>
         <tag>骗子名单</tag>
