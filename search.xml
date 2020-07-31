@@ -256,7 +256,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>DNS缓存</title>
+    <title>Mikrotik DNS缓存设置建议</title>
     <url>/2020/07/17/DNS%E7%BC%93%E5%AD%98/</url>
     <content><![CDATA[<h4 id="Miktotik-Router-设置"><a href="#Miktotik-Router-设置" class="headerlink" title="Miktotik Router 设置"></a>Miktotik Router 设置</h4><ol>
 <li>首先设置打开mikrotik DNS的缓存功能:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns <span class="built_in">set</span> allow-remote-requests=yes</span><br></pre></td></tr></table></figure>
@@ -265,7 +265,7 @@
 </li>
 </ol>
 <ol start="2">
-<li>将所有的TCP和UDP的53端口的请求重定向:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
+<li>将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -277,15 +277,15 @@
 </ol>
 <hr>
 <ol start="4">
-<li>如果你是通过PPPOE拨号上网的,打开PPPOE网口,取消 Use-Peer-DNS</li>
+<li>如果你是通过PPPOE拨号上网的,想自行设置DNS地址,打开PPPOE网口,取消 Use-Peer-DNS</li>
 </ol>
 <p><img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png" alt></p>
 <ol start="5">
-<li>设置 Mikrotik DNS 的服务器地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li>
+<li>设置 DNS 的服务器地址为 自定义DNS 或 上游运营商的DNS地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p><strong>ps:当同时设置了静态和动态服务器时,静态服务器条目更可取,但是这并不表示将始终使用静态服务器(例如，以前从动态服务器接收查询，但后来添加了静态，那么将首选动态条目)</strong></p>
 <ol start="6">
-<li>设置DHCP服务器的DNS地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure>
+<li>设置DHCP服务器的DNS地址为 自定义DNS 或 上游运营商的DNS地址-路径:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>

@@ -21,17 +21,17 @@
     var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;redirect to-ports&#x3D;53 c">
+  <meta name="description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;re">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DNS缓存">
+<meta property="og:title" content="Mikrotik DNS缓存设置建议">
 <meta property="og:url" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="MikroTik 脚本生成器">
-<meta property="og:description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;redirect to-ports&#x3D;53 c">
+<meta property="og:description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;re">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/1.png">
 <meta property="og:image" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png">
 <meta property="article:published_time" content="2020-07-17T07:21:01.000Z">
-<meta property="article:modified_time" content="2020-07-18T17:24:30.507Z">
+<meta property="article:modified_time" content="2020-07-31T08:48:41.938Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="DNS">
 <meta name="twitter:card" content="summary">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>DNS缓存 | MikroTik 脚本生成器</title>
+  <title>Mikrotik DNS缓存设置建议 | MikroTik 脚本生成器</title>
   
 
 
@@ -203,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DNS缓存
+          Mikrotik DNS缓存设置建议
         </h1>
 
         <div class="post-meta">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-19 01:24:30" itemprop="dateModified" datetime="2020-07-19T01:24:30+08:00">2020-07-19</time>
+                <time title="修改时间：2020-07-31 16:48:41" itemprop="dateModified" datetime="2020-07-31T16:48:41+08:00">2020-07-31</time>
               </span>
 
           <br>
@@ -230,7 +230,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>967</span>
+              <span>994</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -256,7 +256,7 @@
 </li>
 </ol>
 <ol start="2">
-<li>将所有的TCP和UDP的53端口的请求重定向:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
+<li>将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -268,15 +268,15 @@
 </ol>
 <hr>
 <ol start="4">
-<li>如果你是通过PPPOE拨号上网的,打开PPPOE网口,取消 Use-Peer-DNS</li>
+<li>如果你是通过PPPOE拨号上网的,想自行设置DNS地址,打开PPPOE网口,取消 Use-Peer-DNS</li>
 </ol>
 <p><img src="/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png" alt></p>
 <ol start="5">
-<li>设置 Mikrotik DNS 的服务器地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li>
+<li>设置 DNS 的服务器地址为 自定义DNS 或 上游运营商的DNS地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dns</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p><strong>ps:当同时设置了静态和动态服务器时,静态服务器条目更可取,但是这并不表示将始终使用静态服务器(例如，以前从动态服务器接收查询，但后来添加了静态，那么将首选动态条目)</strong></p>
 <ol start="6">
-<li>设置DHCP服务器的DNS地址为 Mikrotik Router 地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure>
+<li>设置DHCP服务器的DNS地址为 自定义DNS 或 上游运营商的DNS地址-路径:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip dhcp</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
