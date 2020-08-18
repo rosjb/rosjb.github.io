@@ -21,17 +21,17 @@
     var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;re">
+  <meta name="description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向到路由器53端口:(如果你有多个路由可以进行重定向设置-一般可以跳过这一步)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mikrotik DNS缓存设置建议">
 <meta property="og:url" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="MikroTik 脚本生成器">
-<meta property="og:description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-port&#x3D;53 action&#x3D;re">
+<meta property="og:description" content="Miktotik Router 设置 首先设置打开mikrotik DNS的缓存功能:1&#x2F;ip dns set allow-remote-requests&#x3D;yes      将所有的TCP和UDP的53端口的请求重定向到路由器53端口:(如果你有多个路由可以进行重定向设置-一般可以跳过这一步)12&#x2F;ip firewall nat add chain&#x3D;dstnat protocol&#x3D;tcp dst-">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/1.png">
 <meta property="og:image" content="http://rosjb.github.io/2020/07/17/DNS%E7%BC%93%E5%AD%98/2.png">
 <meta property="article:published_time" content="2020-07-17T07:21:01.000Z">
-<meta property="article:modified_time" content="2020-07-31T08:48:41.938Z">
+<meta property="article:modified_time" content="2020-08-01T07:48:15.643Z">
 <meta property="article:author" content="rosjb">
 <meta property="article:tag" content="DNS">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 16:48:41" itemprop="dateModified" datetime="2020-07-31T16:48:41+08:00">2020-07-31</time>
+                <time title="修改时间：2020-08-01 15:48:15" itemprop="dateModified" datetime="2020-08-01T15:48:15+08:00">2020-08-01</time>
               </span>
 
           <br>
@@ -235,7 +235,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>994</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
 </li>
 </ol>
 <ol start="2">
-<li>将所有的TCP和UDP的53端口的请求重定向:(如果你只有一个路由可以进行重定向设置)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
+<li>将所有的TCP和UDP的53端口的请求重定向到路由器53端口:(如果你有多个路由可以进行重定向设置-一般可以跳过这一步)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add chain=dstnat protocol=tcp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS TCP"</span></span><br><span class="line">/ip firewall nat add chain=dstnat protocol=udp dst-port=53 action=redirect to-ports=53 comment=<span class="string">"DNS UDP"</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -405,7 +405,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
