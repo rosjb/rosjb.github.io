@@ -2093,10 +2093,13 @@
 <a id="more"></a>
 
 <p><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/1.jpg" alt></p>
-<h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><p>1.下载 <a href="https://wwa.lanzous.com/iBvandy3e4d" target="_blank" rel="noopener">zh_CN.rar</a> 解压为 zh_cn.lng文件(5.x和6.x版本都有,5.x是网络上流传的,6.x部分细节内容稍许自己翻译了下) </p>
+<h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><p>1.下载 <a href="https://wwa.lanzous.com/iBvandy3e4d" target="_blank" rel="noopener">zh_CN.rar</a> 解压为 zh_cn.lng文件(5.x和6.x版本都有)</p>
 <p>2.通过winbox将文件拖拽上传至Files:<br><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/4.jpg" alt></p>
 <p>3.登陆userman原版，左下角选择语言版本即可：<br><img src="/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/3.jpg" alt></p>
-]]></content>
+<font color="red">
+
+<p><strong>v6.47.1 此汉化补丁已经失效!</strong><br><font></font></p>
+</font>]]></content>
       <categories>
         <category>技术讨论</category>
       </categories>
@@ -2108,35 +2111,33 @@
   <entry>
     <title>User manager 配置指南</title>
     <url>/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>User manager是集成在RouterOS的一个功能包，可用于管理PPPOE,HOTSPOT等用户账号，我们使用前要确认RouterOS的system package里有user manager功能包。 </p>
+    <content><![CDATA[<p>User manager是集成在RouterOS的一个功能包，可用于管理PPPOE,HOTSPOT等用户账号，我们使用前要确认RouterOS的system package里有user manager功能包。</p>
 <p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-1.png" alt></p>
-<p>如果没有安装功能包，那么就需要下载一个RouterOS相同版本的user-manager.nkp。上传到files文件根目录下。通过reboot命令重启安装功能包。 </p>
-<p>在确认安装功能包后。我们登录user manager通过web页面和命令行配置，命令行在tool user-manager目录下配置。 </p>
-<p>User manager的web登录默认是80端口。访问路径为<a href="http://192.168.88.1/userman" target="_blank" rel="noopener">http://192.168.88.1/userman</a> </p>
+<p>如果没有安装功能包，那么就需要下载一个RouterOS相同版本的user-manager.nkp。上传到files文件根目录下。通过reboot命令重启安装功能包。</p>
+<p>在确认安装功能包后。我们登录user manager通过web页面和命令行配置，命令行在tool user-manager目录下配置。</p>
+<p>User manager的web登录默认是80端口。访问路径为<a href="http://192.168.88.1/userman" target="_blank" rel="noopener">http://192.168.88.1/userman</a></p>
 <a id="more"></a>
 
 <p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-2.png" alt></p>
-<p>User manager默认的登录名为admin，密码为空。登录后： </p>
+<p>User manager默认的登录名为admin，密码为空。登录后：</p>
 <p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-3.png" alt></p>
 <p><strong>您可以将 user manager 汉化成中文后使用：<a href="https://rosjb.github.io/2016/01/24/ROS%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86(usermanager)%E4%B8%AD%E6%96%87%E7%89%88/">user manager 汉化</a></strong></p>
-<p>*使用命令行登录user manager </p>
+<p>*使用命令行登录user manager</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] /tool user-manager&gt;</span><br></pre></td></tr></table></figure>
 
 <p>示例：修改user manager默认登录帐号admin的密码（设置为123）。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] /tool user-manager&gt;customer</span><br><span class="line">[admin@MikroTik] /tool user-manager customer&gt; <span class="built_in">print</span></span><br><span class="line">Flags: X – disabled</span><br><span class="line">0 login=”admin” password=”123″ backup-allowed=yestime-zone=-00:00 permissions=ownersignup-allowed=no paypal-allowed=no paypal-secure-response=no paypal-accept-pending=no </span><br><span class="line">[admin@MikroTik] /tool user-managercustomer&gt; <span class="built_in">set</span> 0 password=123</span><br></pre></td></tr></table></figure>
-<p>Usermanager 操作界面介绍 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[admin@MikroTik] /tool user-manager&gt;customer</span><br><span class="line">[admin@MikroTik] /tool user-manager customer&gt; <span class="built_in">print</span></span><br><span class="line">Flags: X – disabled</span><br><span class="line">0 login=”admin” password=”123″ backup-allowed=yestime-zone=-00:00 permissions=ownersignup-allowed=no paypal-allowed=no paypal-secure-response=no paypal-accept-pending=no</span><br><span class="line">[admin@MikroTik] /tool user-managercustomer&gt; <span class="built_in">set</span> 0 password=123</span><br></pre></td></tr></table></figure>
+<p>Usermanager 操作界面介绍</p>
 <p><img src="/2016/01/24/User%20manager%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/userman-4.png" alt></p>
-<p>菜单栏：<br>Routers：连接到user manager的路由器IP地址和secret等参数<br>Users：用户帐号信息添加、编辑、删除等<br>Sessions：用户认证管理<br>Customers：添加顾客管理系统，可以建立多个用户管理系统<br>Logs：认证日志<br>Payments：用户付款记录信息<br>Profiles：用户计费策略<br>Settings：user manager网页设置参数、语言设置和网银付款接口设置<br>Reports：导出user manager统计报告<br>A users：在线用户 Advanced<br>search：高级搜索<br>Maintenance：数据维护<br>Logout：退出 </p>
-<p>功能区域：<br>Add：添加一个新的规则<br>Edit：对选中的规则进行编辑<br>Generate：生成备份文件 </p>
+<p>菜单栏：<br>Routers：连接到user manager的路由器IP地址和secret等参数<br>Users：用户帐号信息添加、编辑、删除等<br>Sessions：用户认证管理<br>Customers：添加顾客管理系统，可以建立多个用户管理系统<br>Logs：认证日志<br>Payments：用户付款记录信息<br>Profiles：用户计费策略<br>Settings：user manager网页设置参数、语言设置和网银付款接口设置<br>Reports：导出user manager统计报告<br>A users：在线用户 Advanced<br>search：高级搜索<br>Maintenance：数据维护<br>Logout：退出</p>
+<p>功能区域：<br>Add：添加一个新的规则<br>Edit：对选中的规则进行编辑<br>Generate：生成备份文件</p>
 <font color="red">
 
-<p><strong>友情提示:</strong><br></p></font><p></p>
-<font color="red">
-
+<p><strong>友情提示:</strong><br></p></font><br><font color="red"><p></p>
 <p><strong>6.x用户,如果发现自己无法创建usermanager数据库,首先查看winbox里files目录里是否有user-manager文件夹,如果没有在控制台输入:</strong><br></p></font><p></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/tool user-manager database <span class="built_in">set</span> db-path=user-manager</span><br></pre></td></tr></table></figure>
-<p><strong>(如果生成不了,修改成user-manager1)两者都可尝试</strong> </p>
-<p><strong>然后会看见files文件夹以及数据库创建完毕.就可以正常使用了!</strong> </p>
+<p><strong>(如果生成不了,修改成user-manager1)两者都可尝试</strong></p>
+<p><strong>然后会看见files文件夹以及数据库创建完毕.就可以正常使用了!</strong></p>
 <p>原文来自官方论坛: <a href="http://forum.mikrotik.com/viewtopic.php?t=92177" target="_blank" rel="noopener">http://forum.mikrotik.com/viewtopic.php?t=92177</a></p>
 ]]></content>
       <categories>
