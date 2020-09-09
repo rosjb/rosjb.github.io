@@ -258,19 +258,18 @@
   <entry>
     <title>Mikrotik DHCP Options的简单设置</title>
     <url>/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h4 id="简单说下-RouterOS-里如何利用-DHCP-Options，手动指定不同设备使用不同网关与-DNS"><a href="#简单说下-RouterOS-里如何利用-DHCP-Options，手动指定不同设备使用不同网关与-DNS" class="headerlink" title="简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS"></a>简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS</h4><p>首先先来看看我本地的设置：<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/1.png" alt><br>我的 ROS 地址为 10.10.10.98， DHCP 服务器分配的网关为 10.10.10.98， DNS 服务器为 10.10.10.98（因为我开启了 ROS 缓存功能）</p>
+    <content><![CDATA[<p><strong>简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS</strong></p>
+<h4 id="首先先来看看我本地的设置："><a href="#首先先来看看我本地的设置：" class="headerlink" title="首先先来看看我本地的设置："></a>首先先来看看我本地的设置：</h4><p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/1.png" alt><br>我的 ROS 地址为 10.10.10.98， DHCP 服务器分配的网关为 10.10.10.98， DNS 服务器为 10.10.10.98（因为我开启了 ROS 缓存功能）</p>
 <a id="more"></a>
 
 <p>这样的话，默认接入的设备分配到的网关和 DNS 就是 10.10.10.98。那么如何实现随意设备走指定网关呢，就需要用到 Options 功能：<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/2.png" alt></p>
-<p>这里有 3 个参数：<br><strong>Name：</strong> 名称，这个随意<br><strong>Code：</strong> Options 编号，用数字表示。 3 表示网关， 6 表示 DNS。后面会将详细的表贴出来<br><strong>Value：</strong> Options 参数，对应前面的编号。这里我们需要填入 ‘IP 地址’ (包含引号，需要英<br>文输入法)<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/3.png" alt></p>
-<p>分别填入对应参数后，点 OK 确认保存</p>
-<p>接着打开需要修改的设备（首先我们需要先 Make Static） ,然后在 DHCP Options 点击向下小箭头，选择已经保存的 Options</p>
+<h4 id="这里有-3-个参数："><a href="#这里有-3-个参数：" class="headerlink" title="这里有 3 个参数："></a>这里有 3 个参数：</h4><p><strong>Name：</strong> 名称，这个随意<br><strong>Code：</strong> Options 编号，用数字表示。 3 表示网关， 6 表示 DNS。后面会将详细的表贴出来<br><strong>Value：</strong> Options 参数，对应前面的编号。这里我们需要填入’IP 地址’(包含引号，需要英文输入法)<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/3.png" alt><br>分别填入对应参数后，点 OK 确认保存</p>
+<p>接着打开需要修改的设备（首先我们需要先 Make Static），然后在 DHCP Options 点击向下小箭头，选择已经保存的 Options</p>
 <p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/4.png" alt></p>
 <p>以下就是设置完成的状态， OK 确认保存就可以了<br>PC 设备需要 <strong>ipconfig /release</strong> 跟 <strong>ipconfig /renew</strong> 释放跟重新获取移动设备断开 Wifi 后重新连接即可</p>
 <p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/5.png" alt></p>
 <p>这样设置的好处就是可以设置全局分配 ROS 网关，只将需要经过旁路由的设备才会走旁路由，一来可以避免 NAS 等设备经过代理，二来任你怎么折腾旁路由，家人的设备也不会受到影响。</p>
-<p><strong>Options其他参数详情</strong></p>
-<table>
+<h4 id="Options其他参数详情"><a href="#Options其他参数详情" class="headerlink" title="Options其他参数详情"></a><strong>Options其他参数详情</strong></h4><table>
 <thead>
 <tr>
 <th align="center">Options号</th>
