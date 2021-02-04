@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="RouterBOARD产品型号较多，各种字母和数字标识繁琐，下面介绍下产品命名的特点 RouterBOARD基本编号适合大多型号，除RB600，RB800和RB1000系列型号外，他们的区别如下：  RB1XX，即RB100系列  RB133，即是100系列，有3个以太网口，3个MiniPCI无线扩展接口  RB493，即400系列，有9个以太网口，3个MiniPCI扩展  1.RouterBOA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RouterBOARD 产品命名与标识">
+<meta property="og:url" content="http://rosjb.github.io/2016/09/22/RouterBOARD%20%E4%BA%A7%E5%93%81%E5%91%BD%E5%90%8D%E4%B8%8E%E6%A0%87%E8%AF%86/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="RouterBOARD产品型号较多，各种字母和数字标识繁琐，下面介绍下产品命名的特点 RouterBOARD基本编号适合大多型号，除RB600，RB800和RB1000系列型号外，他们的区别如下：  RB1XX，即RB100系列  RB133，即是100系列，有3个以太网口，3个MiniPCI无线扩展接口  RB493，即400系列，有9个以太网口，3个MiniPCI扩展  1.RouterBOA">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-21T17:56:49.000Z">
+<meta property="article:modified_time" content="2020-06-21T12:23:44.462Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="RouterBOARD产品命名规则">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rosjb.github.io/2016/09/22/RouterBOARD%20%E4%BA%A7%E5%93%81%E5%91%BD%E5%90%8D%E4%B8%8E%E6%A0%87%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RouterBOARD 产品命名与标识 | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-winbox">
+
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/22/RouterBOARD%20%E4%BA%A7%E5%93%81%E5%91%BD%E5%90%8D%E4%B8%8E%E6%A0%87%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RouterBOARD 产品命名与标识
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-22 01:56:49" itemprop="dateCreated datePublished" datetime="2016-09-22T01:56:49+08:00">2016-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-21 20:23:44" itemprop="dateModified" datetime="2020-06-21T20:23:44+08:00">2020-06-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>RouterBOARD产品型号较多，各种字母和数字标识繁琐，下面介绍下产品命名的特点<br> RouterBOARD基本编号适合大多型号，除RB600，RB800和RB1000系列型号外，他们的区别如下：</p>
+<ul>
+<li>RB1XX，即RB100系列 </li>
+<li>RB133，即是100系列，有3个以太网口，3个MiniPCI无线扩展接口 </li>
+<li>RB493，即400系列，有9个以太网口，3个MiniPCI扩展</li>
+</ul>
+<h4 id="1-RouterBOARD基本命名规则"><a href="#1-RouterBOARD基本命名规则" class="headerlink" title="1.RouterBOARD基本命名规则:"></a>1.RouterBOARD基本命名规则:</h4><a id="more"></a>
+<p>  &lt;主板名称&gt; &lt;主板特征&gt; - &lt;集成无线网卡&gt; &lt;无线网卡特征&gt; - &lt;连接接口类型&gt; - &lt;外壳类型&gt;<br>  后缀代表含义： </p>
+<ul>
+<li>AH，A代表高内存，H代表高性能（高CPU） </li>
+<li>e，代表有PCI-e接口扩张 *    G，代表高性能和千兆网口 </li>
+<li>U，代表USB扩展 *    R，代表集成无线模块 </li>
+<li>P，POE *    L，Low低成本产品 *    S，SFP光扩展接口 </li>
+<li>x（N），代表CPU内核数量，如x2，x16，x32 </li>
+</ul>
+<h4 id="2-集成无线网卡命名"><a href="#2-集成无线网卡命名" class="headerlink" title="2.集成无线网卡命名"></a>2.集成无线网卡命名</h4><p>如果集成无线网卡设备，命名格式将是如下：<br>  &lt;频段&gt;&lt;发射功率&gt;&lt;协议&gt;&lt;通道数量&gt;<br>  频段 </p>
+<ul>
+<li>5 – 支持5Ghz </li>
+<li>2 – 支持2.4Ghz </li>
+<li>52 – 支持5Ghz和2.4Ghz </li>
+</ul>
+<p>发射功率 </p>
+<ul>
+<li>无命名 - “普通发射功率” - &lt;23dBm at 6Mbps 802.11a; &lt;24dBm at 6Mbps 802.11g </li>
+<li><a href="http://wiki.mikrotik.com/wiki/Manual:Product_Naming#H" target="_blank" rel="noopener">H</a> - “高发射功率” - 23-24dBm at 6Mbps 802.11a; 24-27dBm at 6Mbps 802.11g </li>
+<li>HP - “较高发射功率” - 25-26dBm 6Mbps 802.11a; 28-29dBm at 6Mbps 802.11g </li>
+<li>SHP - “超高发射功率” - 27+dBm at 6Mbps 802.11a; 30+dBm at 6Mbps 802.11g </li>
+</ul>
+<p>无线协议 </p>
+<ul>
+<li>无命名 – 仅支持802.11a/b/g </li>
+<li>n – 支持802.11n </li>
+<li>ac – 支持802.11ac </li>
+</ul>
+<p>无线通道数量 </p>
+<ul>
+<li>无命名 – 单无线通道 </li>
+<li>D – 双无线通道 </li>
+<li>T – 三无线通道 </li>
+</ul>
+<h4 id="3-无线网卡接口类型命名"><a href="#3-无线网卡接口类型命名" class="headerlink" title="3.无线网卡接口类型命名"></a>3.无线网卡接口类型命名</h4><ul>
+<li>无命名 – 扩展槽根据类型或型号决定 </li>
+<li>MMCX – MMCX接口 </li>
+<li>u.FL - u.FL接口 </li>
+</ul>
+<h4 id="4-外壳类型命名"><a href="#4-外壳类型命名" class="headerlink" title="4.外壳类型命名"></a>4.外壳类型命名</h4><ul>
+<li>无命名 – 一个产品的主型号默认使用外壳 </li>
+<li>BU - board unit (无外壳) – 特殊需求情况下，为仅主板需求的客户提供 </li>
+<li>RM – 机柜外壳型 </li>
+<li>IN – 室内外壳型 </li>
+<li>OUT – 室外防水型 </li>
+<li>SA – 集成扇形天线型 </li>
+<li>HG – 高增益天线外壳 </li>
+<li>EM – 内存扩展型 例如：RB912UAG-5HPnD </li>
+<li>RB (RouterBOARD) </li>
+<li>912 – 9系列主板，1个以太网接口，两个无线网卡接口（集成和MiniPCIe接口）</li>
+<li>UAG – USB接口，大内存和千兆以太网接口 </li>
+<li>5HPnD – 内置5GHz较高发射功率网卡，支持双通道的802.11n协议</li>
+</ul>
+<h4 id="5-Cloud-Core-Router命名"><a href="#5-Cloud-Core-Router命名" class="headerlink" title="5.Cloud Core Router命名"></a>5.Cloud Core Router命名</h4><p>  Cloud Core Router (缩写CCR)<br>&lt;4组产品数字编号&gt;-&lt;端口数量&gt;-&lt;外壳类型&gt;<br>4 组数字编号</p>
+<ul>
+<li>第一个数字代表产品系列 </li>
+<li>第二个数字保留所用 </li>
+<li>第三和第四代表设备上的CPU核心数量 </li>
+</ul>
+<p>端口数量 </p>
+<ul>
+<li>-<n>G – 千兆以太网端口数量 </n></li>
+<li>-<n>S – SFP端口数量 </n></li>
+<li>-<n>S+ - SFP+端口数量 </n></li>
+</ul>
+<h4 id="6-Cloud-Router-Switch命名"><a href="#6-Cloud-Router-Switch命名" class="headerlink" title="6.Cloud Router Switch命名"></a>6.Cloud Router Switch命名</h4><p>  Cloud Router Switch (缩写CRS)命令<br>   &lt;3组产品数字编号&gt;-&lt;端口数量&gt;-&lt;集成无线网卡&gt;-&lt;外壳类型&gt;<br>   3组数字编号</p>
+<ul>
+<li>第一个数字代表产品系列</li>
+<li>第二和第三代表所有有线接口数量(Ethernet, SFP, SFP+)</li>
+</ul>
+<p>端口数量</p>
+<ul>
+<li>-<n>G – 千兆以太网端口数量</n></li>
+<li>-<n>S – SFP端口数量</n></li>
+<li>-<n>S+ - SFP+端口数量</n></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RouterBOARD%E4%BA%A7%E5%93%81%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> RouterBOARD产品命名规则</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/09/22/ros%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AEDMZ/" rel="prev" title="ros怎么配置DMZ?">
+      <i class="fa fa-chevron-left"></i> ros怎么配置DMZ?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/09/24/%E5%90%8C%E6%97%B6%E5%BB%BA%E7%AB%8B%20PPTP%20%E5%92%8C%20L2TP%20%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="同时建立 PPTP 和 L2TP 服务器">
+      同时建立 PPTP 和 L2TP 服务器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-RouterBOARD基本命名规则"><span class="nav-text">1.RouterBOARD基本命名规则:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-集成无线网卡命名"><span class="nav-text">2.集成无线网卡命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-无线网卡接口类型命名"><span class="nav-text">3.无线网卡接口类型命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-外壳类型命名"><span class="nav-text">4.外壳类型命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Cloud-Core-Router命名"><span class="nav-text">5.Cloud Core Router命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Cloud-Router-Switch命名"><span class="nav-text">6.Cloud Router Switch命名</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '2365b1b9fe7beb4932e96f866e0d27db',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="正式版 V2.11:1.修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 无锡-IT侦探 提供)  正式版 V2.9:1.修复:防火墙-推荐防火墙脚本-丢弃掉所有非单播数据,代码不换行的问题 (感谢 Mr.Gu 提供)  正式版 V2.8:1.修复了脚本-统计在线计算机-显示PPP拨号总数的一个变量错误 (感谢 福建-路人甲 提供)  正式版 V2.7:1.修复了 VLAN多">
+<meta property="og:type" content="website">
+<meta property="og:title" content="感谢名单 - 2020年1月更新">
+<meta property="og:url" content="http://rosjb.github.io/thanksforlist/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="正式版 V2.11:1.修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 无锡-IT侦探 提供)  正式版 V2.9:1.修复:防火墙-推荐防火墙脚本-丢弃掉所有非单播数据,代码不换行的问题 (感谢 Mr.Gu 提供)  正式版 V2.8:1.修复了脚本-统计在线计算机-显示PPP拨号总数的一个变量错误 (感谢 福建-路人甲 提供)  正式版 V2.7:1.修复了 VLAN多">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-13T15:17:56.000Z">
+<meta property="article:modified_time" content="2020-06-21T11:26:14.372Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="感谢名单">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rosjb.github.io/thanksforlist/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>感谢名单 - 2020年1月更新 | MikroTik 脚本生成器
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-winbox">
+
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">感谢名单 - 2020年1月更新
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h4 id="正式版-V2-11"><a href="#正式版-V2-11" class="headerlink" title="正式版 V2.11:"></a>正式版 V2.11:</h4><p>1.修复 常用工具-WIFI中文SSID生成器,中文转换乱码的问题 (感谢 <font color="red">无锡-IT侦探</font> 提供)</p>
+<hr>
+<h4 id="正式版-V2-9"><a href="#正式版-V2-9" class="headerlink" title="正式版 V2.9:"></a>正式版 V2.9:</h4><p>1.修复:防火墙-推荐防火墙脚本-丢弃掉所有非单播数据,代码不换行的问题 (感谢 <font color="red">Mr.Gu</font> 提供)</p>
+<hr>
+<h4 id="正式版-V2-8"><a href="#正式版-V2-8" class="headerlink" title="正式版 V2.8:"></a>正式版 V2.8:</h4><p>1.修复了脚本-统计在线计算机-显示PPP拨号总数的一个变量错误 (感谢 <font color="red">福建-路人甲</font> 提供)</p>
+<hr>
+<h4 id="正式版-V2-7"><a href="#正式版-V2-7" class="headerlink" title="正式版 V2.7:"></a>正式版 V2.7:</h4><p>1.修复了 VLAN多线内一个版本兼容性问题 (感谢 <font color="red">哈尔滨-带营</font> 提供)</p>
+<hr>
+<h4 id="正式版-V2-5"><a href="#正式版-V2-5" class="headerlink" title="正式版 V2.5:"></a>正式版 V2.5:</h4><p>1.修复安装-nth-pcc接口错误的问题 (感谢 <font color="red">诺信</font> 提供)<br>2.修复 IPV6工具设置里的一个问题(感谢 <font color="red">重庆-Ali</font> 提供 )</p>
+<hr>
+<h4 id="beta-V2-3"><a href="#beta-V2-3" class="headerlink" title="beta V2.3:"></a>beta V2.3:</h4><p>1.修复安装-PPPOE接口错误问题 (感谢 <font color="red">朱 晓 宇</font> 提供)</p>
+<hr>
+<h4 id="beta-V2-2"><a href="#beta-V2-2" class="headerlink" title="beta V2.2:"></a>beta V2.2:</h4><p>1.修改部分网络收集脚本一些小错误 (感谢 <font color="red">诺信电子科技</font> 提供)<br>2.修复PPPoE拨号的一个BUG(感谢 <font color="red">云南-牧羊人</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver2-0"><a href="#beta-Ver2-0" class="headerlink" title="beta Ver2.0:"></a>beta Ver2.0:</h4><p>1.修复了限速-部分参数逻辑值错误问题 (感谢 <font color="red">冷情秋风²º¹³</font> 提供)<br>2.修改了对ROS 6.3以上版本 PPTP服务器搭建部分无用参数的简化和一些文字说明 (感谢 <font color="red">猫蜜蜜</font> 提供)<br>3.复了安装-vrrp 标记路由错误的一个问题 (感谢 <font color="red">诺信电子科技</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver1-9"><a href="#beta-Ver1-9" class="headerlink" title="beta Ver1.9:"></a>beta Ver1.9:</h4><p>1.修复了 安装-VRRP多线拨号一个错误(感谢 <font color="red">ScotGu</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver1-7"><a href="#beta-Ver1-7" class="headerlink" title="beta Ver1.7:"></a>beta Ver1.7:</h4><p>1.修复了 多线固定IP叠加PCC+NTH 中的一个BUG  (感谢 <font color="red">青花瓷</font> 提供)<br>2.修复了 限速-PCQ智能动态限速 中的网卡显示错误 (感谢 <font color="red">涅槃</font> 提供)<br>3.增加了限速-简单限速&amp;高级动态限速的(Limit At, Max Limit, Burst Limit, Burst Threshold之间值的大小判断功能), (感谢 <font color="red">O_Ooo</font> 建议)<br>4.修复了 安装-多线固定IP NTH叠加的一个BUG (感谢 <font color="red">重庆-Ali</font> 提供)<br>5.修复了VPN-PPTP&amp;L2TP的一个设置错误 (感谢 <font color="red">上了瘾的殇</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver1-5"><a href="#beta-Ver1-5" class="headerlink" title="beta Ver1.5:"></a>beta Ver1.5:</h4><p>1.修复了 脚本-统计在线计算 的BUG,PPTP,L2TP在线统计错误(感谢 <font color="red">梦缘人</font> 提供)<br>2.修复了 安装-多线PPPOE-NTH脚本 一个BUG (感谢 丢掉的冬季 提供)</p>
+<hr>
+<h4 id="beta-Ver1-4"><a href="#beta-Ver1-4" class="headerlink" title="beta Ver1.4:"></a>beta Ver1.4:</h4><p>1.修复了 防火墙-封锁软件名 语法错误 (感谢 <font color="red">Eastward</font> 提供)<br>2.增加了自动绑定arp脚本 (感谢 <font color="red">ZCyuan</font> 提供)<br>3.增加了 脚本-统计在线计算,更多有用参数,可自行选择生成 (感谢 <font color="red">北京-小歪</font> 提供)<br>4.修复了 限速-PCQ智能动态限速 文字描述错误 (感谢 <font color="red">清水穎人</font> 提供)<br>5.修复了 脚本-统计在线计算 一个脚本错误 (感谢 <font color="red">ZCyuan</font> 提供)<br>6.增加了 常用工具-netwatch功能 监测网络延迟 (感谢 <font color="red">ZCyuan</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver1-3"><a href="#beta-Ver1-3" class="headerlink" title="beta Ver1.3:"></a>beta Ver1.3:</h4><p>1.添加了安装里面可自行设置pppoe多线PCC+NTH,VRRP,VLAN账号和网卡检测重复名功能(由于有些用户需要多拨的,默认为检查)  (感谢 <font color="red">人海浮沉</font> 建议)<br>2.调整了软件的高度,让一些笔记本用户可以使用(13.3寸显示器以上的),1.2版本软件会被任务栏遮挡 (感谢 <font color="red">广州-小许</font> 提供)<br>3.修复了pppoe多线,叠加类型的语法错误(感谢 <font color="red">Jamie</font> 提供)<br>4.修复了 系统-定时关机和定时重启 4 7 9 10月份脚本生成错误问题(感谢 <font color="red">猫蜜蜜</font> 提供)<br>5.修复了 安装-双线固定IP电信网通,没有网关的问题(感谢 <font color="red">猫蜜蜜</font> 提供)</p>
+<hr>
+<h4 id="beta-Ver1-2"><a href="#beta-Ver1-2" class="headerlink" title="beta Ver1.2:"></a>beta Ver1.2:</h4><p>1.增加了邮箱备份功能(感谢 <font color="red">Ali</font> 提供资料)<br>2.增加了多线PPPoE掉线自动修改PCC参数脚本(感谢 今晚打老虎 提供资料) 3.路由表增加了QQ服务器的地址(感谢 <font color="red">耗子</font> 提供资料)</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正式版-V2-11"><span class="nav-text">正式版 V2.11:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正式版-V2-9"><span class="nav-text">正式版 V2.9:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正式版-V2-8"><span class="nav-text">正式版 V2.8:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正式版-V2-7"><span class="nav-text">正式版 V2.7:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正式版-V2-5"><span class="nav-text">正式版 V2.5:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-V2-3"><span class="nav-text">beta V2.3:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-V2-2"><span class="nav-text">beta V2.2:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver2-0"><span class="nav-text">beta Ver2.0:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-9"><span class="nav-text">beta Ver1.9:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-7"><span class="nav-text">beta Ver1.7:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-5"><span class="nav-text">beta Ver1.5:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-4"><span class="nav-text">beta Ver1.4:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-3"><span class="nav-text">beta Ver1.3:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beta-Ver1-2"><span class="nav-text">beta Ver1.2:</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="适用于ROS版本号 &lt; 6.16 的用户 IPSec 作为新一代网络安全协议，为网络传输提供了安全保证，使端到端的数据保密成为可能， 是互联网上的新一代安全标准。提供包括访问控制、无连接的完整性、数据源认证、抗重放 (replay)保护、保密和有限传输保密性在内的服务，服务基于 IP 层并对 IP 及上层协议进行保护。服务的实施通过两种通信安全协议：认证头（ AH）和封装安全负载（ ESP）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS里的IPSec配置">
+<meta property="og:url" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="适用于ROS版本号 &lt; 6.16 的用户 IPSec 作为新一代网络安全协议，为网络传输提供了安全保证，使端到端的数据保密成为可能， 是互联网上的新一代安全标准。提供包括访问控制、无连接的完整性、数据源认证、抗重放 (replay)保护、保密和有限传输保密性在内的服务，服务基于 IP 层并对 IP 及上层协议进行保护。服务的实施通过两种通信安全协议：认证头（ AH）和封装安全负载（ ESP）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/1.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/2.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/3.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/4.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/5.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/6.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/7.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/8.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/9.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/10.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/11.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/12.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/13.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/14.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/15.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/16.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/17.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/18.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/19.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/20.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/21.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/22.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/23.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/24.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/25.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/26.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/27.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/28.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/29.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/30.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/31.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/32.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/33.jpg">
+<meta property="og:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/34.jpg">
+<meta property="article:published_time" content="2016-09-27T07:54:22.000Z">
+<meta property="article:modified_time" content="2020-07-09T04:01:16.497Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="IPSec">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/1.jpg">
+
+<link rel="canonical" href="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ROS里的IPSec配置 | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-winbox">
+
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ROS里的IPSec配置
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-27 15:54:22" itemprop="dateCreated datePublished" datetime="2016-09-27T15:54:22+08:00">2016-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-09 12:01:16" itemprop="dateModified" datetime="2020-07-09T12:01:16+08:00">2020-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>适用于ROS版本号 &lt; 6.16 的用户</strong></p>
+<p>IPSec 作为新一代网络安全协议，为网络传输提供了安全保证，使端到端的数据保密成为可能， 是互联网上的新一代安全标准。提供包括访问控制、无连接的完整性、数据源认证、抗重放 (replay)保护、保密和有限传输保密性在内的服务，服务基于 IP 层并对 IP 及上层协议进行保护。服务的实施通过两种通信安全协议：认证头（ AH）和封装安全负载（ ESP）以及 Internet 密钥交换（ IKE）协议来达到这些目标。 IPSec AH 协议提供数据源认证、无连接的完整性和可选的抗重放服务。 ESP 协议提供数据保密性，有限的数据流保密性、数据源认证、无连接的完整性及抗重放服务。 IKE 协议用于协商 AH 和 ESP 协议所使用的密码算法，并将算法所需的必备密钥放在合适的位置。 IPSec 有两种模式：传输模式和隧道模式。它们都是对外出的数据包添加 IPSec 头进行加密和认证，而对于接收的 IPSec 数据包作解密认证处理和适当的转发传送。</p>
+<a id="more"></a>
+<hr>
+<h3 id="IPSec-点对点配置实例"><a href="#IPSec-点对点配置实例" class="headerlink" title="IPSec 点对点配置实例"></a>IPSec 点对点配置实例</h3><p>以下是一个使用 RouterOS 建立的 IPsec VPN 案例， 网络拓扑图： </p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/1.jpg" alt></p>
+<p>192.168.89.1/24 <strong>–R1–</strong> 192.168.11.11/24 <strong>—互联网—</strong> 192.168.11.18/24 <strong>—R2—</strong> 192.168.90.1/24</p>
+<p><strong>R1 配置</strong></p>
+<p>进入 ip address 添加各接口的 IP 地址，先配置内网接口地址:<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/2.jpg" alt></p>
+<p>添加 ether1-wan 互联接口地址：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/3.jpg" alt></p>
+<p>进入 ip routes 里面添加网关出口：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/4.jpg" alt></p>
+<p>进入 ip ipsec 里的 policies 选项，先在 general 添加内网的源地址和对端网络的内网地址。<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/5.jpg" alt></p>
+<p>选择 action 选项里面添加源外网地址和对端外网地址和开启 tunnel 隧道协议<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/6.jpg" alt></p>
+<p>进入在 ip ipsec 里的 peers 标签里添加目标外网 ip 地址和 secert 密码：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/7.jpg" alt></p>
+<p>在 ip firewall 里的 nat， 建立一条 srcnat 规则为 accept，接受源内网地址和对端内网地址通过：</p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/8.jpg" alt></p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/9.jpg" alt></p>
+<p>然后建立将本地内网隐藏上网的 masquerade 规则： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add src-address=192.168.89.0/24 action=masquerade</span><br></pre></td></tr></table></figure>
+<p>以上就是 R1 的相应配置过程， R1 已经配置完成现在就 R2 了。</p>
+<hr>
+<h3 id="R2-配置"><a href="#R2-配置" class="headerlink" title="R2 配置"></a>R2 配置</h3><p>进入 ip address 添加 ether2-lan 内网接口地址:<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/10.jpg" alt></p>
+<p>添加 ether1-wan 外网接口地址：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/11.jpg" alt></p>
+<p>进入 ip routes 添加外网网关：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/12.jpg" alt></p>
+<p>进入 ip ipsec 里的 policies 选项，先在 general 添加内网的源地址和对端网络的内网地址。<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/13.jpg" alt></p>
+<p>选择 action 选项里面添加源外网地址和对端外网地址和开启 tunnel 隧道协议<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/14.jpg" alt></p>
+<p>再在 ip ipsec 里的 peers 标签里添加对端外网 ip 地址和 secert 密码：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/15.jpg" alt></p>
+<p>在 ip firewall 里的 nat， 建立一条 srcnat 规则为 accept，接受源内网地址和对端内网地址通过：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/16.jpg" alt></p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/17.jpg" alt><br>然后建立将本地内网隐藏上网的 masquerade 规则： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip firewall nat add src-address=192.168.90.0/24 action=masquerade</span><br></pre></td></tr></table></figure>
+<p>以上就是 R2 的配置过程。 注： NAT 规则的配置的上下顺序， accept 规则需在 masquerade 伪装规则前：<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/18.jpg" alt></p>
+<hr>
+<h3 id="Windows-L2TP-IPsec-连接"><a href="#Windows-L2TP-IPsec-连接" class="headerlink" title="Windows L2TP/IPsec 连接"></a>Windows L2TP/IPsec 连接</h3><p>Microsoft Windows XP/Vista/win7 内建了 PPTP 客户端和和 L2TP/IPSec 客户端。 PPTP 链接是不要 IPsec 加密的，而 windows 的 L2TP/IPsec 默认要求建立 IPsec 链接后，才能进行 L2TP 的拨号连接，这样的解决方法在早期采用的是修改 windows 的注册表，将 windows 默认的 IPsec 连接值修改并关闭， 相对于终端客户操作繁琐，且安全性降低。为了能正常让 windows 的 L2TP/IPsec 与 RouterOS 连接，我们可以配置 RouterOS 启用 IPsec。 Windows 建立 L2TP/IPSec 连接，首先要求连接到对端的 IPSes，在 IPSec 建立完成后在允许 L2TP 连接，也就是 IPSec 连接在先， L2TP 其后，所以我们首先配置 IPSec 连接。<br><font color="red">注： RouterOS 6.16 在 L2TP 服务配置中加入了 IPsec 选项，简化了 IPsec 的配置。</font><br>我们先确定一下网络结构： </p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/19.jpg" alt></p>
+<p>这里 RouterOS 的 IP 地址是 10.200.15.228，两台 PC 的 IP 地址分别是 10.200.15.59,和 10.200.15.60。两台 PC的 IP 地址必须是固定，以便 IPsec 连接成功。在这个拓扑图里要求所有的地址是能被访问到的，即非 nat 转换的地址（也非 L2TP 隧道分配的 IP 地址）。</p>
+<h3 id="IPSec-配置"><a href="#IPSec-配置" class="headerlink" title="IPSec 配置"></a>IPSec 配置</h3><p>首先要将 IPsec 指向对端的 windows PC 的 IP 地址（非 L2TP 分配 IP 地址） ，进入/ip ipsec 菜单下（确定安装security 功能包），选择 peer 标签，设置 address 为 PC 的 IP 地址， secret 设置共享密钥 yusong， Hash-algorithm选择 sha， generate-policy 勾上，其他默认。<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/20.jpg" alt></p>
+<p>添加 10.200.15.60 的 peer 规则 </p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/21.jpg" alt></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ip ipsec peer add address=10.200.15.59:500 auth-method=pre-shared-key \</span><br><span class="line">secret=yusong <span class="built_in">hash</span>-algorithm=sha enc-algorithm=3des generate-policy=yes</span><br><span class="line">/ip ipsec peer add address=10.200.15.60:500 auth-method=pre-shared-key \</span><br><span class="line">secret=yusong <span class="built_in">hash</span>-algorithm=sha enc-algorithm=3des generate-policy=yes</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加 IPSec peer 设置</strong><br>o address=10.200.15.59 是你的 windows 电脑的网卡实际地址。<br>o :500 端口号;<br>o hash-algorithm=sha 和 enc-algorithm=3des 是 windows 上的默认配置；<br>o generate-policy=yes 自动产生 IPSec 策略 </p>
+<p><strong>RouterOS 配置</strong> </p>
+<p>首先我们配置 RouterOS 的 L2TP 服务器，这个配置和普通的 PPTP 配置一样， 在 PPP 里启用 L2TP 服务 </p>
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/22.jpg" alt></p>
+<p>命令行配置，记住这里的路径不同： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ interface l2tp-server server <span class="built_in">set</span> enabled=yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/23.jpg" alt></p>
+<p>进入 ip pool 设置分配给用户的地址池：  命令操作如下： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ip pool add name=L2TP ranges=192.168.10.2-192.168.10.254</span><br></pre></td></tr></table></figure>
+
+<p>进入/ppp profile 配置 default-encryption 的规则:<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/24.jpg" alt></p>
+<p>DNS 和 limit 选项里的 rate-limit、 only one 参数根据需要设置，这里就不多讲解。 命令行配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ppp profile&gt; <span class="built_in">set</span> 1 <span class="built_in">local</span>-address=192.168.10.1 remote-address=L2TP</span><br></pre></td></tr></table></figure>
+
+<p>进入/ppp secret 添加用户账号 命令行配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ ppp secret add name=123 password=123 profile=default-encryption</span><br></pre></td></tr></table></figure>
+<p>到这里 L2TP 服务器配置完成。</p>
+<hr>
+<h3 id="Windows-配置"><a href="#Windows-配置" class="headerlink" title="Windows 配置"></a>Windows 配置</h3><p>Windows 配置包含 2 个部分，第一个部分添加新的网络连接，第二个部分调整 IPSec 设置 Win7 配置步骤：</p>
+<ul>
+<li>点开始菜单; </li>
+<li>控制面板\网络和 Internet\网络和共享中心 </li>
+<li>设置新的连接或网络; </li>
+<li>添加一个 VPN 连接， </li>
+<li>目的地的主机或域名填写 10.200.15.228（具体操作跟着步骤走，不详细说明）</li>
+</ul>
+<p>接下来我们需要配置 VPN 连接的属性<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/25.jpg" alt></p>
+<p>确定主机地址是 10.200.15.228<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/26.jpg" alt></p>
+<p>选择 VPN 类型为使用 ipsec 的第 2 层隧道协议（ L2TP/IPSec）<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/27.jpg" alt></p>
+<p>选择高级设置，并设置使用预共享的密钥作身份验证：输入相同的密钥： yusong<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/28.jpg" alt></p>
+<p>配置完成后，输入账号 123，密码 123，连接<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/29.jpg" alt></p>
+<p>连接完成后，在 remote peers 可以看到连接的 IP 地址<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/30.jpg" alt></p>
+<p>Policies 策略会被自动添加<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/31.jpg" alt></p>
+<p>Installed SAs 状态，注意当你的 L2TP 注销后，可能会出现 Installed SAs 状态没有清楚，第二次重播可能需要使用 Flush 清空状态<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/32.jpg" alt></p>
+<p>PPP 里的 active 状态<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/33.jpg" alt></p>
+<hr>
+<h3 id="v6-16-后简化-L2TP-IPsec-配置"><a href="#v6-16-后简化-L2TP-IPsec-配置" class="headerlink" title="v6.16 后简化 L2TP/IPsec 配置"></a>v6.16 后简化 L2TP/IPsec 配置</h3><p>在 RouterOS 6.16 版本开始， L2TP 服务增加了 use IPsce 选项，可以直接在 L2TP 服务配置菜单下设置 IPsec，共享密钥设置后，会自动添加到 IPsec 配置中，简化了管理员操作，当然 RouterOS 必须同时安装 PPP 和 Security功能包<br><img src="/2016/09/27/ROS%E9%87%8C%E7%9A%84IPSec%E9%85%8D%E7%BD%AE/34.jpg" alt></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IPSec/" rel="tag"><i class="fa fa-tag"></i> IPSec</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/09/26/mikrotik-ccr1072-performance-test/" rel="prev" title="Mikrotik CCR1072-1G-8S+ 性能测试[视频]">
+      <i class="fa fa-chevron-left"></i> Mikrotik CCR1072-1G-8S+ 性能测试[视频]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/09/27/ROS6.36%E9%87%8C%E7%9A%84Raw%E4%BB%8B%E7%BB%8D/" rel="next" title="ROS6.36里的Raw介绍">
+      ROS6.36里的Raw介绍 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPSec-点对点配置实例"><span class="nav-text">IPSec 点对点配置实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R2-配置"><span class="nav-text">R2 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-L2TP-IPsec-连接"><span class="nav-text">Windows L2TP&#x2F;IPsec 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPSec-配置"><span class="nav-text">IPSec 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-配置"><span class="nav-text">Windows 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v6-16-后简化-L2TP-IPsec-配置"><span class="nav-text">v6.16 后简化 L2TP&#x2F;IPsec 配置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '408981905b3d77a05178adedb65850f1',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

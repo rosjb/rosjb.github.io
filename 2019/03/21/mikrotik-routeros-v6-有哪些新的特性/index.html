@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="支持新产品 CloudCoreRouter、CloudRouterSwitch和其他新设备将只在RouterOS v6.x中得到完全支持   新的Linux内核 RouterOS 5.25 – Linux Kernel version 2.6.35 RouterOS 6.x – Linux Kernel version 3.3.5+ 更新详细细节请看: http:&#x2F;&#x2F;www.kernel.org&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MikroTik RouterOS v6 有哪些新的特性?">
+<meta property="og:url" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="支持新产品 CloudCoreRouter、CloudRouterSwitch和其他新设备将只在RouterOS v6.x中得到完全支持   新的Linux内核 RouterOS 5.25 – Linux Kernel version 2.6.35 RouterOS 6.x – Linux Kernel version 3.3.5+ 更新详细细节请看: http:&#x2F;&#x2F;www.kernel.org&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/1.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/2.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/3.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/4.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/5.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/6.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/7.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/8.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/9.png">
+<meta property="og:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/10.png">
+<meta property="article:published_time" content="2019-03-21T05:34:44.000Z">
+<meta property="article:modified_time" content="2020-06-22T08:02:14.282Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="ROS6版本新特性">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/1.png">
+
+<link rel="canonical" href="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MikroTik RouterOS v6 有哪些新的特性? | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-winbox">
+
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MikroTik RouterOS v6 有哪些新的特性?
+        </h1>
+
+        <div class="post-meta">
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=black>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-21 13:34:44" itemprop="dateCreated datePublished" datetime="2019-03-21T13:34:44+08:00">2019-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-22 16:02:14" itemprop="dateModified" datetime="2020-06-22T16:02:14+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%A8%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">技术讨论</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="支持新产品"><a href="#支持新产品" class="headerlink" title="支持新产品"></a>支持新产品</h4><ul>
+<li>CloudCoreRouter、CloudRouterSwitch和其他新设备将只在RouterOS v6.x中得到完全支持</li>
+</ul>
+<hr>
+<h4 id="新的Linux内核"><a href="#新的Linux内核" class="headerlink" title="新的Linux内核"></a>新的Linux内核</h4><ul>
+<li>RouterOS 5.25 – Linux Kernel version 2.6.35</li>
+<li>RouterOS 6.x – Linux Kernel version 3.3.5+</li>
+<li>更新详细细节请看: <a href="http://www.kernel.org/" target="_blank" rel="noopener">http://www.kernel.org/</a><a id="more"></a>
+</li>
+</ul>
+<hr>
+<h4 id="新的CPU架构支持"><a href="#新的CPU架构支持" class="headerlink" title="新的CPU架构支持"></a>新的CPU架构支持</h4><ul>
+<li>在v5.x中,有4种不同的架构<ul>
+<li>mipsle (RB1xx, RB5xx)</li>
+<li>mipsbe (RB4xx, RB7xx, RB9xx, RB2011, SXT, Sextant, Groove, Metal, CRS)</li>
+<li>ppc (RB1xxx, RB6xx, RB8xx)</li>
+<li>x86</li>
+</ul>
+</li>
+<li>在 v6.x 还有一个架构<ul>
+<li>tile (CCR1xxx)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="RouterOS-tile-架构"><a href="#RouterOS-tile-架构" class="headerlink" title="RouterOS tile 架构"></a>RouterOS tile 架构</h4><ul>
+<li>只适用于CCR设备</li>
+<li>64位操作系统(更多的RAM)</li>
+<li>支持双通道内存(更快的RAM)</li>
+<li>硬件加速多线程(不需要<strong>RPS</strong>和<a href="https://baike.baidu.com/item/IRQ/1229055?fr=aladdin" target="_blank" rel="noopener">IRQ</a>管理)</li>
+</ul>
+<h4 id="RPS"><a href="#RPS" class="headerlink" title="RPS"></a><strong>RPS</strong></h4><p><strong>Sub-menu level:</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/system resource rps</span><br></pre></td></tr></table></figure>
+
+<p>此菜单允许启用接收包控制(RPS)，以减少单核心的使用。 由于每个设备队列的序列化，<a href="https://wiki.linuxfoundation.org/networking/napi" target="_blank" rel="noopener">NAPI</a>在高包负载下可能成为瓶颈。RPS将接收到的数据包处理的负载分布在多个核上。</p>
+<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/1.png" alt></p>
+<hr>
+<h4 id="新内核的特性"><a href="#新内核的特性" class="headerlink" title="新内核的特性"></a>新内核的特性</h4><ul>
+<li>最新接口驱动程序支持x86系统</li>
+<li>改进的界面管理—可缩放到最多几千个接口等等</li>
+<li>占用更少的空间储存-运作良好的32 mib flash<br><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/2.png" alt></li>
+</ul>
+<hr>
+<h4 id="还有什么其他新的东西吗"><a href="#还有什么其他新的东西吗" class="headerlink" title="还有什么其他新的东西吗?"></a>还有什么其他新的东西吗?</h4><ul>
+<li>提升16个CPU核心限制</li>
+<li>改进了多cpu系统上的RouterOS性能(高达20%)</li>
+<li>改进的RouterBOARD接口驱动程序性能(高达30%)</li>
+<li>Routerboard包现在合并到系统包中</li>
+</ul>
+<hr>
+<h4 id="快速路径"><a href="#快速路径" class="headerlink" title="快速路径"></a>快速路径</h4><ul>
+<li>快速路径允许在Linux内核中转发包，而不需要额外的处理。它显著提高了转发速度。</li>
+<li>快速路径要求<ul>
+<li>配置中应允许快速路径</li>
+<li>接口驱动程序必须有支持</li>
+<li>特定配置条件</li>
+</ul>
+</li>
+<li>目前RouterOS有以下快速路径处理程序: ipv4，traffic generator，mpls，bridge</li>
+<li>未来将添加更多处理程序。</li>
+</ul>
+<hr>
+<h4 id="新的吞吐量测试结果"><a href="#新的吞吐量测试结果" class="headerlink" title="新的吞吐量测试结果"></a>新的吞吐量测试结果</h4><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/3.png" alt></p>
+<hr>
+<h4 id="吞吐量-百万pps"><a href="#吞吐量-百万pps" class="headerlink" title="吞吐量(百万pps)"></a>吞吐量(百万pps)</h4><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/4.png" alt></p>
+<hr>
+<h4 id="QoS系统修改了"><a href="#QoS系统修改了" class="headerlink" title="QoS系统修改了"></a>QoS系统修改了</h4><ul>
+<li>某些特定配置中的简单队列和树队列可能在从RouterOS v3.x, v4.x, v5.x升级到RouterOS v6.x后失效</li>
+<li>自动配置转换不可用, 因为某些配置可能导致无法访问路由器</li>
+</ul>
+<hr>
+<h4 id="数据包流程图的变化"><a href="#数据包流程图的变化" class="headerlink" title="数据包流程图的变化"></a>数据包流程图的变化</h4><ul>
+<li>在数据包的“生命周期”中，在多个不同的位置排队会导致多线程环境中性能的极大下降</li>
+<li>在RouterOS v6.x中对QoS系统进行了重新设计，使路由器中的其他进程在同一位置排队</li>
+<li>删除HTB“global-in”、“global-out”和“global-total”，为之代替的是HTB“global”，放置在路由器数据包“生命周期”的末尾。</li>
+</ul>
+<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/5.png" alt><br><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/6.png" alt></p>
+<hr>
+<h4 id="额外的变化"><a href="#额外的变化" class="headerlink" title="额外的变化"></a>额外的变化</h4><ul>
+<li>简单队列现在与队列树完全分离—相同的包可以在HTB“全局”和简单队列中捕获(在v5简单队列共享全局- HTBs中)</li>
+<li>由于所有队列现在都发生在SRC-NAT之后，所以PCQ队列类型被更新，现在是NAT来感知的(来自连接跟踪)</li>
+<li>现在可以为每个队列指定多个包标记</li>
+</ul>
+<hr>
+<h4 id="简单队列-Simple-Queues"><a href="#简单队列-Simple-Queues" class="headerlink" title="简单队列(Simple Queues)"></a>简单队列(Simple Queues)</h4><ul>
+<li>更新简单队列匹配算法</li>
+<li>对于丢失现有简单队列的包，开销非常小</li>
+<li>顶级简单队列现在在CPU内核之间进行平衡(32个队列比CCR1036上的1个队列快9倍)</li>
+</ul>
+<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/7.png" alt></p>
+<hr>
+<h4 id="简单的简单队列"><a href="#简单的简单队列" class="headerlink" title="简单的简单队列"></a>简单的简单队列</h4><ul>
+<li>“target-address”和”interface”参数合并为一个“target”参数</li>
+<li>将”dst-address”参数改为”dst”，现在可以指定为接口</li>
+<li>“direction “和”p2p”参数删除</li>
+<li>现在必须在创建简单队列时指定“target”</li>
+<li>分离的“优先级”参数用于下载、上传和总计</li>
+</ul>
+<h3 id="Simple-Queue-Interface-v5-x"><a href="#Simple-Queue-Interface-v5-x" class="headerlink" title="Simple Queue Interface v5.x"></a>Simple Queue Interface v5.x</h3><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/8.png" alt></p>
+<h3 id="Simple-Queue-Interface-v6-x"><a href="#Simple-Queue-Interface-v6-x" class="headerlink" title="Simple Queue Interface v6.x"></a>Simple Queue Interface v6.x</h3><p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/9.png" alt></p>
+<hr>
+<h4 id="防火墙的更改"><a href="#防火墙的更改" class="headerlink" title="防火墙的更改"></a>防火墙的更改</h4><ul>
+<li>防火墙现在有“all-ether”、“all-wireless”、“allvlan”、“all-ppp”作为接口匹配的可能性</li>
+<li>新的优先级(priority)匹配器</li>
+<li>新的“change-dscp”选项“from-priority”和“from priority-to high-3-bits”</li>
+<li>新的Mangle特性“snif-tzsp”，“snif-pc”发送数据包流到远程嗅探器</li>
+</ul>
+<hr>
+<h4 id="隧道-Tunnels-的变化"><a href="#隧道-Tunnels-的变化" class="headerlink" title="隧道(Tunnels)的变化"></a>隧道(Tunnels)的变化</h4><ul>
+<li>SSTP现在可以强制AES加密，而不是默认的RC4加密</li>
+<li>PPP配置文件现在有“bridge-path-cost”和“bridge-port-priority”参数</li>
+<li>PPP secret显示最后注销的日期和时间</li>
+<li>Hotspot和PPP现在支持RADIUS中的多个地址列表</li>
+<li>仅为“all-ppp”接口创建2条动态“change-mss” mangle规则;</li>
+</ul>
+<hr>
+<h4 id="DHCP的变化"><a href="#DHCP的变化" class="headerlink" title="DHCP的变化"></a>DHCP的变化</h4><ul>
+<li>dhcp选项现在可以通过混合不同的数据类型来指定</li>
+<li>dhcp-client具有自定义dhcp-option特性(例如:/ip dhcp-client option print)</li>
+<li>DHCPv4客户端现在为add-default-route参数提供了特殊类的选项</li>
+<li>添加DHCP中继代理信息选项的可能性</li>
+<li>DHCPv6 DNS选项支持</li>
+</ul>
+<hr>
+<h4 id="其他的变化"><a href="#其他的变化" class="headerlink" title="其他的变化"></a>其他的变化</h4><ul>
+<li>在bridge、bonding 或switch group中的接口将显示从属标志</li>
+<li>“/export compact”现在默认为“/export”，使用“/export verbose”获取以前的行为</li>
+<li>连接的路由在界面关闭时失效。</li>
+<li>可配置的Linux内核选项在/ip settings 和/ipv6 settings menus</li>
+<li>最初的OpenFlow支持</li>
+</ul>
+<hr>
+<h4 id="IPSec-Road-Warrior"><a href="#IPSec-Road-Warrior" class="headerlink" title="IPSec Road Warrior"></a>IPSec Road Warrior</h4><ul>
+<li>RoadWarrior 安装的支持<ul>
+<li>Conf模式的支持</li>
+<li>被动IPSec对等模式</li>
+<li>Xauth支持(Xauth PSK和Hybrid  RSA)</li>
+<li>策略模板和生成策略</li>
+<li>Peer groups(对等组)</li>
+<li>可以使用具有相同IP的多个对等点。</li>
+<li>更多</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="SCEP-协议支持"><a href="#SCEP-协议支持" class="headerlink" title="SCEP 协议支持"></a>SCEP 协议支持</h4><ul>
+<li>简单证书注册协议(SCEP)</li>
+<li>本协议允许:<ul>
+<li>从CA服务器或RA获取CA证书</li>
+<li>使用临时密钥创建自签名证书</li>
+<li>发送证书请求到服务器</li>
+<li>使用CA密码保护CA操作</li>
+</ul>
+</li>
+</ul>
+<p>更多信息请访问:<a href="http://wiki.mikrotik.com/wiki/Manual:System/Certificates#SCEP" target="_blank" rel="noopener">http://wiki.mikrotik.com/wiki/Manual:System/Certificates#SCEP</a></p>
+<hr>
+<h4 id="先进的无线-Wireless-频道"><a href="#先进的无线-Wireless-频道" class="headerlink" title="先进的无线(Wireless )频道"></a>先进的无线(Wireless )频道</h4><ul>
+<li>只能在Atheros AR92xx芯片和MikroTik设备之间工作<ul>
+<li>-中心频率范围:<ul>
+<li>2192 - 2734 mhz</li>
+<li>4800 - 6100 mhz</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>选择精确的中心频率(0.5MHz步长)</li>
+<li>选择通道宽度(2.5-30MHz, 0.5MHz步长)</li>
+<li>使用高级频道需要获得超级频道许可——这是免费的(只需要签署关于正确使用的文件)</li>
+<li>位于/interface wireless channels</li>
+<li>允许命名每个高级频道，并将它们分组到自定义列表中</li>
+<li>这些名称和列表名称稍后应该在wireless clients scan-list中使用，以使他们能够看到高级通道APs(老式的scanlist条目将无法工作)</li>
+<li>自定义扫描列表选项:<ul>
+<li>默认，频率，频率范围</li>
+<li>高级频道名称或列表名称(list name)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="先进的通道测试"><a href="#先进的通道测试" class="headerlink" title="先进的通道测试"></a>先进的通道测试</h4><ul>
+<li>中心频率- 5362.5MHz</li>
+<li>通道宽度- 30MHz</li>
+<li>扩展通道-以上</li>
+<li>最大数据速率- mcs - 15,405mbps</li>
+<li>无线协议- 802.11n</li>
+</ul>
+<p><img src="/2019/03/21/mikrotik-routeros-v6-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7/10.png" alt></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ROS6%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> ROS6版本新特性</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/25/%E8%BF%91%E6%9C%9FRouterOS%E7%9A%84%E5%87%A0%E4%B8%AA%E6%BC%8F%E6%B4%9E%E8%AF%B4%E6%98%8E(%E4%B8%AD%E6%8B%9B%E7%9A%84%E4%BA%BA%E4%B8%8D%E5%B0%91)/" rel="prev" title="近期RouterOS的几个漏洞说明(中招的人不少)">
+      <i class="fa fa-chevron-left"></i> 近期RouterOS的几个漏洞说明(中招的人不少)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/12/CN2%E5%92%8CBGP%E5%93%AA%E4%B8%AA%E5%A5%BD/" rel="next" title="CN2和BGP哪个好？">
+      CN2和BGP哪个好？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持新产品"><span class="nav-text">支持新产品</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的Linux内核"><span class="nav-text">新的Linux内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的CPU架构支持"><span class="nav-text">新的CPU架构支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RouterOS-tile-架构"><span class="nav-text">RouterOS tile 架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RPS"><span class="nav-text">RPS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新内核的特性"><span class="nav-text">新内核的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还有什么其他新的东西吗"><span class="nav-text">还有什么其他新的东西吗?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速路径"><span class="nav-text">快速路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的吞吐量测试结果"><span class="nav-text">新的吞吐量测试结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#吞吐量-百万pps"><span class="nav-text">吞吐量(百万pps)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QoS系统修改了"><span class="nav-text">QoS系统修改了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据包流程图的变化"><span class="nav-text">数据包流程图的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#额外的变化"><span class="nav-text">额外的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单队列-Simple-Queues"><span class="nav-text">简单队列(Simple Queues)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的简单队列"><span class="nav-text">简单的简单队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Queue-Interface-v5-x"><span class="nav-text">Simple Queue Interface v5.x</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Queue-Interface-v6-x"><span class="nav-text">Simple Queue Interface v6.x</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#防火墙的更改"><span class="nav-text">防火墙的更改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隧道-Tunnels-的变化"><span class="nav-text">隧道(Tunnels)的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP的变化"><span class="nav-text">DHCP的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的变化"><span class="nav-text">其他的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPSec-Road-Warrior"><span class="nav-text">IPSec Road Warrior</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SCEP-协议支持"><span class="nav-text">SCEP 协议支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先进的无线-Wireless-频道"><span class="nav-text">先进的无线(Wireless )频道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先进的通道测试"><span class="nav-text">先进的通道测试</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : 'c75e242e8c2d34e0cdcfc1557e3f8307',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

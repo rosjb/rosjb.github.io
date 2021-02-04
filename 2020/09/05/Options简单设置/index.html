@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rosjb.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS 首先先来看看我本地的设置：我的 ROS 地址为 10.10.10.98， DHCP 服务器分配的网关为 10.10.10.98， DNS 服务器为 10.10.10.98（因为我开启了 ROS 缓存功能）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mikrotik DHCP Options的简单设置">
+<meta property="og:url" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/index.html">
+<meta property="og:site_name" content="MikroTik 脚本生成器">
+<meta property="og:description" content="简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS 首先先来看看我本地的设置：我的 ROS 地址为 10.10.10.98， DHCP 服务器分配的网关为 10.10.10.98， DNS 服务器为 10.10.10.98（因为我开启了 ROS 缓存功能）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/1.png">
+<meta property="og:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/2.png">
+<meta property="og:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/3.png">
+<meta property="og:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/4.png">
+<meta property="og:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/5.png">
+<meta property="article:published_time" content="2020-09-05T15:37:19.000Z">
+<meta property="article:modified_time" content="2020-09-09T07:20:43.847Z">
+<meta property="article:author" content="rosjb">
+<meta property="article:tag" content="rosjb">
+<meta property="article:tag" content="ros脚本生成器">
+<meta property="article:tag" content="RouterOS脚本生成器">
+<meta property="article:tag" content="ROSJB">
+<meta property="article:tag" content="ROS脚本">
+<meta property="article:tag" content="ROS管理工具">
+<meta property="article:tag" content="routeros脚本">
+<meta property="article:tag" content="ros软路由">
+<meta property="article:tag" content="routeros脚本生成器">
+<meta property="article:tag" content="ros脚本生成器下载">
+<meta property="article:tag" content="软路由ros教程">
+<meta property="article:tag" content="路由表下载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/1.png">
+
+<link rel="canonical" href="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Mikrotik DHCP Options的简单设置 | MikroTik 脚本生成器</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MikroTik 脚本生成器" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MikroTik 脚本生成器</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">支持5.X-6.X版本</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-winbox">
+
+    <a href="/winbox/" rel="section"><i class="fa fa-inbox fa-fw"></i>winbox</a>
+
+  </li>
+        <li class="menu-item menu-item-thanksforlist">
+
+    <a href="/thanksforlist/" rel="section"><i class="fa fa-list-alt fa-fw"></i>感谢</a>
+
+  </li>
+        <li class="menu-item menu-item-donate">
+
+    <a href="/donate/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>赞赏</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rosjb.github.io/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rosjb">
+      <meta itemprop="description" content="如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MikroTik 脚本生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mikrotik DHCP Options的简单设置
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-05 23:37:19" itemprop="dateCreated datePublished" datetime="2020-09-05T23:37:19+08:00">2020-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-09 15:20:43" itemprop="dateModified" datetime="2020-09-09T15:20:43+08:00">2020-09-09</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>简单说下 RouterOS 里如何利用 DHCP Options，手动指定不同设备使用不同网关与 DNS</strong></p>
+<h4 id="首先先来看看我本地的设置："><a href="#首先先来看看我本地的设置：" class="headerlink" title="首先先来看看我本地的设置："></a>首先先来看看我本地的设置：</h4><p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/1.png" alt><br>我的 ROS 地址为 10.10.10.98， DHCP 服务器分配的网关为 10.10.10.98， DNS 服务器为 10.10.10.98（因为我开启了 ROS 缓存功能）</p>
+<a id="more"></a>
+
+<p>这样的话，默认接入的设备分配到的网关和 DNS 就是 10.10.10.98。那么如何实现随意设备走指定网关呢，就需要用到 Options 功能：<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/2.png" alt></p>
+<h4 id="这里有-3-个参数："><a href="#这里有-3-个参数：" class="headerlink" title="这里有 3 个参数："></a>这里有 3 个参数：</h4><p><strong>Name：</strong> 名称，这个随意<br><strong>Code：</strong> Options 编号，用数字表示。 3 表示网关， 6 表示 DNS。后面会将详细的表贴出来<br><strong>Value：</strong> Options 参数，对应前面的编号。这里我们需要填入’IP 地址’(包含引号，需要英文输入法)<br><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/3.png" alt><br>分别填入对应参数后，点 OK 确认保存</p>
+<p>接着打开需要修改的设备（首先我们需要先 Make Static），然后在 DHCP Options 点击向下小箭头，选择已经保存的 Options</p>
+<p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/4.png" alt></p>
+<p>以下就是设置完成的状态， OK 确认保存就可以了<br>PC 设备需要 <strong>ipconfig /release</strong> 跟 <strong>ipconfig /renew</strong> 释放跟重新获取移动设备断开 Wifi 后重新连接即可</p>
+<p><img src="/2020/09/05/Options%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/5.png" alt></p>
+<p>这样设置的好处就是可以设置全局分配 ROS 网关，只将需要经过旁路由的设备才会走旁路由，一来可以避免 NAS 等设备经过代理，二来任你怎么折腾旁路由，家人的设备也不会受到影响。</p>
+<h4 id="Options其他参数详情"><a href="#Options其他参数详情" class="headerlink" title="Options其他参数详情"></a><strong>Options其他参数详情</strong></h4><table>
+<thead>
+<tr>
+<th align="center">Options号</th>
+<th align="center">Options作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">设置子网掩码选项。</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">设置网关地址选项。</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">设置DNS服务器地址选项。</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">设置域名选项。</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">设置域名后缀选项。</td>
+</tr>
+<tr>
+<td align="center">33</td>
+<td align="center">设置静态路由选项。该选项中包含一组有分类静态路由（即目的地址的掩码固定为自然掩码，不能划分子网），客户端收到该选项后，将在路由表中添加这些静态路由。如果存在Option121，则忽略该选项。</td>
+</tr>
+<tr>
+<td align="center">44</td>
+<td align="center">设置NetBios服务器选项。</td>
+</tr>
+<tr>
+<td align="center">46</td>
+<td align="center">设置NetBios节点类型选项。</td>
+</tr>
+<tr>
+<td align="center">50</td>
+<td align="center">设置请求IP选项。</td>
+</tr>
+<tr>
+<td align="center">51</td>
+<td align="center">设置IP地址租约时间选项。</td>
+</tr>
+<tr>
+<td align="center">52</td>
+<td align="center">设置Option附加选项。</td>
+</tr>
+<tr>
+<td align="center">53</td>
+<td align="center">设置DHCP消息类型。</td>
+</tr>
+<tr>
+<td align="center">54</td>
+<td align="center">设置服务器标识。</td>
+</tr>
+<tr>
+<td align="center">55</td>
+<td align="center">设置请求参数列表选项。客户端利用该选项指明需要从服务器获取哪些网络配置参数。该选项内容为客户端请求的参数对应的选项值。</td>
+</tr>
+<tr>
+<td align="center">58</td>
+<td align="center">设置续约T1时间，一般是租期时间的50%。</td>
+</tr>
+<tr>
+<td align="center">59</td>
+<td align="center">设置续约T2时间。一般是租期时间的87.5%。</td>
+</tr>
+<tr>
+<td align="center">60</td>
+<td align="center">设置厂商分类信息选项，用于标识DHCP客户端的类型和配置。</td>
+</tr>
+<tr>
+<td align="center">61</td>
+<td align="center">设置客户端标识选项。</td>
+</tr>
+<tr>
+<td align="center">66</td>
+<td align="center">设置TFTP服务器名选项，用来指定为客户端分配的TFTP服务器的域名。</td>
+</tr>
+<tr>
+<td align="center">67</td>
+<td align="center">设置启动文件名选项，用来指定为客户端分配的启动文件名。</td>
+</tr>
+<tr>
+<td align="center">77</td>
+<td align="center">设置用户类型标识。</td>
+</tr>
+<tr>
+<td align="center">121</td>
+<td align="center">设置无分类路由选项。该选项中包含一组无分类静态路由（即目的地址的掩码为任意值，可以通过掩码来划分子网），客户端收到该选项后，将在路由表中添加这些静态路由。</td>
+</tr>
+<tr>
+<td align="center">148</td>
+<td align="center">EasyDeploy中Commander的IP地址。</td>
+</tr>
+<tr>
+<td align="center">149</td>
+<td align="center">SFTP和FTPS服务器的IP地址。</td>
+</tr>
+<tr>
+<td align="center">150</td>
+<td align="center">设置TFTP服务器地址选项，指定为客户端分配的TFTP服务器的地址。</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/31/Ver2-12/" rel="prev" title="Ver2.12 发布">
+      <i class="fa fa-chevron-left"></i> Ver2.12 发布
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先先来看看我本地的设置："><span class="nav-text">首先先来看看我本地的设置：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这里有-3-个参数："><span class="nav-text">这里有 3 个参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Options其他参数详情"><span class="nav-text">Options其他参数详情</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rosjb"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rosjb</p>
+  <div class="site-description" itemprop="description">如果你刚接触 Mikrotik RouterOS 系统的路由器,这里的ROS脚本生成器软件和教程,希望能给你带来便利!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:164484724@qq.com" title="E-Mail → mailto:164484724@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wiki.mikrotik.com/wiki/Main_Page" title="https:&#x2F;&#x2F;wiki.mikrotik.com&#x2F;wiki&#x2F;Main_Page" rel="noopener" target="_blank">MikroTik wiki</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.mikrotik.com/" title="http:&#x2F;&#x2F;www.mikrotik.com" rel="noopener" target="_blank">MikroTik 官方</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mikrotik.com/product/" title="https:&#x2F;&#x2F;mikrotik.com&#x2F;product&#x2F;" rel="noopener" target="_blank">routerboard 硬件</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.irouteros.com/?page_id=186" title="http:&#x2F;&#x2F;www.irouteros.com&#x2F;?page_id&#x3D;186" rel="noopener" target="_blank">RouterOS入门到精通</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rosjb</span>
+</div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1279060654&web_id=1279060654"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '73f74bd483a017360482',
+      clientSecret: '1e45d96b72833abfff63b75348992db04035fdd9',
+      repo        : 'blog-comments',
+      owner       : 'T3rdW',
+      admin       : ['T3rdW'],
+      id          : '52ec1c77af11dd5e334b57154559f564',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
