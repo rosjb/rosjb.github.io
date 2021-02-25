@@ -41,17 +41,17 @@
     <link href="http://rosjb.github.io/2020/07/31/Ver2-12/"/>
     <id>http://rosjb.github.io/2020/07/31/Ver2-12/</id>
     <published>2020-07-31T04:15:07.000Z</published>
-    <updated>2021-02-04T14:25:25.266Z</updated>
+    <updated>2021-02-14T13:48:56.904Z</updated>
     
-    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 部分”firewall”拼写错误的问题</li><li>去除 依赖之前网站的所有功能</li><li>修复 部分功能文件名或备注有多个引号的情况</li></ol><a id="more"></a><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.12: <a href="https://545c.com/f/14549722-481262044-c21c6c" target="_blank" rel="noopener">下载地址</a> (访问密码：9084)<br>解压密码:1234<br>md5:9b2beef025f8cfdbefcf403147ac8892 (压缩包的MD5)</p><h2 id="📣-讨论群"><a href="#📣-讨论群" class="headerlink" title="📣 讨论群"></a>📣 讨论群</h2><p>QQ群: <a href="https://jq.qq.com/?_wv=1027&k=HL2Nblf5" target="_blank" rel="noopener">772833948</a> (rosjb)</p>]]></content>
+    <content type="html"><![CDATA[<!-- ## 💥新增 --><h2 id="💥-更新内容"><a href="#💥-更新内容" class="headerlink" title="💥 更新内容"></a>💥 更新内容</h2><ol><li>修复 部分 “firewall” 拼写错误的问题</li><li>去除 依赖之前网站的所有功能</li><li>修复 部分功能的文件名或备注有多个引号的情况</li></ol><a id="more"></a><h2 id="🛠-下载地址"><a href="#🛠-下载地址" class="headerlink" title="🛠 下载地址"></a>🛠 下载地址</h2><p>Ver2.12: <a href="https://545c.com/f/14549722-481262044-c21c6c" target="_blank" rel="noopener">下载地址</a> (访问密码：9084)<br>解压密码:1234<br>md5:9b2beef025f8cfdbefcf403147ac8892 (压缩包的MD5)</p><h2 id="📣-讨论群"><a href="#📣-讨论群" class="headerlink" title="📣 讨论群"></a>📣 讨论群</h2><p>QQ群: <a href="https://jq.qq.com/?_wv=1027&k=HL2Nblf5" target="_blank" rel="noopener">772833948</a> (rosjb)</p>]]></content>
     
     <summary type="html">
     
       &lt;!-- ## 💥新增 --&gt;
 &lt;h2 id=&quot;💥-更新内容&quot;&gt;&lt;a href=&quot;#💥-更新内容&quot; class=&quot;headerlink&quot; title=&quot;💥 更新内容&quot;&gt;&lt;/a&gt;💥 更新内容&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;修复 部分”firewall”拼写错误的问题&lt;/li&gt;
+&lt;li&gt;修复 部分 “firewall” 拼写错误的问题&lt;/li&gt;
 &lt;li&gt;去除 依赖之前网站的所有功能&lt;/li&gt;
-&lt;li&gt;修复 部分功能文件名或备注有多个引号的情况&lt;/li&gt;
+&lt;li&gt;修复 部分功能的文件名或备注有多个引号的情况&lt;/li&gt;
 &lt;/ol&gt;
     
     </summary>
